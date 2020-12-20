@@ -9,7 +9,7 @@ from telegram.utils.helpers import mention_html
 import SaitamaRobot.modules.sql.blacklist_sql as sql
 from SaitamaRobot import dispatcher, LOGGER
 from SaitamaRobot.modules.disable import DisableAbleCommandHandler
-from SaitamaRobot.modules.helper_funcs.chat_status import user_admin, user_not_admin
+from SaitamaRobot.modules.helper_funcs.chat_status import user_admin, user_not_admin, user_can_change
 from SaitamaRobot.modules.helper_funcs.extraction import extract_text
 from SaitamaRobot.modules.helper_funcs.misc import split_message
 from SaitamaRobot.modules.log_channel import loggable
@@ -70,6 +70,7 @@ def blacklist(update, context):
 
 @run_async
 @user_admin
+@user_can_change
 @typing_action
 def add_blacklist(update, context):
     msg = update.effective_message
@@ -122,6 +123,7 @@ def add_blacklist(update, context):
 
 @run_async
 @user_admin
+@user_can_change
 @typing_action
 def unblacklist(update, context):
     msg = update.effective_message
@@ -199,6 +201,7 @@ def unblacklist(update, context):
 @run_async
 @loggable
 @user_admin
+@user_can_change
 @typing_action
 def blacklist_mode(update, context):
     chat = update.effective_chat
