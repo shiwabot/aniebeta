@@ -52,14 +52,14 @@ def get_readable_time(seconds: int) -> str:
 
 PM_START_TEXT = """
 Hi {}, my name is {}! 
-I am an Anime themed group management bot.
-Build by weebs for weebs, I specialize in managing anime and similar themed groups.
+I am an Amazing group management bot.
+Made With ❤ I specialize in managing your group with my advance features.
 You can find my list of available commands with /help.
 """
 
 HELP_STRINGS = """
 Hey there! My name is *{}*.
-I'm a Hero For Fun and help admins manage their groups with Aniebot Have a look at the following for an idea of some of \
+I'm a Queen ask me for help admins manage their groups with Aniebot Have a look at the following for an idea of some of \
 the things I can help you with.
 
 *Main* commands available:
@@ -77,7 +77,7 @@ And the following:
     dispatcher.bot.first_name, ""
     if not ALLOW_EXCL else "\nAll commands can either be used with / or !.\n")
 
-SAITAMA_IMG = "https://telegra.ph/file/863a3241604e433e8d71c.jpg"
+SAITAMA_IMG = "https://telegra.ph/file/d64c7d23d2a700fbb3fdc.jpg"
 
 DONATE_STRING = """Anie doesn't need any donations as of now. Thank """ 
 
@@ -203,12 +203,8 @@ def start(update: Update, context: CallbackContext):
                          InlineKeyboardButton(
                              text="📖Getting started guide",
                              url="https://t.me/anie_news/5")
-                     ],
-                     [
-                         InlineKeyboardButton(
-                             text="☑️source code",
-                             url="https://github.com/shiwa786/botanie")
                      ]]))
+                     
     else:
         update.effective_message.reply_text(
             "Heya :) PM me if you have any questions on how to use me") 

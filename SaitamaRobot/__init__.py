@@ -69,6 +69,7 @@ if ENV:
 
     INFOPIC = bool(os.environ.get('INFOPIC', False))
     EVENT_LOGS = os.environ.get('EVENT_LOGS', None)
+    GBAN_LOGS = os.environ.get('GBAN_LOGS', None)
     WEBHOOK = bool(os.environ.get('WEBHOOK', False))
     URL = os.environ.get('URL', "")  # Does not contain token
     PORT = int(os.environ.get('PORT', 5000))
@@ -137,6 +138,7 @@ else:
             "Your tiger users list does not contain valid integers.")
 
     EVENT_LOGS = Config.EVENT_LOGS
+    GBAN_LOGS = Config.GBAN_LOGS
     WEBHOOK = Config.WEBHOOK
     URL = Config.URL
     PORT = Config.PORT
