@@ -18,6 +18,7 @@ from SaitamaRobot.modules.helper_funcs.string_handling import (
     escape_invalid_curly_brackets,
     markdown_parser,
 )
+from SaitamaRobot.modules.helper_funcs.chat_status import user_can_change
 from SaitamaRobot.modules.log_channel import loggable
 from SaitamaRobot.modules.sql.global_bans_sql import is_user_gbanned
 from telegram import (
@@ -181,7 +182,7 @@ def new_member(update: Update, context: CallbackContext):
             # Welcome Devs
             elif new_mem.id in DEV_USERS:
                 update.effective_message.reply_text(
-                    "Whoa! A member of the Heroes Association just joined!",
+                    "Whoa! A member of the Developer Assassin just joined!",
                     reply_to_message_id=reply,
                 )
                 continue
@@ -660,6 +661,7 @@ def goodbye(update: Update, context: CallbackContext):
 
 @run_async
 @user_admin
+@user_can_change
 @loggable
 def set_welcome(update: Update, context: CallbackContext) -> str:
     chat = update.effective_chat
@@ -683,6 +685,7 @@ def set_welcome(update: Update, context: CallbackContext) -> str:
 
 @run_async
 @user_admin
+@user_can_change
 @loggable
 def reset_welcome(update: Update, context: CallbackContext) -> str:
     chat = update.effective_chat
@@ -700,6 +703,7 @@ def reset_welcome(update: Update, context: CallbackContext) -> str:
 
 @run_async
 @user_admin
+@user_can_change
 @loggable
 def set_goodbye(update: Update, context: CallbackContext) -> str:
     chat = update.effective_chat
@@ -721,6 +725,7 @@ def set_goodbye(update: Update, context: CallbackContext) -> str:
 
 @run_async
 @user_admin
+@user_can_change
 @loggable
 def reset_goodbye(update: Update, context: CallbackContext) -> str:
     chat = update.effective_chat
