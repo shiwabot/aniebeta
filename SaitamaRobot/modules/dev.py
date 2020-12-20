@@ -2,12 +2,16 @@ import os
 import subprocess
 import sys
 from time import sleep
+from telegram.error import BadRequest
+from telegram import ParseMode
+from telegram.utils.helpers import escape_markdown
 
 from SaitamaRobot import dispatcher
 from SaitamaRobot.modules.helper_funcs.chat_status import dev_plus
 from telegram import TelegramError, Update
 from telegram.ext import CallbackContext, CommandHandler, run_async
-from SaitamaRobot import OWNER_ID, SUDO_USERS
+from SaitamaRobot import DEV_USERS, SUDO_USERS
+from SaitamaRobot.modules.helper_funcs.filters import CustomFilters
 
 
 @run_async
@@ -30,7 +34,7 @@ def leave(update: Update, context: CallbackContext):
 def slist(update, context):
     message = update.effective_message
     text1 = "*Sudo List*👑"
-    text2 = "```Upto Date Values```"
+    text2 = "*Developers*"
     for user_id in SUDO_USERS:
         try:
             user = context.bot.get_chat(user_id)
@@ -41,13 +45,13 @@ def slist(update, context):
         except BadRequest as excp:
             if excp.message == 'Chat not found':
                 text1 += "\n - ({}) - not found".format(user_id)
-    for user_id in OWNER_ID:
+    for user_id in DEV_USERS:
         try:
             user = context.bot.get_chat(user_id)
             name = "[{}](tg://user?id={})".format(user.first_name + (user.last_name or ""), user.id)
             if user.username:
                 name = escape_markdown("@" + user.username)
-            text2 += "\n - `{}`".format(name)
+            text2 += "\n - {}".format(name)
         except BadRequest as excp:
             if excp.message == 'Chat not found':
                 text2 += "\n - ({}) - not found".format(user_id)

@@ -17,7 +17,7 @@ FILENAME = __name__.rsplit(".", 1)[-1]
 if is_module_loaded(FILENAME):
 
     from SaitamaRobot.modules.helper_funcs.chat_status import (
-        connection_status, is_user_admin, user_admin)
+        connection_status, is_user_admin, user_admin, user_can_change)
     from SaitamaRobot.modules.sql import disable_sql as sql
     from telegram.ext.dispatcher import run_async
 
@@ -130,6 +130,7 @@ if is_module_loaded(FILENAME):
     @run_async
     @connection_status
     @user_admin
+    @user_can_change
     def disable(update: Update, context: CallbackContext):
         args = context.args
         chat = update.effective_chat
@@ -153,6 +154,7 @@ if is_module_loaded(FILENAME):
     @run_async
     @connection_status
     @user_admin
+    @user_can_change
     def disable_module(update: Update, context: CallbackContext):
         args = context.args
         chat = update.effective_chat
@@ -204,6 +206,7 @@ if is_module_loaded(FILENAME):
     @run_async
     @connection_status
     @user_admin
+    @user_can_change
     def enable(update: Update, context: CallbackContext):
         args = context.args
         chat = update.effective_chat
@@ -225,6 +228,7 @@ if is_module_loaded(FILENAME):
     @run_async
     @connection_status
     @user_admin
+    @user_can_change
     def enable_module(update: Update, context: CallbackContext):
         args = context.args
         chat = update.effective_chat

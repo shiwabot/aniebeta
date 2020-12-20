@@ -19,6 +19,7 @@ from SaitamaRobot.modules.helper_funcs.chat_status import (
     is_bot_admin,
     user_admin,
 )
+from SaitamaRobot.modules.helper_funcs.chat_status import user_can_change
 from SaitamaRobot.modules.log_channel import loggable
 from SaitamaRobot.modules.connection import connected
 
@@ -204,6 +205,7 @@ def locktypes(update, context):
 @run_async
 @user_admin
 @loggable
+@user_can_change
 @typing_action
 def lock(update, context) -> str:
     args = context.args
@@ -311,6 +313,7 @@ def lock(update, context) -> str:
 @run_async
 @user_admin
 @loggable
+@user_can_change
 @typing_action
 def unlock(update, context) -> str:
     args = context.args

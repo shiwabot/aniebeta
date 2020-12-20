@@ -10,12 +10,16 @@ from SaitamaRobot.modules.disable import DisableAbleCommandHandler
 from SaitamaRobot.modules.helper_funcs.chat_status import (bot_admin, can_pin,
                                                            can_promote,
                                                            connection_status,
-                                                           user_admin)
+                                                           user_admin,
+                                                           ADMIN_CACHE)
 from SaitamaRobot.modules.helper_funcs.extraction import (extract_user,
                                                           extract_user_and_text)
 from SaitamaRobot.modules.log_channel import loggable
 from SaitamaRobot.modules.helper_funcs.alternate import send_message
-
+import SaitamaRobot.modules.sql.feds_sql as sql
+from SaitamaRobot.modules.helper_funcs.extraction import (extract_unt_fedban,
+                                                          extract_user,
+                                                          extract_user_fban)
 
 @run_async
 @connection_status
@@ -275,6 +279,16 @@ def pin(update: Update, context: CallbackContext) -> str:
 
         return log_message
 
+@run_async
+@user_admin
+def refresh_admin(update, _):
+    try:
+        ADMIN_CACHE.pop(update.effective_chat.id)
+    except KeyError:
+        pass
+
+    update.effective_message.reply_text("Admins cache refreshed!")
+
 
 @run_async
 @bot_admin
@@ -468,6 +482,52 @@ def __chat_settings__(chat_id, user_id):
         dispatcher.bot.get_chat_member(chat_id, user_id).status in (
             "administrator", "creator"))
 
+@run_async
+def fed_admin(update: Update, context: CallbackContext):
+    bot, args = context.bot, context.args
+    chat = update.effective_chat
+    user = update.effective_user
+
+    if chat.type == 'private':
+        send_message(update.effective_message,
+                     "This command is specific to the group, not to our pm!")
+        return
+
+    fed_id = sql.get_fed_id(chat.id)
+
+    if not fed_id:
+        update.effective_message.reply_text(
+            "This group is not in any federation!")
+        return
+
+    if is_user_fed_admin(fed_id, user.id) is False:
+        update.effective_message.reply_text(
+            "Only federation admins can do this!")
+        return
+
+    user = update.effective_user
+    chat = update.effective_chat
+    info = sql.get_fed_info(fed_id)
+
+    text = "<b>Federation Admin {}:</b>\n\n".format(info['fname'])
+    text += "👑 Owner:\n"
+    owner = bot.get_chat(info['owner'])
+    try:
+        owner_name = owner.first_name + " " + owner.last_name
+    except:
+        owner_name = owner.first_name
+    text += " • {}\n".format(mention_html(owner.id, owner_name))
+
+    members = sql.all_fed_members(fed_id)
+    if len(members) == 0:
+        text += "\n🔱 There are no admins in this federation"
+    else:
+        text += "\n🔱 Admin:\n"
+        for x in members:
+            user = bot.get_chat(x)
+            text += " • {}\n".format(mention_html(user.id, user.first_name))
+
+    update.effective_message.reply_text(text, parse_mode=ParseMode.HTML)
 
 __help__ = """
  • `/admins`*:* list of admins in the chat
@@ -478,6 +538,7 @@ __help__ = """
  • `/unpin`*:* unpins the currently pinned message
  • `/invitelink`*:* gets invitelink
  • `/promote`*:* promotes the user replied to
+ • `/admincache`*:* force refresh the admins list
  • `/demote`*:* demotes the user replied to
  • `/title <title here>`*:* sets a custom title for an admin that the bot promoted
 """
@@ -493,8 +554,11 @@ INVITE_HANDLER = DisableAbleCommandHandler("invitelink", invite)
 PROMOTE_HANDLER = DisableAbleCommandHandler("promote", promote)
 DEMOTE_HANDLER = DisableAbleCommandHandler("demote", demote)
 
-SET_TITLE_HANDLER = CommandHandler("title", set_title)
+ADMIN_REFRESH_HANDLER = CommandHandler(
+    "admincache", refresh_admin, filters=Filters.group)
 
+SET_TITLE_HANDLER = CommandHandler("title", set_title)
+FED_ADMIN_HANDLER = CommandHandler("fedadmins", fed_admin)
 dispatcher.add_handler(ADMINLIST_HANDLER)
 dispatcher.add_handler(ADMINSLIST_HANDLER)
 dispatcher.add_handler(PIN_HANDLER)
@@ -503,10 +567,12 @@ dispatcher.add_handler(INVITE_HANDLER)
 dispatcher.add_handler(PROMOTE_HANDLER)
 dispatcher.add_handler(DEMOTE_HANDLER)
 dispatcher.add_handler(SET_TITLE_HANDLER)
+dispatcher.add_handler(FED_ADMIN_HANDLER)
+dispatcher.add_handler(ADMIN_REFRESH_HANDLER)
 
 __mod_name__ = "Admin"
 __command_list__ = ["adminlist", "admins", "invitelink", "promote", "demote"]
 __handlers__ = [
-    ADMINLIST_HANDLER, ADMINSLIST_HANDLER, PIN_HANDLER, UNPIN_HANDLER, INVITE_HANDLER,
+    ADMINLIST_HANDLER, FED_ADMIN_HANDLER, ADMINSLIST_HANDLER, PIN_HANDLER, UNPIN_HANDLER, INVITE_HANDLER,
     PROMOTE_HANDLER, DEMOTE_HANDLER, SET_TITLE_HANDLER
 ]

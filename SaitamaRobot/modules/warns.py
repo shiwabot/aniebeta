@@ -4,13 +4,13 @@ import re
 from typing import Optional
 
 import telegram
-from SaitamaRobot import BAN_STICKER, TIGER_USERS, WHITELIST_USERS, dispatcher
+from SaitamaRobot import BAN_STICKER, SUDO_USERS, WHITELIST_USERS, dispatcher
 from SaitamaRobot.modules.disable import DisableAbleCommandHandler
 from SaitamaRobot.modules.helper_funcs.chat_status import (bot_admin,
                                                            can_restrict,
                                                            is_user_admin,
                                                            user_admin,
-                                                           user_admin_no_reply, user_can_ban)
+                                                           user_admin_no_reply, user_can_ban, can_delete)
 from SaitamaRobot.modules.helper_funcs.extraction import (extract_text,
                                                           extract_user,
                                                           extract_user_and_text)
@@ -32,21 +32,19 @@ CURRENT_WARNING_FILTER_STRING = "<b>Current warning filters in this chat:</b>\n"
 
 
 # Not async
-def warn(user: User,
-         chat: Chat,
-         reason: str,
-         message: Message,
-         warner: User = None) -> str:
+def warn(user: User, chat: Chat, reason: str, message: Message, warner: User = None) -> str:
+    bot = dispatcher.bot
+    
     if is_user_admin(chat, user.id):
-        # message.reply_text("Damn admins, They are too far to be One Punched!")
-        return
+        message.reply_text("Damn admins, can't even be warned!")
+        return ""
 
-    if user.id in TIGER_USERS:
+    if user.id in SUDO_USERS:
         if warner:
-            message.reply_text("Tigers cant be warned.")
+            message.reply_text("Sudo cant be warned.")
         else:
             message.reply_text(
-                "Tiger triggered an auto warn filter!\n I can't warn tigers but they should avoid abusing this."
+                "Sudo triggered an auto warn filter!\n I can't warn tigers but they should avoid abusing this."
             )
         return
 
@@ -71,7 +69,7 @@ def warn(user: User,
         if soft_warn:  # punch
             chat.unban_member(user.id)
             reply = (
-                f"<code>❕</code><b>Punch Event</b>\n"
+                f"<code>❕</code><b>Kick Event</b>\n"
                 f"<code> </code><b>•  User:</b> {mention_html(user.id, user.first_name)}\n"
                 f"<code> </code><b>•  Count:</b> {limit}")
 
@@ -192,10 +190,10 @@ def warn_user(update: Update, context: CallbackContext) -> str:
 @loggable
 def dwarn_user(update: Update, context: CallbackContext) -> str:
     args = context.args
-    message: Optional[Message] = update.effective_message
-    chat: Optional[Chat] = update.effective_chat
-    warner: Optional[User] = update.effective_user
-
+    message = update.effective_message  # type: Optional[Message]
+    chat = update.effective_chat  # type: Optional[Chat]
+    warner = update.effective_user  # type: Optional[User]
+    user = update.effective_user
     user_id, reason = extract_user_and_text(message, args)
     
     time.sleep(2)
@@ -225,9 +223,12 @@ def dwarn_user(update: Update, context: CallbackContext) -> str:
 @loggable
 def reset_warns(update: Update, context: CallbackContext) -> str:
     args = context.args
-    message: Optional[Message] = update.effective_message
-    chat: Optional[Chat] = update.effective_chat
-    user: Optional[User] = update.effective_user
+    message = update.effective_message  # type: Optional[Message]
+    chat = update.effective_chat  # type: Optional[Chat]
+    user = update.effective_user  # type: Optional[User]
+    if user_can_ban(chat, user, context.bot.id) == False:
+    	    message.reply_text("You are missing the following rights to use this command:CanRestrictUsers!")
+    	    return ""
 
     user_id = extract_user(message, args)
 
