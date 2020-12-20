@@ -364,7 +364,7 @@ def user_can_ban(func):
 def user_can_change(func):	
 
     @wraps(func)	
-    def user_can_change(update: Update, context: CallbackContext, *args,	
+    def info_changer(update: Update, context: CallbackContext, *args,	
                           **kwargs):	
         bot = context.bot	
         user = update.effective_user.id	
@@ -378,7 +378,7 @@ def user_can_change(func):
 
         return func(update, context, *args, **kwargs)	
 
-    return user_can_change
+    return info_changer
 
 def connection_status(func):	
 
