@@ -5,6 +5,7 @@ beautifulsoup4
 requests
 sqlalchemy
 python-telegram-bot==12.8
+cachetools
 psycopg2-binary
 feedparser
 pynewtonmath
@@ -16,7 +17,7 @@ psutil
 aiohttp>=2.2.5
 Pillow>=4.2.0
 CurrencyConverter
-googletrans
+google_trans_new
 jikanpy
 speedtest-cli
 coffeehouse
