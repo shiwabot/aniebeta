@@ -539,6 +539,7 @@ __help__ = """
  • `/invitelink`*:* gets invitelink
  • `/promote`*:* promotes the user replied to
  • `/admincache`*:* force refresh the admins list
+ • `/zombis`
  • `/demote`*:* demotes the user replied to
  • `/title <title here>`*:* sets a custom title for an admin that the bot promoted
 """
