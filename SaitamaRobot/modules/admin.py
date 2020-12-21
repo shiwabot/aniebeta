@@ -5,7 +5,7 @@ from telegram.error import BadRequest
 from telegram.ext import CallbackContext, CommandHandler, Filters, run_async
 from telegram.utils.helpers import mention_html, mention_markdown, escape_markdown
 
-from SaitamaRobot import SUDO_USERS, dispatcher
+from SaitamaRobot import SUDO_USERS, dispatcher, DEV_USERS
 from SaitamaRobot.modules.disable import DisableAbleCommandHandler
 from SaitamaRobot.modules.helper_funcs.chat_status import (bot_admin, can_pin,
                                                            can_promote,
@@ -38,7 +38,7 @@ def promote(update: Update, context: CallbackContext) -> str:
     promoter = chat.get_member(user.id)
 
     if not (promoter.can_promote_members or
-            promoter.status == "creator") and not user.id in SUDO_USERS:
+            promoter.status == "creator") and not user.id in DEV_USERS:
         message.reply_text("You don't have the necessary rights to do that!")
         return
 
@@ -116,6 +116,13 @@ def demote(update: Update, context: CallbackContext) -> str:
     chat = update.effective_chat
     message = update.effective_message
     user = update.effective_user
+
+    promoter = chat.get_member(user.id)
+
+    if not (promoter.can_promote_members or
+            promoter.status == "creator") and not user.id in DEV_USERS:
+        message.reply_text("You don't have the necessary rights to do that!")
+        return
 
     user_id = extract_user(message, args)
     if not user_id:
