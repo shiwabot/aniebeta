@@ -65,12 +65,7 @@ def promote(update: Update, context: CallbackContext) -> str:
             "I can't promote myself! Get an admin to do it for me.")
         return
     
-    if int(user_id) in SUDO_USERS:
-        message.reply_text(
-            "Hey Sudo User Don't Try to Promote Your Self!"
-        )
-        return
-
+    
     # set same perms as bot - bot can't assign higher perms than itself!
     bot_member = chat.get_member(bot.id)
 
