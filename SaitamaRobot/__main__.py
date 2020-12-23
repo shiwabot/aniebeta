@@ -512,7 +512,7 @@ def migrate_chats(update: Update, context: CallbackContext):
 
 def main():
     test_handler = CommandHandler("test", test)
-    start_handler = CommandHandler("start", start)
+    start_handler = CommandHandler("start", start, pass_args=True, allow_edited=True)
 
     help_handler = CommandHandler("help", get_help)
     help_callback_handler = CallbackQueryHandler(help_button, pattern=r"help_")
