@@ -187,7 +187,10 @@ def migrate_chat(old_chat_id, new_chat_id):
             member.chat = str(new_chat_id)
             SESSION.add(member)
 
-        SESSION.commit()
+        try:
+            SESSION.commit()
+        except:
+            SESSION.rollback()
 
 
 ensure_bot_in_db()
