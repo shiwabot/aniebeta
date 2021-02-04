@@ -48,7 +48,7 @@ class AntiSpam:
 
 
 SpamChecker = AntiSpam()
-
+MessageHandlerChecker = AntiSpam()
 
 class CustomCommandHandler(CommandHandler):
 
