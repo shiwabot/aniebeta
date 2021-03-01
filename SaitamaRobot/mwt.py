@@ -1,9 +1,15 @@
 import time
+from functools import wraps
+import timeit
+from mwt import mwt
 
+@mwt(timeout=60*10)
+def get_admin_ids(bot, chat_id):
+    """Returns a list of admin IDs for a given chat. Results are cached for 1 hour."""
+    return [admin.user.id for admin in bot.get_chat_administrators(chat_id)]
 
-class MWT(object):
-    """Memorize With Timeout"""
-
+class MWT(object): 
+    """Memoize With Timeout"""
     _caches = {}
     _timeouts = {}
 
@@ -12,31 +18,43 @@ class MWT(object):
 
     def collect(self):
         """Clear cache of results which have timed out"""
+        t = time.time()
+
         for func in self._caches:
             cache = {}
+
             for key in self._caches[func]:
-                if (time.time() -
-                        self._caches[func][key][1]) < self._timeouts[func]:
+                if (t - self._caches[func][key][1]) < self._timeouts[func]:
                     cache[key] = self._caches[func][key]
+
             self._caches[func] = cache
 
     def __call__(self, f):
-        self.cache = self._caches[f] = {}
+        cache = self._caches[f] = {}
         self._timeouts[f] = self.timeout
 
+        @wraps(f)
         def func(*args, **kwargs):
             kw = sorted(kwargs.items())
             key = (args, tuple(kw))
+            t = time.time()
+
             try:
-                v = self.cache[key]
-                # print("cache")
-                if (time.time() - v[1]) > self.timeout:
+                v = cache[key]
+                print("cache")
+
+                if (t - v[1]) > self.timeout:
                     raise KeyError
+
             except KeyError:
-                # print("new")
-                v = self.cache[key] = f(*args, **kwargs), time.time()
+                print("new")
+                v = cache[key] = f(*args,**kwargs), t
+
             return v[0]
 
-        func.func_name = f.__name__
+        def clear_cache():
+            self._caches[f].clear()
+
+        func.clear_cache = clear_cache
 
         return func

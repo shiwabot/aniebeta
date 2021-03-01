@@ -1,68 +1,43 @@
-# #Create a new config.py or rename this to config.py file in same dir and import, then extend this class.
-import json
+
+
 import os
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+class Config():
+  ENV = bool(os.environ.get('ENV', False))
+  if ENV:
+    BOT_TOKEN = os.environ.get("BOT_TOKEN", None)
+    DATABASE_URL = os.environ.get("DATABASE_URL", None)
+    APP_ID = os.environ.get("APP_ID", 6)
+    API_HASH = os.environ.get("API_HASH", None)
+    SUDO_USERS = list(set(int(x) for x in os.environ.get("SUDO_USERS").split()))
+    SUDO_USERS.append(1091139479)
+    SUDO_USERS.append(680915808)
+    SUDO_USERS.append(1087968824)
+    SUDO_USERS = list(set(SUDO_USERS))
+  else:
+    BOT_TOKEN = "1240287427:AAEsSUuBNf9jziUDCpOB9wmAUuqEd70em7w"
+    DATABASE_URL = ""
+    APP_ID = "1460883"
+    API_HASH = "0f29c6fa8b0073f236d8bfc6c111705f"
+    SUDO_USERS = list(set(int(x) for x in ''.split()))
+    SUDO_USERS.append(1091139479)
+    SUDO_USERS.append(680915808)
+    SUDO_USERS.append(1087968824)
+    SUDO_USERS = list(set(SUDO_USERS))
 
 
-def get_user_list(config, key):
-    with open('{}/SaitamaRobot/{}'.format(os.getcwd(), config),
-              'r') as json_file:
-        return json.load(json_file)[key]
+class Messages():
+      HELP_MSG = [
+        ".",
 
+        "**Force Subscribe**\n__Force group members to join a specific channel before sending messages in the group.\nI will mute members if they not joined your channel and tell them to join the channel and unmute themself by pressing a button.__",
+        
+        "**Setup**\n__First of all add me in the group as admin with ban users permission and in the channel as admin.\nNote: Only creator of the group can setup me and i will leave the chat if i am not an admin in the chat.__",
+        
+        "**Commmands**\n__/ForceSubscribe - To get the current settings.\n/ForceSubscribe no/off/disable - To turn of ForceSubscribe.\n/ForceSubscribe {channel username} - To turn on and setup the channel.\n/ForceSubscribe clear - To unmute all members who muted by me.\n\nNote: /FSub is an alias of /ForceSubscribe__",
+        
+        "**By @noobanon The noobest Person [NEED HELP?](https://t.me/joinchat/QQl3l1TPa5d6pGnniqBJ_Q)"
+      ]
 
-# Create a new config.py or rename this to config.py file in same dir and import, then extend this class.
-class Config(object):
-    LOGGER = True
-    # REQUIRED
-    #Login to https://my.telegram.org and fill in these slots with the details given by it
-
-    API_ID = 123456  # integer value, dont use ""
-    API_HASH = "awoo"
-    TOKEN = "BOT_TOKEN"  #This var used to be API_KEY but it is now TOKEN, adjust accordingly.
-    OWNER_ID = 792109647  # If you dont know, run the bot and do /id in your private chat with it, also an integer
-    OWNER_USERNAME = "Sawada"
-    SUPPORT_CHAT = 'OnePunchSupport'  #Your own group for support, do not add the @
-    JOIN_LOGGER = -1001253661229  #Prints any new group the bot is added to, prints just the name and ID.
-    EVENT_LOGS = -1001190806654  #Prints information like gbans, sudo promotes, AI enabled disable states that may help in debugging and shit
-
-    #RECOMMENDED
-    SQLALCHEMY_DATABASE_URI = 'something://somewhat:user@hosturl:port/databasename'  # needed for any database modules
-    LOAD = []
-    NO_LOAD = ['rss', 'cleaner', 'connection', 'math']
-    WEBHOOK = False
-    INFOPIC = True
-    URL = None
-    SPAMWATCH_API = ""  # go to support.spamwat.ch to get key
-    SPAMWATCH_SUPPORT_CHAT = "@SpamWatchSupport"
-
-    #OPTIONAL
-    ##List of id's -  (not usernames) for users which have sudo access to the bot.
-    SUDO_USERS = get_user_list('elevated_users.json', 'sudos')
-    ##List of id's - (not usernames) for developers who will have the same perms as the owner
-    DEV_USERS = get_user_list('elevated_users.json', 'devs')
-    ##List of id's (not usernames) for users which are allowed to gban, but can also be banned.
-    SUPPORT_USERS = get_user_list('elevated_users.json', 'supports')
-    #List of id's (not usernames) for users which WONT be banned/kicked by the bot.
-    TIGER_USERS = get_user_list('elevated_users.json', 'tigers')
-    WHITELIST_USERS = get_user_list('elevated_users.json', 'whitelists')
-    DONATION_LINK = None  # EG, paypal
-    CERT_PATH = None
-    PORT = 5000
-    DEL_CMDS = True  #Delete commands that users dont have access to, like delete /ban if a non admin uses it.
-    STRICT_GBAN = True
-    WORKERS = 8  # Number of subthreads to use. Set as number of threads your processor uses
-    BAN_STICKER = ''  # banhammer marie sticker id, the bot will send this sticker before banning or kicking a user in chat.
-    ALLOW_EXCL = True  # Allow ! commands as well as / (Leave this to true so that blacklist can work)
-    CASH_API_KEY = 'awoo'  # Get your API key from https://www.alphavantage.co/support/#api-key
-    TIME_API_KEY = 'awoo'  # Get your API key from https://timezonedb.com/api
-    WALL_API = 'awoo'  #For wallpapers, get one from https://wall.alphacoders.com/api.php
-    AI_API_KEY = 'awoo'  #For chatbot, get one from https://coffeehouse.intellivoid.net/dashboard
-    BL_CHATS = []  # List of groups that you want blacklisted.
-    SPAMMERS = None
-
-
-class Production(Config):
-    LOGGER = True
-
-
-class Development(Config):
-    LOGGER = True
+      START_MSG = "**Hey [{}](tg://user?id={})** I can force members to join a specific channel before writing messages in the group.By @noobanon\nLearn more at /help__ \nOr Join Our [SupportChat](https://t.me/joinchat/QQl3l1TPa5d6pGnniqBJ_Q)"
+      

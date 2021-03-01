@@ -70,14 +70,15 @@ the things I can help you with.
    • in PM: will send you your settings for all supported modules.
    • in a group: will redirect you to pm, with all that chat's settings.
 
-
 {}
+If you have any bugs or questions on how to use me, have a look at head to @Anie\_news.
 And the following:
 """.format(
     dispatcher.bot.first_name, ""
-    if not ALLOW_EXCL else "\nAll commands can either be used with / or !.\n")
+    if not ALLOW_EXCL else "\nAll commands can be used with the following: / !.\n")
 
-SAITAMA_IMG = "https://telegra.ph/file/64a230c34720389939cd7.jpg"
+SAITAMA_IMG = "https://telegra.ph/file/664a13c95fae81ebb222a.jpg"
+
 DONATE_STRING = """Anie doesn't need any donations as of now. Thank """ 
 
 
@@ -560,4 +561,5 @@ def main():
 if __name__ == '__main__':
     LOGGER.info("Successfully loaded modules: " + str(ALL_MODULES))
     telethn.start(bot_token=TOKEN)
+    #pbot.start()
     main()
