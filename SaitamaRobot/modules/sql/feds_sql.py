@@ -2,8 +2,8 @@ import threading
 
 from SaitamaRobot import dispatcher
 from SaitamaRobot.modules.sql import BASE, SESSION
-from sqlalchemy import Boolean, Column, Integer, String, UnicodeText
-from telegram.error import BadRequest, Unauthorized
+from sqlalchemy import Column, String, UnicodeText, func, distinct, Integer, Boolean
+from telegram.error import BadRequest, TelegramError, Unauthorized
 
 
 class Federations(BASE):
@@ -123,11 +123,11 @@ def get_fed_info(fed_id):
 
 
 def get_fed_id(chat_id):
-    get = FEDERATION_CHATS.get(str(chat_id))
-    if get is None:
-        return False
-    else:
-        return get['fid']
+	get = FEDERATION_CHATS.get(str(chat_id))
+	if get == None:
+		return False
+	else:
+		return get['fid']
 
 
 def get_fed_name(chat_id):
