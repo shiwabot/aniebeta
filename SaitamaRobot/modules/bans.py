@@ -16,7 +16,7 @@ from SaitamaRobot.modules.helper_funcs.extraction import extract_user_and_text
 from SaitamaRobot.modules.helper_funcs.string_handling import extract_time
 from SaitamaRobot.modules.log_channel import gloggable, loggable
 
-
+@user_admin
 @run_async
 @connection_status
 @bot_admin
