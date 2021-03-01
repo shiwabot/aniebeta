@@ -16,12 +16,12 @@ from SaitamaRobot.modules.helper_funcs.extraction import extract_user_and_text
 from SaitamaRobot.modules.helper_funcs.string_handling import extract_time
 from SaitamaRobot.modules.log_channel import gloggable, loggable
 
-@user_admin
+
 @run_async
 @connection_status
 @bot_admin
-@can_restrict
 @user_admin
+@can_restrict
 @user_can_ban
 @loggable
 def ban(update: Update, context: CallbackContext) -> str:
@@ -115,8 +115,8 @@ def ban(update: Update, context: CallbackContext) -> str:
 @run_async
 @connection_status
 @bot_admin
-@can_restrict
 @user_admin
+@can_restrict
 @user_can_ban
 @loggable
 def dban(update: Update, context: CallbackContext) -> str:
