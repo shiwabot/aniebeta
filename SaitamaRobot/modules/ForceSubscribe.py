@@ -1,5 +1,3 @@
-
-
 import logging
 import time
 
@@ -86,7 +84,7 @@ def _check_member(client, message):
             except UserNotParticipant:
                 try:
                     sent_message = message.reply_text(
-                        "Hey  {} \n \n **If You Want To Talk Here Join @{} Our Channel **  \n and press**UNMUTE ME** Button  touch. \n \n **[OUR CHANNEL](https://t.me/{})**".format(
+                        "Hey {} \n \n**If You Want To Talk Here Join @{} Our Channel **  \n and Press **UNMUTE ME** Button. \n \n **[CHANNEL](https://t.me/{})**".format(
                             message.from_user.mention, channel, channel
                         ),
                         disable_web_page_preview=True,
