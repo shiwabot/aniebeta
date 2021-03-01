@@ -214,7 +214,7 @@ def user_admin(func):
         elif not user:	
             pass	
         elif DEL_CMDS and " " not in update.effective_message.text:	
-            update.effective_message.delete()	
+            	
         else:	
             update.effective_message.reply_text(	
                 "Only admins can execute this command!")	
