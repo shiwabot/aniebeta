@@ -1,19 +1,19 @@
 import html
 from typing import Optional
-
+import time
 from SaitamaRobot import LOGGER, TIGER_USERS, dispatcher
 from SaitamaRobot.modules.helper_funcs.chat_status import (bot_admin,
                                                            can_restrict,
                                                            connection_status,
                                                            is_user_admin,
-                                                           user_admin)
+                                                           user_admin, user_can_ban, can_delete)
 from SaitamaRobot.modules.helper_funcs.extraction import (extract_user,
                                                           extract_user_and_text)
 from SaitamaRobot.modules.helper_funcs.string_handling import extract_time
 from SaitamaRobot.modules.log_channel import loggable
-from telegram import Bot, Chat, ChatPermissions, ParseMode, Update
+from telegram import Bot, Chat, ChatPermissions, ParseMode, Update, InlineKeyboardMarkup, InlineKeyboardButton
 from telegram.error import BadRequest
-from telegram.ext import CallbackContext, CommandHandler, run_async
+from telegram.ext import Filters, CallbackQueryHandler, CommandHandler, run_async, CallbackContext
 from telegram.utils.helpers import mention_html
 
 
@@ -46,8 +46,78 @@ def check_user(user_id: int, bot: Bot, chat: Chat) -> Optional[str]:
 @connection_status
 @bot_admin
 @user_admin
+@user_can_ban
 @loggable
-def mute(update: Update, context: CallbackContext) -> str:
+def mute(update, context):
+    chat = update.effective_chat  # type: Optional[Chat]
+    user = update.effective_user  # type: Optional[User]
+    message = update.effective_message  # type: Optional[Message]
+    args = context.args
+    
+    user_id = extract_user(message, args)
+    if not user_id:
+        message.reply_text(
+            "You don't seem to be referring to a user."
+        )
+        return ""
+
+    if user_id == context.bot.id:
+        message.reply_text("Yeahh... I'm not muting myself!")
+        return ""
+    
+    if user_id == 777000 or user_id == 1087968824:
+        message.reply_text(str(user_id) + " is an account reserved for telegram, I cannot mute it!")
+        return ""  
+    
+    member = chat.get_member(int(user_id))
+
+    if member:
+        if is_user_admin(chat, user_id, member=member):
+            message.reply_text("Well I'm not gonna stop an admin from talking!")
+        
+        elif member.can_send_messages is None or member.can_send_messages:
+            context.bot.restrict_chat_member(
+                chat.id, user_id, permissions=ChatPermissions(can_send_messages=False)
+            )
+            reply_msg = "*{}* (`{}`) has been muted in *{}*.".format(
+                member.user.first_name,
+                member.user.id, chat.title) 
+            
+            message.reply_text(reply_msg,
+                               reply_markup=InlineKeyboardMarkup(
+                                   [
+                                       [
+                                           InlineKeyboardButton(text="Unmute", callback_data=f"muteb_mute={user_id}"),
+                                           InlineKeyboardButton(text="Delete", callback_data="muteb_del")  
+                                        ]
+                                    ]
+                                   ),
+                               parse_mode=ParseMode.MARKDOWN
+                               )
+            return (
+                "<b>{}:</b>"
+                "\n#MUTE"
+                "\n<b>Admin:</b> {}"
+                "\n<b>User:</b> {}".format(
+                    html.escape(chat.title),
+                    mention_html(user.id, user.first_name),
+                    mention_html(member.user.id, member.user.first_name),
+                )
+            )
+
+        else:
+            message.reply_text("This user is already muted.")
+    else:
+        message.reply_text("This user isn't in the chat!")
+
+    return ""
+
+@run_async
+@connection_status
+@bot_admin
+@user_admin
+@loggable
+def dmute(update: Update, context: CallbackContext) -> str:
     bot = context.bot
     args = context.args
 
@@ -57,6 +127,14 @@ def mute(update: Update, context: CallbackContext) -> str:
 
     user_id, reason = extract_user_and_text(message, args)
     reply = check_user(user_id, bot, chat)
+    time.sleep(3)
+    message.delete()
+
+    if can_delete(chat, context.bot.id):
+        try:
+            update.effective_message.reply_to_message.delete()
+        except AttributeError:
+            pass
 
     if reply:
         message.reply_text(reply)
@@ -78,7 +156,7 @@ def mute(update: Update, context: CallbackContext) -> str:
         bot.restrict_chat_member(chat.id, user_id, chat_permissions)
         bot.sendMessage(
             chat.id,
-            f"Muted <b>{html.escape(member.user.first_name)}</b> with no expiration date!",
+            f"Shhh... Keep quiet now <b>{html.escape(member.user.first_name)}</b> !",
             parse_mode=ParseMode.HTML)
         return log
 
@@ -86,8 +164,6 @@ def mute(update: Update, context: CallbackContext) -> str:
         message.reply_text("This user is already muted!")
 
     return ""
-
-
 @run_async
 @connection_status
 @bot_admin
@@ -220,21 +296,97 @@ def temp_mute(update: Update, context: CallbackContext) -> str:
 
     return ""
 
+@run_async
+@bot_admin
+@loggable
+def muteb_callback(update, context):
+    query = update.callback_query
+    chat = update.effective_chat  
+    user = update.effective_user
+    if not query.data == "muteb_del":
+        splitter = query.data.split("=")
+        query_match = splitter[0]
+        user_id = splitter[1]
+        if query_match == "muteb_mute":
+            if not is_user_admin(chat, int(user.id)):
+                context.bot.answer_callback_query(query.id,
+                                                text="You don't have enough rights to unmute people",
+                                                show_alert=True)
+                return ""
+            member = chat.get_member(int(user_id))
 
+            if member.status != "kicked" and member.status != "left":
+                if (
+                    member.can_send_messages
+                    and member.can_send_media_messages
+                    and member.can_send_other_messages
+                    and member.can_add_web_page_previews
+                ):
+                    query.message.edit_text("This user already has the right to speak.")
+                else:
+                    context.bot.restrict_chat_member(
+                        chat.id,
+                        int(user_id),
+                        permissions=ChatPermissions(
+                            can_send_messages=True,
+                            can_invite_users=True,
+                            can_pin_messages=True,
+                            can_send_polls=True,
+                            can_change_info=True,
+                            can_send_media_messages=True,
+                            can_send_other_messages=True,
+                            can_add_web_page_previews=True,
+                        ),
+                    )
+                    query.message.edit_text(f"Yep! *{member.user.first_name}* (`{member.user.id}`) can start talking again!",
+                           parse_mode=ParseMode.MARKDOWN)
+                    context.bot.answer_callback_query(query.id,
+                                          text="Unmuted!"
+                                          )
+                    return (
+                        "<b>{}:</b>"
+                        "\n#UNMUTE"
+                        "\n<b>Admin:</b> {}"
+                        "\n<b>User:</b> {}".format(
+                            html.escape(chat.title),
+                            mention_html(user.id, user.first_name),
+                            mention_html(member.user.id, member.user.first_name),
+                        )
+                    )
+        
+    else:
+        if not is_user_admin(chat, int(user.id)):
+            context.bot.answer_callback_query(query.id,
+                                              text="You don't have enough rights to delete this message.",
+                                              show_alert=True)
+            return ""
+        query.message.delete()
+        context.bot.answer_callback_query(query.id,
+                                          text="Deleted!"
+                                          )
+        return ""
 __help__ = """
 *Admins only:*
  • `/mute <userhandle>`*:* silences a user. Can also be used as a reply, muting the replied to user.
+ • `/dmute` delete reply message + mute user its same like dban or dwarn: only use with reply 
  • `/tmute <userhandle> x(m/h/d)`*:* mutes a user for x time. (via handle, or reply). `m` = `minutes`, `h` = `hours`, `d` = `days`.
  • `/unmute <userhandle>`*:* unmutes a user. Can also be used as a reply, muting the replied to user.
 """
 
-MUTE_HANDLER = CommandHandler("mute", mute)
-UNMUTE_HANDLER = CommandHandler("unmute", unmute)
-TEMPMUTE_HANDLER = CommandHandler(["tmute", "tempmute"], temp_mute)
+
+MUTE_HANDLER = CommandHandler("mute", mute, pass_args=True, filters=Filters.group)
+UNMUTE_HANDLER = CommandHandler("unmute", unmute, pass_args=True, filters=Filters.group)
+TEMPMUTE_HANDLER = CommandHandler(
+    ["tmute", "tempmute"], temp_mute, pass_args=True, filters=Filters.group
+)
+MBUTTON_CALLBACK_HANDLER = CallbackQueryHandler(muteb_callback, pattern=r"muteb_")
+DMUTE_HANDLER = CommandHandler("dmute", dmute)
 
 dispatcher.add_handler(MUTE_HANDLER)
 dispatcher.add_handler(UNMUTE_HANDLER)
 dispatcher.add_handler(TEMPMUTE_HANDLER)
+dispatcher.add_handler(MBUTTON_CALLBACK_HANDLER)
+dispatcher.add_handler(DMUTE_HANDLER)
 
 __mod_name__ = "Muting"
 __handlers__ = [MUTE_HANDLER, UNMUTE_HANDLER, TEMPMUTE_HANDLER]

@@ -34,7 +34,7 @@ def ban(update: Update, context: CallbackContext) -> str:
     user_id, reason = extract_user_and_text(message, args)
 
     if not user_id:
-        message.reply_text("I doubt that's a user.")
+        message.reply_text("I don't know who you're talking about, you're going to need to specify a user...!")
         return log_message
 
     try:
@@ -91,8 +91,8 @@ def ban(update: Update, context: CallbackContext) -> str:
         chat.kick_member(user_id)
         # bot.send_sticker(chat.id, BAN_STICKER)  # banhammer marie sticker
         reply = (
-            f"<code>❕</code><b>Banned</b>\n"
-            f"<code> </code><b>•  User:</b> {mention_html(member.user.id, member.user.first_name)}"
+            f"And another bites dust {mention_html(member.user.id, member.user.first_name)} Banned"
+            
         )
         if reason:
             reply += f"\n<code> </code><b>•  Reason:</b> \n{html.escape(reason)}"
@@ -138,7 +138,7 @@ def dban(update: Update, context: CallbackContext) -> str:
             pass
 
     if not user_id:
-        message.reply_text("I doubt that's a user.")
+        message.reply_text("I don't know who you're talking about, you're going to need to specify a user...!")
         return log_message
 
     try:
@@ -232,7 +232,7 @@ def temp_ban(update: Update, context: CallbackContext) -> str:
     user_id, reason = extract_user_and_text(message, args)
 
     if not user_id:
-        message.reply_text("I doubt that's a user.")
+        message.reply_text("I don't know who you're talking about, you're going to need to specify a user...!")
         return log_message
 
     try:
@@ -319,7 +319,7 @@ def punch(update: Update, context: CallbackContext) -> str:
     user_id, reason = extract_user_and_text(message, args)
 
     if not user_id:
-        message.reply_text("I doubt that's a user.")
+        message.reply_text("I don't know who you're talking about, you're going to need to specify a user...!")
         return log_message
 
     try:
@@ -418,7 +418,7 @@ def unban(update: Update, context: CallbackContext) -> str:
         return log_message
 
     chat.unban_member(user_id)
-    message.reply_text("Yep, this user can join!")
+    message.reply_text("Yep, This user can join again.")
 
     log = (
         f"<b>{html.escape(chat.title)}:</b>\n"

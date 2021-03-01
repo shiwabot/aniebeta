@@ -5,15 +5,39 @@ import time
 from telegram import ParseMode, Update, ChatPermissions
 from telegram.ext import CallbackContext, run_async
 from telegram.error import BadRequest
-
+from telegram.ext import run_async, RegexHandler, Filters
+from telegram import Message, Chat, Update, Bot, MessageEntity
 import SaitamaRobot.modules.fun_strings as fun_strings
 from SaitamaRobot import dispatcher
 from SaitamaRobot.modules.disable import DisableAbleCommandHandler
-from SaitamaRobot.modules.helper_funcs.chat_status import (is_user_admin)
+from SaitamaRobot.modules.helper_funcs.chat_status import (is_user_admin, can_delete)
 from SaitamaRobot.modules.helper_funcs.extraction import extract_user
 
 GIF_ID = 'CgACAgQAAx0CSVUvGgAC7KpfWxMrgGyQs-GUUJgt-TSO8cOIDgACaAgAAlZD0VHT3Zynpr5nGxsE'
 
+
+SONG_STRINGS = (
+    "Example: !song <songname>",
+    "Example: !song <songname>"
+  )
+@run_async
+def song(update, context):
+    context.bot.sendChatAction(update.effective_chat.id, "typing") # Bot typing before send messages
+    message = update.effective_message
+    chat = update.effective_chat
+    
+    if message.reply_to_message:
+      message.reply_to_message.reply_text(random.choice(SONG_STRINGS))
+    else:
+      message.reply_text(random.choice(SONG_STRINGS))
+      time.sleep(8)
+    message.delete()
+
+    if can_delete(chat, context.bot.id):
+        try:
+            update.effective_message.reply_to_message.delete()
+        except AttributeError:
+            pass
 
 @run_async
 def runs(update: Update, context: CallbackContext):
@@ -184,21 +208,7 @@ def table(update: Update, context: CallbackContext):
     reply_text(random.choice(fun_strings.TABLE))
 
 
-__help__ = """
- • `/runs`*:* reply a random string from an array of replies
- • `/slap`*:* slap a user, or get slapped if not a reply
- • `/shrug`*:* get shrug XD
- • `/table`*:* get flip/unflip :v
- • `/decide`*:* Randomly answers yes/no/maybe
- • `/toss`*:* Tosses A coin
- • `/bluetext`*:* check urself :V
- • `/roll`*:* Roll a dice
- • `/rlg`*:* Join ears,nose,mouth and create an emo ;-;
- • `/shout <keyword>`*:* write anything you want to give loud shout
- • `/weebify <text>`*:* returns a weebified text
- • `/sanitize`*:* always use this before /pat or any contact
- • `/pat`*:* pats a user, or get patted
-"""
+
 
 SANITIZE_HANDLER = DisableAbleCommandHandler("sanitize", sanitize)
 RUNS_HANDLER = DisableAbleCommandHandler("runs", runs)
@@ -211,6 +221,7 @@ BLUETEXT_HANDLER = DisableAbleCommandHandler("bluetext", bluetext)
 RLG_HANDLER = DisableAbleCommandHandler("rlg", rlg)
 DECIDE_HANDLER = DisableAbleCommandHandler("decide", decide)
 TABLE_HANDLER = DisableAbleCommandHandler("table", table)
+SONG_TAG_HANDLER = RegexHandler("(?i)/song(s)?", song)
 
 dispatcher.add_handler(SANITIZE_HANDLER)
 dispatcher.add_handler(RUNS_HANDLER)
@@ -223,8 +234,7 @@ dispatcher.add_handler(BLUETEXT_HANDLER)
 dispatcher.add_handler(RLG_HANDLER)
 dispatcher.add_handler(DECIDE_HANDLER)
 dispatcher.add_handler(TABLE_HANDLER)
-
-__mod_name__ = "Fun"
+dispatcher.add_handler(SONG_TAG_HANDLER)
 __command_list__ = [
     "runs", "slap", "roll", "toss", "shrug", "bluetext", "rlg", "decide",
     "table", "pat", "sanitize"

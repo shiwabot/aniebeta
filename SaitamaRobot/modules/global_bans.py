@@ -5,7 +5,7 @@ from io import BytesIO
 from SaitamaRobot.modules.sql.users_sql import get_user_com_chats
 import SaitamaRobot.modules.sql.global_bans_sql as sql
 from SaitamaRobot import (DEV_USERS, EVENT_LOGS, OWNER_ID, STRICT_GBAN,
-                          SUDO_USERS, SUPPORT_CHAT, SPAMWATCH_SUPPORT_CHAT,
+                          SUDO_USERS, ASSE_USERS, SUPPORT_CHAT, SPAMWATCH_SUPPORT_CHAT,
                           SUPPORT_USERS, TIGER_USERS, WHITELIST_USERS, sw,
                           dispatcher)
 from SaitamaRobot.modules.helper_funcs.chat_status import (is_user_admin,
@@ -66,6 +66,11 @@ def gban(update: Update, context: CallbackContext):
     if not user_id:
         message.reply_text(
             "You don't seem to be referring to a user or the ID specified is incorrect.."
+        )
+        return
+    if int(user_id) in ASSE_USERS:
+        message.reply_text(
+            "Hell yeah this is my Assembler how you think i can ban him?."
         )
         return
 

@@ -28,10 +28,10 @@ async def user_can_delete_t(chat_id, user_id, message):
 @telethn.on(events.NewMessage(pattern="^[!/]purge$"))
 async def purge_messages(event):
     start = time.perf_counter()
-    if event.from_id is None:
+    if event.sender_id is None:
         return
 
-    if not await user_is_admin(user_id=event.from_id, message=event):
+    if not await user_is_admin(user_id=event.sender_id, message=event):
         await event.reply("Only Admins are allowed to use this command")
         return
         result = await message.client(GetParticipantRequest(
@@ -43,7 +43,7 @@ async def purge_messages(event):
         await event.reply("Can't seem to purge the message")
         return
 
-    if not await user_can_delete_t(event.chat_id, event.from_id, event):
+    if not await user_can_delete_t(event.chat_id, event.sender_id, event):
         await event.reply("You do not have enough rights to delete messages.")
         return
     
@@ -72,10 +72,10 @@ async def purge_messages(event):
 
 @telethn.on(events.NewMessage(pattern="^[!/]del$"))
 async def delete_messages(event):
-    if event.from_id is None:
+    if event.sender_id is None:
         return
 
-    if not await user_is_admin(user_id=event.from_id, message=event):
+    if not await user_is_admin(user_id=event.sender_id, message=event):
         await event.reply("Only Admins are allowed to use this command")
         return
 
@@ -83,13 +83,13 @@ async def delete_messages(event):
         await event.reply("Can't seem to purge the message")
         return
 
-    if not await user_can_delete_t(event.chat_id, event.from_id, event):
+    if not await user_can_delete_t(event.chat_id, event.sender_id, event):
         await event.reply("You do not have enough rights to delete messages.")
         return
 
     message = await event.get_reply_message()
     if not message:
-        await event.reply("Whadya want to delete?")
+        await event.reply("Want You Want to delete?")
         return
     chat = await event.get_input_chat()
     del_message = [message, event.message]

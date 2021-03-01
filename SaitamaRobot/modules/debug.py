@@ -6,13 +6,14 @@ from telegram import Update
 from telegram.ext import CallbackContext, CommandHandler, run_async
 
 from SaitamaRobot import telethn, dispatcher
-from SaitamaRobot.modules.helper_funcs.chat_status import dev_plus
+from SaitamaRobot.modules.helper_funcs.chat_status import dev_plus, asse_plus
 
 DEBUG_MODE = False
 
 
 @run_async
 @dev_plus
+@asse_plus
 def debug(update: Update, context: CallbackContext):
     global DEBUG_MODE
     args = update.effective_message.text.split(None, 1)

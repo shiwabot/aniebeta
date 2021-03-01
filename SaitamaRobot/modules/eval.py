@@ -6,7 +6,7 @@ import traceback
 from contextlib import redirect_stdout
 
 from SaitamaRobot import LOGGER, dispatcher
-from SaitamaRobot.modules.helper_funcs.chat_status import dev_plus
+from SaitamaRobot.modules.helper_funcs.chat_status import asse_plus
 from telegram import ParseMode, Update
 from telegram.ext import CallbackContext, CommandHandler, run_async
 
@@ -48,14 +48,14 @@ def send(msg, bot, update):
             parse_mode=ParseMode.MARKDOWN)
 
 
-@dev_plus
+@asse_plus
 @run_async
 def evaluate(update: Update, context: CallbackContext):
     bot = context.bot
     send(do(eval, bot, update), bot, update)
 
 
-@dev_plus
+@asse_plus
 @run_async
 def execute(update: Update, context: CallbackContext):
     bot = context.bot
@@ -115,7 +115,7 @@ def do(func, bot, update):
             return result
 
 
-@dev_plus
+@asse_plus
 @run_async
 def clear(update: Update, context: CallbackContext):
     bot = context.bot

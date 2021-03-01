@@ -1,15 +1,15 @@
 import html
 import re
 
-from telegram import ParseMode, ChatPermissions
+from telegram import ParseMode, ChatPermissions, InlineKeyboardMarkup, Message, InlineKeyboardButton
 from telegram.error import BadRequest
-from telegram.ext import CommandHandler, MessageHandler, Filters, run_async
+from telegram.ext import CommandHandler, MessageHandler, Filters, run_async, CallbackQueryHandler
 from telegram.utils.helpers import mention_html
 
 import SaitamaRobot.modules.sql.blacklist_sql as sql
-from SaitamaRobot import dispatcher, LOGGER
+from SaitamaRobot import dispatcher, LOGGER, REDIS, DEV_USERS
 from SaitamaRobot.modules.disable import DisableAbleCommandHandler
-from SaitamaRobot.modules.helper_funcs.chat_status import user_admin, user_not_admin, user_can_change
+from SaitamaRobot.modules.helper_funcs.chat_status import user_admin, user_not_admin, user_can_change, bot_admin
 from SaitamaRobot.modules.helper_funcs.extraction import extract_text
 from SaitamaRobot.modules.helper_funcs.misc import split_message
 from SaitamaRobot.modules.log_channel import loggable
@@ -69,6 +69,7 @@ def blacklist(update, context):
 
 
 @run_async
+@bot_admin
 @user_admin
 @user_can_change
 @typing_action
@@ -122,6 +123,7 @@ def add_blacklist(update, context):
 
 
 @run_async
+@bot_admin
 @user_admin
 @user_can_change
 @typing_action
@@ -197,9 +199,66 @@ def unblacklist(update, context):
             "Tell me which words you would like to remove from blacklist!",
         )
 
+@run_async
+def rmall_blacklist(update, context):
+    chat = update.effective_chat
+    user = update.effective_user
+    member = chat.get_member(user.id)
+    if member.status != "creator" and user.id not in DEV_USERS:
+        update.effective_message.reply_text(
+            "Only owner of this chat can clear all blacklisted at once.")
+    else:
+        buttons = InlineKeyboardMarkup([[
+            InlineKeyboardButton(
+                text="Stop all filters", callback_data="blacklist_rmall")
+        ], [
+            InlineKeyboardButton(text="Cancel", callback_data="blacklist_cancel")
+        ]])
+        update.effective_message.reply_text(
+            f"Are you sure you would like to stop ALL blacklist in {chat.title}? This action cannot be undone.",
+            reply_markup=buttons,
+            parse_mode=ParseMode.MARKDOWN)
+
+def rmall_callback(update, context):
+    query = update.callback_query
+    chat = update.effective_chat
+    msg = update.effective_message
+    member = chat.get_member(query.from_user.id)
+    if query.data == 'blacklist_rmall':
+        if member.status == "creator" or query.from_user.id in DEV_USERS:
+            allblacklist = sql.get_chat_blacklist(chat.id)
+            if not allblacklist:
+                msg.edit_text("None Blacklist in this chat, nothing to stop!")
+                return
+
+            count = 0
+            blacklist = []
+            for x in allblacklist:
+                count += 1
+                blacklist.append(x)
+
+            for i in blacklist:
+                sql.rm_from_blacklist(chat.id, i)
+
+            msg.edit_text(f"Cleaned {count} blacklist in {chat.title}")
+
+        if member.status == "administrator":
+            query.answer("You need to be the chat owner of this chat to do this.")
+
+        if member.status == "member":
+            query.answer("Only admins can execute this command!.")
+    elif query.data == 'blacklist_cancel':
+        if member.status == "creator" or query.from_user.id in DEV_USERS:
+            msg.edit_text("Clearing of all blacklist has been cancelled.")
+            return
+        if member.status == "administrator":
+            query.answer("You need to be the chat owner of this chat to do this..")
+        if member.status == "member":
+            query.answer("Only admins can execute this command!.")
 
 @run_async
 @loggable
+@bot_admin
 @user_admin
 @user_can_change
 @typing_action
@@ -344,6 +403,13 @@ def del_blacklist(update, context):
     if not to_match:
         return
 
+
+    chat_id = str(chat.id)[1:] 
+    approve_list = list(REDIS.sunion(f'approve_list_{chat_id}'))
+    target_user = mention_html(user.id, user.first_name)
+    if target_user in approve_list:
+        return
+
     getmode, value = sql.get_blacklist_setting(chat.id)
 
     chat_filters = sql.get_chat_blacklist(chat.id)
@@ -460,7 +526,7 @@ Admin only:
  • `/addblacklist <triggers>`*:* Add a trigger to the blacklist. Each line is considered one trigger, so using different lines will allow you to add multiple triggers.
  • `/unblacklist <triggers>`*:* Remove triggers from the blacklist. Same newline logic applies here, so you can remove multiple triggers at once.
  • `/blacklistmode <off/del/warn/ban/kick/mute/tban/tmute>`*:* Action to perform when someone sends blacklisted words.
-
+ • `/unblacklistall` Remove All Blacklisted triggers at once [ Chat Owner Only ]
 """
 BLACKLIST_HANDLER = DisableAbleCommandHandler(
     "blacklist", blacklist, pass_args=True, admin_ok=True)
@@ -469,17 +535,20 @@ UNBLACKLIST_HANDLER = CommandHandler("unblacklist", unblacklist)
 BLACKLISTMODE_HANDLER = CommandHandler(
     "blacklistmode", blacklist_mode, pass_args=True)
 BLACKLIST_DEL_HANDLER = MessageHandler(
-    (Filters.text | Filters.command | Filters.sticker | Filters.photo)
-    & Filters.group,
-    del_blacklist,
-    allow_edit=True,
-)
+    (Filters.text | Filters.command | Filters.sticker | Filters.photo) & Filters.group, del_blacklist)
+
+RMALLBLACKLIST_HANDLER = CommandHandler(
+    "unblacklistall", rmall_blacklist, filters=Filters.group)
+RMALLBLACKLIST_CALLBACK = CallbackQueryHandler(
+    rmall_callback, pattern=r"blacklist_.*")
 
 dispatcher.add_handler(BLACKLIST_HANDLER)
 dispatcher.add_handler(ADD_BLACKLIST_HANDLER)
 dispatcher.add_handler(UNBLACKLIST_HANDLER)
 dispatcher.add_handler(BLACKLISTMODE_HANDLER)
 dispatcher.add_handler(BLACKLIST_DEL_HANDLER, group=BLACKLIST_GROUP)
+dispatcher.add_handler(RMALLBLACKLIST_HANDLER)
+dispatcher.add_handler(RMALLBLACKLIST_CALLBACK)
 
 __handlers__ = [
     BLACKLIST_HANDLER, ADD_BLACKLIST_HANDLER, UNBLACKLIST_HANDLER,

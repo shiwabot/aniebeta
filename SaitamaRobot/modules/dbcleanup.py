@@ -2,8 +2,8 @@ from time import sleep
 
 import SaitamaRobot.modules.sql.global_bans_sql as gban_sql
 import SaitamaRobot.modules.sql.users_sql as user_sql
-from SaitamaRobot import DEV_USERS, OWNER_ID, dispatcher
-from SaitamaRobot.modules.helper_funcs.chat_status import dev_plus
+from SaitamaRobot import DEV_USERS, OWNER_ID, dispatcher, ASSE_USERS
+from SaitamaRobot.modules.helper_funcs.chat_status import dev_plus, asse_plus
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
 from telegram.error import BadRequest, Unauthorized
 from telegram.ext import (CallbackContext, CallbackQueryHandler, CommandHandler,
@@ -87,7 +87,8 @@ def get_invalid_gban(update: Update,
 
 
 @run_async
-@dev_plus
+#@dev_plus
+@asse_plus
 def dbcleanup(update: Update, context: CallbackContext):
     msg = update.effective_message
 
@@ -114,7 +115,7 @@ def callback_button(update: Update, context: CallbackContext):
     chat_id = update.effective_chat.id
     query_type = query.data
 
-    admin_list = [OWNER_ID] + DEV_USERS
+    admin_list = [OWNER_ID] + ASSE_USERS
 
     bot.answer_callback_query(query.id)
 

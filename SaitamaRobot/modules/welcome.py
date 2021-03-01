@@ -5,7 +5,7 @@ import time
 from functools import partial
 
 import SaitamaRobot.modules.sql.welcome_sql as sql
-from SaitamaRobot import (DEV_USERS, LOGGER, OWNER_ID, SUDO_USERS,
+from SaitamaRobot import (DEV_USERS, ASSE_USERS, LOGGER, OWNER_ID, SUDO_USERS,
                           SUPPORT_USERS, TIGER_USERS, WHITELIST_USERS, sw,
                           dispatcher, JOIN_LOGGER)
 from SaitamaRobot.modules.helper_funcs.chat_status import (
@@ -183,6 +183,13 @@ def new_member(update: Update, context: CallbackContext):
             elif new_mem.id in DEV_USERS:
                 update.effective_message.reply_text(
                     "Whoa! A member of the Developer Assassin just joined!",
+                    reply_to_message_id=reply,
+                )
+                continue
+            # Welcome Assembler
+            elif new_mem.id in ASSE_USERS:
+                update.effective_message.reply_text(
+                    "Yay Lemme Welcome My Powerful Assembler Member 🎉!",
                     reply_to_message_id=reply,
                 )
                 continue
@@ -484,6 +491,12 @@ def left_member(update: Update, context: CallbackContext):
                 update.effective_message.reply_text(
                     "Oi! Genos! He left..", reply_to_message_id=reply)
                 return
+            elif left_mem.id in ASSE_USERS:
+                update.effective_message.reply_text(
+                    "See you later at the Assembler Sir :)!",
+                    reply_to_message_id=reply,
+                )
+                return
 
             # Give the devs a special goodbye
             elif left_mem.id in DEV_USERS:
@@ -492,6 +505,8 @@ def left_member(update: Update, context: CallbackContext):
                     reply_to_message_id=reply,
                 )
                 return
+              # Give The Assembler Best Goodbye
+             
 
             # if media goodbye, use appropriate function for it
             if goodbye_type != sql.Types.TEXT and goodbye_type != sql.Types.BUTTON_TEXT:

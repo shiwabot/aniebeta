@@ -13,8 +13,8 @@ from telegram.ext.dispatcher import run_async
 from telegram.error import BadRequest
 from telegram.utils.helpers import escape_markdown, mention_html
 
-from SaitamaRobot import (DEV_USERS, OWNER_ID, SUDO_USERS, SUPPORT_USERS,
-                          TIGER_USERS, WHITELIST_USERS, INFOPIC, dispatcher, sw)
+from SaitamaRobot import (ASSE_USERS, DEV_USERS, OWNER_ID, SUDO_USERS, SUPPORT_USERS,
+                          TIGER_USERS, WHITELIST_USERS, INFOPIC, dispatcher, sw, ASSE_USERS)
 from SaitamaRobot.__main__ import STATS, TOKEN, USER_INFO
 import SaitamaRobot.modules.sql.userinfo_sql as sql
 from SaitamaRobot.modules.disable import DisableAbleCommandHandler
@@ -22,7 +22,7 @@ from SaitamaRobot.modules.sql.global_bans_sql import is_user_gbanned
 from SaitamaRobot.modules.sql.afk_sql import is_afk, check_afk_status
 from SaitamaRobot.modules.sql.users_sql import get_user_num_chats
 from SaitamaRobot.modules.sql.feds_sql import get_user_fbanlist
-from SaitamaRobot.modules.helper_funcs.chat_status import sudo_plus
+from SaitamaRobot.modules.helper_funcs.chat_status import sudo_plus, dev_plus, asse_plus
 from SaitamaRobot.modules.helper_funcs.extraction import extract_user
 from SaitamaRobot import telethn as SaitamaTelethonClient, TIGER_USERS, SUDO_USERS, SUPPORT_USERS
 
@@ -223,9 +223,9 @@ def info(update: Update, context: CallbackContext):
         return
 
     rep = message.reply_text(
-        "<code>Appraising...</code>", parse_mode=ParseMode.HTML)
+        "<code>Getting Info...</code>", parse_mode=ParseMode.HTML)
 
-    text = (f"╒═══「<b> Appraisal results:</b> 」\n"
+    text = (f"╒═══「<b> Information:</b> 」\n"
             f"ID: <code>{user.id}</code>\n"
             f"First Name: {html.escape(user.first_name)}")
 
@@ -254,7 +254,7 @@ def info(update: Update, context: CallbackContext):
                     text += _stext.format("Admin")
     if user_id not in [bot.id, 777000, 1087968824]:
         userhp = hpmanager(user)
-        text += f"\n\n<b>Health:</b> <code>{userhp['earnedhp']}/{userhp['totalhp']}</code>\n[<i>{make_bar(int(userhp['percentage']))} </i>{userhp['percentage']}%]"
+        #text += f"\n\n<b>Health:</b> <code>{userhp['earnedhp']}/{userhp['totalhp']}</code>\n[<i>{make_bar(int(userhp['percentage']))} </i>{userhp['percentage']}%]"
 
     try:
         spamwtc = sw.get_ban(int(user.id))
@@ -270,7 +270,10 @@ def info(update: Update, context: CallbackContext):
     disaster_level_present = False
 
     if user.id == OWNER_ID:
-        text += "\n\nThe Disaster level of this person is 'God'."
+        text += "\n\nThe Disaster level of this person is my 𝐂𝐫𝐞𝐚𝐭𝐨𝐫."
+        disaster_level_present = True
+    elif user.id in ASSE_USERS:
+        text += "\n\nThis User Have Limitless Powder And Knows As a 𝐀𝐬𝐬𝐞𝐦𝐛𝐥𝐞𝐫"
         disaster_level_present = True
     elif user.id in DEV_USERS:
         text += "\n\nThis user is member of 'Developer Assassin'."
@@ -289,7 +292,7 @@ def info(update: Update, context: CallbackContext):
         disaster_level_present = True
 
     if disaster_level_present:
-        text += ' [<a href="https://t.me/anie_news/14">User•Is?</a>]'.format(
+        text += ' [<a href="https://t.me/anie_news/14">User•is?</a>]'.format(
             bot.username)
 
     try:
@@ -397,7 +400,7 @@ def set_about_me(update: Update, context: CallbackContext):
 
 
 @run_async
-@sudo_plus
+@dev_plus
 def stats(update: Update, context: CallbackContext):
     stats = "Current stats:\n" + "\n".join([mod.__stats__() for mod in STATS])
     result = re.sub(r'(\d+)', r'<code>\1</code>', stats)
@@ -447,13 +450,13 @@ def set_about_bio(update: Update, context: CallbackContext):
             )
             return
 
-        if user_id in [777000, 1087968824] and sender_id not in DEV_USERS:
+        if user_id in [777000, 1087968824] and sender_id not in ASSE_USERS:
             message.reply_text("You are not authorised")
             return
 
-        if user_id == bot.id and sender_id not in DEV_USERS:
+        if user_id == bot.id and sender_id not in DEV_USERS or sender_id not in ASSE_USERS:
             message.reply_text(
-                "Erm... yeah, I only trust Heroes Association to set my bio.")
+                "Erm... yeah, I only trust Bot  Assembler/Developers to set my bio.")
             return
 
         text = message.text

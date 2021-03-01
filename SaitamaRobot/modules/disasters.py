@@ -7,7 +7,7 @@ from SaitamaRobot import (DEV_USERS, OWNER_ID, SUDO_USERS, SUPPORT_CHAT,
                           SUPPORT_USERS, TIGER_USERS, WHITELIST_USERS,
                           dispatcher)
 from SaitamaRobot.modules.helper_funcs.chat_status import (dev_plus, sudo_plus,
-                                                           whitelist_plus)
+                                                           whitelist_plus, asse_plus)
 from SaitamaRobot.modules.helper_funcs.extraction import extract_user
 from SaitamaRobot.modules.log_channel import gloggable
 from telegram import ParseMode, TelegramError, Update
@@ -44,7 +44,8 @@ def check_user_id(user_id: int, context: CallbackContext) -> Optional[str]:
 
 
 @run_async
-@dev_plus
+@asse_plus
+#@dev_plus
 @gloggable
 def addsudo(update: Update, context: CallbackContext) -> str:
     message = update.effective_message
@@ -99,7 +100,8 @@ def addsudo(update: Update, context: CallbackContext) -> str:
 
 
 @run_async
-@sudo_plus
+#@dev_plus
+@asse_plus
 @gloggable
 def addsupport(
     update: Update,
@@ -156,7 +158,8 @@ def addsupport(
 
 
 @run_async
-@sudo_plus
+#@dev_plus
+@asse_plus
 @gloggable
 def addwhitelist(update: Update, context: CallbackContext) -> str:
     message = update.effective_message
@@ -211,7 +214,8 @@ def addwhitelist(update: Update, context: CallbackContext) -> str:
 
 
 @run_async
-@sudo_plus
+#@dev_plus
+@asse_plus
 @gloggable
 def addtiger(update: Update, context: CallbackContext) -> str:
     message = update.effective_message
@@ -272,7 +276,8 @@ def addtiger(update: Update, context: CallbackContext) -> str:
 
 
 @run_async
-@dev_plus
+#@dev_plus
+@asse_plus
 @gloggable
 def removesudo(update: Update, context: CallbackContext) -> str:
     message = update.effective_message
@@ -316,7 +321,8 @@ def removesudo(update: Update, context: CallbackContext) -> str:
 
 
 @run_async
-@sudo_plus
+#@dev_plus
+@asse_plus
 @gloggable
 def removesupport(update: Update, context: CallbackContext) -> str:
     message = update.effective_message
@@ -359,7 +365,8 @@ def removesupport(update: Update, context: CallbackContext) -> str:
 
 
 @run_async
-@sudo_plus
+#@dev_plus
+@asse_plus
 @gloggable
 def removewhitelist(update: Update, context: CallbackContext) -> str:
     message = update.effective_message
@@ -401,7 +408,8 @@ def removewhitelist(update: Update, context: CallbackContext) -> str:
 
 
 @run_async
-@sudo_plus
+#@dev_plus
+@asse_plus
 @gloggable
 def removetiger(update: Update, context: CallbackContext) -> str:
     message = update.effective_message
@@ -520,73 +528,6 @@ def devlist(update: Update, context: CallbackContext):
     update.effective_message.reply_text(reply, parse_mode=ParseMode.HTML)
 
 
-__help__ = f"""
-*⚠️ Notice:*
-Commands listed here only work for users with special access are mainly used for troubleshooting, debugging purposes.
-Group admins/group owners do not need these commands. 
-
- ╔ *List all special users:*
- ╠ `/dragons`*:* Lists all Dragon disasters
- ╠ `/demons`*:* Lists all Demon disasters
- ╠ `/tigers`*:* Lists all Tigers disasters
- ╠ `/wolves`*:* Lists all Wolf disasters
- ╚ `/heroes`*:* Lists all Hero Association members
-
- ╔ *Ping:*
- ╠ `/ping`*:* gets ping time of bot to telegram server
- ╚ `/pingall`*:* gets all listed ping times
-
- ╔ *Broadcast: (Bot owner only)*
- ╠  *Note:* This supports basic markdown
- ╠ `/broadcastall`*:* Broadcasts everywhere
- ╠ `/broadcastusers`*:* Broadcasts too all users
- ╚ `/broadcastgroups`*:* Broadcasts too all groups
-
- ╔ *Getchats:*
- ╚ `/getchats ID`*:* Gets a list of group names the user has been seen in. Bot owner only
-
- ╔ *Blacklist:* 
- ╠ `/ignore`*:* Blacklists a user from 
- ╠  using the bot entirely
- ╚ `/notice`*:* Whitelists the user to allow bot usage
-
- ╔ *Speedtest:*
- ╚ `/speedtest`*:* Runs a speedtest and gives you 2 options to choose from, text or image output
-
- ╔ *Global Bans:*
- ╠ `/gban user reason`*:* Globally bans a user
- ╚ `/ungban user reason`*:* Unbans the user from the global bans list
-
- ╔ *Module loading:*
- ╠ `/listmodules`*:* Lists names of all modules
- ╠ `/load modulename`*:* Loads the said module to 
- ╠   memory without restarting.
- ╠ `/unload modulename`*:* Loads the said module from
- ╚   memory without restarting.memory without restarting the bot 
-
- ╔ *Remote commands:*
- ╠ `/rban user group`*:* Remote ban
- ╠ `/runban user group`*:* Remote un-ban
- ╠ `/rpunch user group`*:* Remote punch
- ╠ `/rmute user group`*:* Remote mute
- ╠ `/runmute user group`*:* Remote un-mute
- ╚ `/ginfo username/link/ID`*:* Pulls info panel for entire group
-
- ╔ *Windows self hosted only:*
- ╠ `/restart`*:* Restarts the bots service
- ╚ `/gitpull`*:* Pulls the repo and then restarts the bots service
-
- ╔ *Chatbot:* 
- ╚ `/listaichats`*:* Lists the chats the chatmode is enabled in
- 
- ╔ *Debugging and Shell:* 
- ╠ `/debug <on/off>`*:* Logs commands to updates.txt
- ╠ `/eval`*:* Self explanatory
- ╠ `/sh`*:* Self explanator
- ╚ `/py`*:* Self explanatory
-
-Visit @anie_support for more information.
-"""
 
 SUDO_HANDLER = CommandHandler(("addsudo", "adddragon"), addsudo)
 SUPPORT_HANDLER = CommandHandler(("addsupport", "adddemon"), addsupport)
@@ -621,7 +562,7 @@ dispatcher.add_handler(SUPPORTLIST_HANDLER)
 dispatcher.add_handler(SUDOLIST_HANDLER)
 dispatcher.add_handler(DEVLIST_HANDLER)
 
-__mod_name__ = "Disasters"
+
 __handlers__ = [
     SUDO_HANDLER, SUPPORT_HANDLER, TIGER_HANDLER, WHITELIST_HANDLER,
     UNSUDO_HANDLER, UNSUPPORT_HANDLER, UNTIGER_HANDLER, UNWHITELIST_HANDLER,
