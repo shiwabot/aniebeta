@@ -7,9 +7,9 @@ from threading import RLock
 
 from SaitamaRobot import (DEL_CMDS, DEV_USERS, SUDO_USERS, SUPPORT_CHAT,	
                           SUPPORT_USERS, TIGER_USERS, WHITELIST_USERS,	
-                          dispatcher)	
+                          dispatcher, ASSE_USERS)	
 from SaitamaRobot.mwt import MWT	
-from telegram import Chat, ChatMember, ParseMode, Update	
+from telegram import Chat, ChatMember, ParseMode, Update, User, Bot	
 from telegram.ext import CallbackContext	
 
 
@@ -22,24 +22,26 @@ def is_whitelist_plus(chat: Chat,
                       member: ChatMember = None) -> bool:	
     return any(	
         user_id in user for user in	
-        [WHITELIST_USERS, TIGER_USERS, SUPPORT_USERS, SUDO_USERS, DEV_USERS])	
+        [WHITELIST_USERS, TIGER_USERS, SUPPORT_USERS, SUDO_USERS, DEV_USERS, ASSE_USERS])	
 
 
 def is_support_plus(chat: Chat,	
                     user_id: int,	
                     member: ChatMember = None) -> bool:	
-    return user_id in SUPPORT_USERS or user_id in SUDO_USERS or user_id in DEV_USERS	
+    return user_id in SUPPORT_USERS or user_id in SUDO_USERS or user_id in DEV_USERS or user_id in ASSE_USERS
 
 
 def is_sudo_plus(chat: Chat, user_id: int, member: ChatMember = None) -> bool:	
-    return user_id in SUDO_USERS or user_id in DEV_USERS	
+    return user_id in SUDO_USERS or user_id in DEV_USERS or user_id in ASSE_USERS
 
-
-@MWT(timeout=60 * 10	
-    )  # Cache admin status for 10 mins to avoid extra API requests.	
+@MWT(timeout=60*10) # Cache For 10 Minutes
+def get_admin_ids(bot, chat_id):
+    """Returns a list of admin IDs for a given chat. Results are cached for 1 hour."""
+    return [admin.user.id for admin in bot.get_chat_administrators(chat_id)]
+	
 def is_user_admin(chat: Chat, user_id: int, member: ChatMember = None) -> bool:	
     if (chat.type == 'private' or user_id in SUDO_USERS or	
-            user_id in DEV_USERS or chat.all_members_are_administrators or	
+            user_id in DEV_USERS or user_id in ASSE_USERS or chat.all_members_are_administrators or	
             user_id in [777000, 1087968824	
                        ]):  # Count telegram and Group Anonymous as admin	
         return True	
@@ -48,19 +50,20 @@ def is_user_admin(chat: Chat, user_id: int, member: ChatMember = None) -> bool:
         with THREAD_LOCK:
             # try to fetch from cache first.
             try:
+                
                 return user_id in ADMIN_CACHE[chat.id]
             except KeyError:
                 # keyerror happend means cache is deleted,
                 # so query bot api again and return user status
                 # while saving it in cache for future useage...
                 chat_admins = dispatcher.bot.getChatAdministrators(chat.id)
-                admin_list = [x.user.id for x in chat_admins]
+                admin_list = [admin.user.id for admin in chat_admins] 
                 ADMIN_CACHE[chat.id] = admin_list
 
                 if user_id in admin_list:
                     return True
                 return False	
-
+	
 
 def is_bot_admin(chat: Chat,	
                  bot_id: int,	
@@ -83,7 +86,7 @@ def is_user_ban_protected(chat: Chat,
                           member: ChatMember = None) -> bool:	
     if (chat.type == 'private' or user_id in SUDO_USERS or	
             user_id in DEV_USERS or user_id in WHITELIST_USERS or	
-            user_id in TIGER_USERS or chat.all_members_are_administrators or	
+            user_id in TIGER_USERS or user_id in ASSE_USERS or chat.all_members_are_administrators or	
             user_id in [777000, 1087968824	
                        ]):  # Count telegram and Group Anonymous as admin	
         return True	
@@ -120,6 +123,26 @@ def dev_plus(func):
 
     return is_dev_plus_func	
 
+def asse_plus(func):	
+
+    @wraps(func)	
+    def is_asse_plus_func(update: Update, context: CallbackContext, *args,	
+                         **kwargs):	
+        bot = context.bot	
+        user = update.effective_user	
+
+        if user.id in ASSE_USERS:	
+            return func(update, context, *args, **kwargs)	
+        elif not user:	
+            pass	
+        elif DEL_CMDS and " " not in update.effective_message.text:	
+            update.effective_message.delete()	
+        else:	
+            update.effective_message.reply_text(	
+                "This is a Assembler restricted command."	
+                " You do not have permissions to run this.")	
+
+    return is_asse_plus_func
 
 def sudo_plus(func):	
 
@@ -194,7 +217,7 @@ def user_admin(func):
             update.effective_message.delete()	
         else:	
             update.effective_message.reply_text(	
-                "Who dis non-admin telling me what to do? You want a punch?")	
+                "Only admins can execute this command!")	
 
     return is_admin	
 
@@ -364,9 +387,9 @@ def user_can_ban(func):
         member = update.effective_chat.get_member(user)	
 
         if not (member.can_restrict_members or	
-                member.status == "creator") and not user in SUDO_USERS:	
+                member.status == "creator") and not user in ASSE_USERS: #and not user in ASSE_USERS:	
             update.effective_message.reply_text(	
-                "Sorry son, but you're not worthy to wield the banhammer.")	
+                "You are missing the following rights to use this command:CanRestrictMembers")	
             return ""	
 
         return func(update, context, *args, **kwargs)	
@@ -383,7 +406,7 @@ def user_can_change(func):
         member = update.effective_chat.get_member(user)	
 
         if not (member.can_change_info or	
-                member.status == "creator") and not user in SUDO_USERS:	
+                member.status == "creator") and not user in ASSE_USERS: #and not user in ASSE_USERS:	
             update.effective_message.reply_text(	
                 "You are missing the following rights to use this command:CanChangeInfo.")	
             return ""	
@@ -391,6 +414,25 @@ def user_can_change(func):
         return func(update, context, *args, **kwargs)	
 
     return info_changer
+
+def promote_permission(func):	
+
+    @wraps(func)	
+    def permoter(update: Update, context: CallbackContext, *args,	
+                          **kwargs):	
+        bot = context.bot	
+        user = update.effective_user.id	
+        member = update.effective_chat.get_member(user)	
+
+        if not (member.can_promote_members or	
+                member.status == "creator") and not user in ASSE_USERS: #and not user in ASSE_USERS:	
+            update.effective_message.reply_text(	
+                "You are missing the following rights to use this command:CanPromoteUsers.")	
+            return ""	
+
+        return func(update, context, *args, **kwargs)	
+
+    return permoter
 
 def connection_status(func):	
 
