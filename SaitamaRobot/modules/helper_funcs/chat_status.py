@@ -42,11 +42,10 @@ def get_admin_ids(bot, chat_id):
 def is_user_admin(chat: Chat, user_id: int, member: ChatMember = None) -> bool:	
     if (chat.type == 'private' or user_id in SUDO_USERS or	
             user_id in DEV_USERS or user_id in ASSE_USERS or chat.all_members_are_administrators or	
-            user_id == 777000:	
-                       #]):  # Count telegram and Group Anonymous as admin	
-        return True
+            user_id in [777000, 1087968824	
+                       ]):  # Count telegram and Group Anonymous as admin	
+        return True	
 
-		
     if not member:
         with THREAD_LOCK:
             # try to fetch from cache first.
