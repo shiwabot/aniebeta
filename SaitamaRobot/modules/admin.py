@@ -284,7 +284,7 @@ def pin(update, context):
 		chat = update.effective_chat
 		chat_id = update.effective_chat.id
 		chat_name = update.effective_message.chat.title
-		message = update.effective_message
+		#message = update.effective_message
 		if update.effective_message.reply_to_message:
 			prev_message = update.effective_message.reply_to_message.message_id
 		else:
