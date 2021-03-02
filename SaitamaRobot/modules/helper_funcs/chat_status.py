@@ -201,25 +201,23 @@ def whitelist_plus(func):
     return is_whitelist_plus_func	
 
 
-def user_admin(func):	
+def user_admin(func):
+	@wraps(func)
+	def is_admin(update, context, *args, **kwargs):
+		if update.effective_chat.type == "private":
+			return func(update, context, *args, **kwargs)
+		user = update.effective_user  # type: Optional[User]
+		if user and is_user_admin(update.effective_chat, user.id):
+			return func(update, context, *args, **kwargs)
 
-    @wraps(func)	
-    def is_admin(update: Update, context: CallbackContext, *args, **kwargs):	
-        bot = context.bot	
-        user = update.effective_user	
-        chat = update.effective_chat	
+		elif not user:
+			pass
 
-        if user and is_user_admin(chat, user.id):	
-            return func(update, context, *args, **kwargs)	
-        elif not user:	
-            pass	
-        elif DEL_CMDS and " " not in update.effective_message.text:	
-            	
-        else:	
-            update.effective_message.reply_text(	
-                "Only admins can execute this command!")	
+		else:
+			update.effective_message.reply_text(	
+                "Only admins can execute this command!")
 
-    return is_admin	
+	return is_admin	
 
 
 def user_admin_no_reply(func):	
