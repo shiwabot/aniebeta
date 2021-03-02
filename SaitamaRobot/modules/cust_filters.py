@@ -18,7 +18,7 @@ from telegram.utils.helpers import mention_html, escape_markdown
 from SaitamaRobot import dispatcher, LOGGER
 from SaitamaRobot.modules.disable import DisableAbleCommandHandler
 from SaitamaRobot.modules.helper_funcs.handlers import MessageHandlerChecker
-from SaitamaRobot.modules.helper_funcs.chat_status import user_admin
+from SaitamaRobot.modules.helper_funcs.chat_status import user_admin, user_can_change
 from SaitamaRobot.modules.helper_funcs.extraction import extract_text
 from SaitamaRobot.modules.helper_funcs.filters import CustomFilters
 from SaitamaRobot.modules.helper_funcs.misc import build_keyboard_parser
@@ -99,6 +99,7 @@ def list_handlers(update, context):
 
 # NOT ASYNC BECAUSE DISPATCHER HANDLER RAISED
 @user_admin
+@user_can_change
 @typing_action
 def filters(update, context):
     chat = update.effective_chat
@@ -226,6 +227,7 @@ def filters(update, context):
 
 # NOT ASYNC BECAUSE DISPATCHER HANDLER RAISED
 @user_admin
+@user_can_change
 @typing_action
 def stop_filter(update, context):
     chat = update.effective_chat
