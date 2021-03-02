@@ -259,6 +259,7 @@ def set_title(update: Update, context: CallbackContext):
 def pin(update, context):
 	user = update.effective_user  # type: Optional[User]
 	chat = update.effective_chat  # type: Optional[Chat]
+	message = update.effective_message
 	args = context.args
 	user_member = chat.get_member(user.id)
 	if user_member.can_pin_messages == False:
