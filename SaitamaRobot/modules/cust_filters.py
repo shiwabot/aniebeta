@@ -14,6 +14,7 @@ from telegram.ext import (
     run_async,
     Filters,
 )
+from markdown2 import Markdown
 from telegram.utils.helpers import mention_html, escape_markdown
 
 from SaitamaRobot import dispatcher, LOGGER
@@ -221,7 +222,7 @@ def filters(update, context):
         send_message(
             update.effective_message,
             "Saved filter '{}' in *{}*!".format(keyword, chat_name),
-            parse_mode=telegram.ParseMode.MARKDOWN_V2,
+            parse_mode=telegram.ParseMode.MARKDOWN,
         )
     raise DispatcherHandlerStop
 
