@@ -220,7 +220,7 @@ def filters(update, context):
         send_message(
             update.effective_message,
             "Saved filter '{}' in *{}*!".format(keyword, chat_name),
-            parse_mode=telegram.ParseMode.HTML,
+            parse_mode=telegram.ParseMode.'MarkdownV2',
         )
     raise DispatcherHandlerStop
 
