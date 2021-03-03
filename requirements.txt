@@ -33,7 +33,7 @@ gtts
 redis
 TgCrypto
 mwt
-pyrogram
+pyrogram>=1.0.7
 youtube-search
 youtube-search-python
 youtube-dl
