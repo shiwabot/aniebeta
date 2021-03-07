@@ -261,9 +261,10 @@ def pin(update, context):
     message = update.effective_message
     chat = update.effective_chat  # type: Optional[Chat]
     args = context.args
-    if user_can_pin(chat, user, context.bot.id) == False:
-        message.reply_text("You are missing rights to pin a message!")
-        return ""
+    user_member = chat.get_member(user.id)
+    if user_member.can_pin_messages == False:
+    	    message.reply_text("You are missing the following rights to use this command:CanPinMessage!")
+    	    return ""
     conn = connected(context.bot, update, chat, user.id, need_admin=True)
     if conn:
         chat = dispatcher.bot.getChat(conn)
