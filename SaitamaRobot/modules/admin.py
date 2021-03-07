@@ -296,7 +296,7 @@ def pin(update, context):
     if prev_message and is_group:
         try:
             context.bot.pinChatMessage(chat.id, prev_message, disable_notification=is_silent)
-            reply = f"I have pinned [this message.]({update.effective_message.link})"
+            reply = f"I have pinned [this message.]({update.effective_message.reply_to_message.link})"
             context.bot.sendMessage(chat.id, reply, parse_mode=ParseMode.MARKDOWN, quote=False)
             if conn:
                 send_message(update.effective_message, tl(update.effective_message, "I've pin a message in the group {}").format(chat_name))
