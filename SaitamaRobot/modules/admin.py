@@ -257,61 +257,57 @@ def set_title(update: Update, context: CallbackContext):
 @user_admin
 @loggable
 def pin(update, context):
-	user = update.effective_user  # type: Optional[User]
-	chat = update.effective_chat  # type: Optional[Chat]
-	message = update.effective_message
-	args = context.args
-	user_member = chat.get_member(user.id)
-	if user_member.can_pin_messages == False:
-    	    message.reply_text("You are missing the following rights to use this command:CanPinMessage!")
-    	    return ""
+    user = update.effective_user  # type: Optional[User]
+    message = update.effective_message
+    chat = update.effective_chat  # type: Optional[Chat]
+    args = context.args
+    if user_can_pin(chat, user, context.bot.id) == False:
+        message.reply_text("You are missing rights to pin a message!")
+        return ""
+    conn = connected(context.bot, update, chat, user.id, need_admin=True)
+    if conn:
+        chat = dispatcher.bot.getChat(conn)
+        chat_id = conn
+        chat_name = dispatcher.bot.getChat(conn).title
+        if len(args)  <= 1:
+            send_message(update.effective_message, tl(update.effective_message, "Use /pin <notify/loud/silent/violent> <link pesan>"))
+            return ""
+        prev_message = args[1]
+        if "/" in prev_message:
+            prev_message = prev_message.split("/")[-1]
+    else:
+        if update.effective_message.chat.type == "private":
+            send_message(update.effective_message, tl(update.effective_message, "You can do this command in the group, not the PM"))
+            return ""
+        chat = update.effective_chat
+        chat_id = update.effective_chat.id
+        chat_name = update.effective_message.chat.title
+        if update.effective_message.reply_to_message:
+            prev_message = update.effective_message.reply_to_message.message_id
+            x = update.effective_message.reply_to_message.message_id
+        else:
+            send_message(update.effective_message, tl(update.effective_message, "Reply to the message to pin this message to this group"))
+            return ""
+    is_group = chat.type != "private" and chat.type != "channel"
+    is_silent = True
+    if len(args) >= 1:
+        is_silent = not (args[0].lower() == 'silent' or args[0].lower() == 'off' or args[0].lower() == 'mute')
+    if prev_message and is_group:
+        try:
+            context.bot.pinChatMessage(chat.id, prev_message, disable_notification=is_silent)
+            reply = f"I have pinned [this message.]({update.effective_message.link})"
+            context.bot.sendMessage(chat.id, reply, parse_mode=ParseMode.MARKDOWN, quote=False)
+            if conn:
+                send_message(update.effective_message, tl(update.effective_message, "I've pin a message in the group {}").format(chat_name))
+        except BadRequest as excp:
+            if excp.message == "Chat_not_modified":
+                pass
+            else:
+                raise
+    return "<b>{}:</b>" \
+      "\n#PINNED" \
+      "\n<b>Admin:</b> {}".format(html.escape(chat.title), mention_html(user.id, user.first_name))
 
-	conn = connected(context.bot, update, chat, user.id, need_admin=True)
-	if conn:
-		chat = dispatcher.bot.getChat(conn)
-		chat_id = conn
-		chat_name = dispatcher.bot.getChat(conn).title
-		if len(args)  <= 1:
-			send_message(update.effective_message, tl(update.effective_message, "Use /pin <notify/loud/silent/violent> <link pesan>"))
-			return ""
-		prev_message = args[1]
-		if "/" in prev_message:
-			prev_message = prev_message.split("/")[-1]
-	else:
-		if update.effective_message.chat.type == "private":
-			send_message(update.effective_message(update.effective_message, "You can do this command in the group, not the PM"))
-			return ""
-		chat = update.effective_chat
-		chat_id = update.effective_chat.id
-		chat_name = update.effective_message.chat.title
-		#message = update.effective_message
-		if update.effective_message.reply_to_message:
-			prev_message = update.effective_message.reply_to_message.message_id
-		else:
-			message.reply_text("Reply the message to pin this message to this group")
-			return ""
-
-	is_group = chat.type != "private" and chat.type != "channel"
-
-	is_silent = True
-	if len(args) >= 1:
-		is_silent = not (args[0].lower() == 'silent' or args[0].lower() == 'off' or args[0].lower() == 'mute')
-
-	if prev_message and is_group:
-		try:
-			context.bot.pinChatMessage(chat.id, prev_message, disable_notification=is_silent)
-			if conn:
-				send_message(update.effective_message, tl(update.effective_message, "I've pin a message in the group {}").format(chat_name))
-		except BadRequest as excp:
-			if excp.message == "Chat_not_modified":
-				pass
-			else:
-				raise
-		return "<b>{}:</b>" \
-			   "\n#PINNED" \
-			   "\n<b>Admin:</b> {}".format(html.escape(chat.title), mention_html(user.id, user.first_name))
-
-	return ""
 
 @run_async
 @can_pin
