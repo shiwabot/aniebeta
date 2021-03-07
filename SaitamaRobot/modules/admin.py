@@ -26,7 +26,7 @@ from SaitamaRobot.modules.log_channel import loggable
 from SaitamaRobot.modules.connection import connected
 from SaitamaRobot.modules.sql import admin_sql as sql
 from SaitamaRobot.modules.helper_funcs.alternate import send_message
-
+from SaitamaRobot.modules.languages import tl
 
 ENUM_FUNC_MAP = {
 	'Types.TEXT': dispatcher.bot.send_message,
