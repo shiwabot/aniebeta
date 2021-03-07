@@ -297,7 +297,7 @@ def pin(update, context):
         try:
             context.bot.pinChatMessage(chat.id, prev_message, disable_notification=is_silent)
             reply = f"I have pinned [this message.]({update.effective_message.reply_to_message.link})"
-            context.bot.sendMessage(chat.id, reply, parse_mode=ParseMode.MARKDOWN, quote=False, link_preview=False)
+            context.bot.sendMessage(chat.id, reply, parse_mode=ParseMode.MARKDOWN, quote=False, disable_web_page_preview=True)
             if conn:
                 send_message(update.effective_message, tl(update.effective_message, "I've pin a message in the group {}").format(chat_name))
         except BadRequest as excp:
