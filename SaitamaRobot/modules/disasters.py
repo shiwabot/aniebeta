@@ -3,7 +3,7 @@ import json
 import os
 from typing import Optional
 
-from SaitamaRobot import (DEV_USERS, OWNER_ID, SUDO_USERS, SUPPORT_CHAT,
+from SaitamaRobot import (ASSE_USERS, DEV_USERS, OWNER_ID, SUDO_USERS, SUPPORT_CHAT,
                           SUPPORT_USERS, TIGER_USERS, WHITELIST_USERS,
                           dispatcher)
 from SaitamaRobot.modules.helper_funcs.chat_status import (dev_plus, sudo_plus,
@@ -527,7 +527,20 @@ def devlist(update: Update, context: CallbackContext):
             pass
     update.effective_message.reply_text(reply, parse_mode=ParseMode.HTML)
 
-
+@run_async
+@sudo_plus
+def asselist(update: Update, context: CallbackContext):
+    bot = context.bot
+    true_asse = list(set(ASSE_USERS) - {OWNER_ID})
+    reply = "<b>THE ASSEMBLER⚡️:</b>\n"
+    for each_user in true_asse:
+        user_id = int(each_user)
+        try:
+            user = bot.get_chat(user_id)
+            reply += f"• {mention_html(user_id, user.first_name)}\n"
+        except TelegramError:
+            pass
+    update.effective_message.reply_text(reply, parse_mode=ParseMode.HTML)
 
 SUDO_HANDLER = CommandHandler(("addsudo", "adddragon"), addsudo)
 SUPPORT_HANDLER = CommandHandler(("addsupport", "adddemon"), addsupport)
@@ -546,6 +559,8 @@ TIGERLIST_HANDLER = CommandHandler(["tigers"], tigerlist)
 SUPPORTLIST_HANDLER = CommandHandler(["supportlist", "demons"], supportlist)
 SUDOLIST_HANDLER = CommandHandler(["sudolist", "dragons"], sudolist)
 DEVLIST_HANDLER = CommandHandler(["devlist", "heroes"], devlist)
+ASSELIST_HANDLER = CommandHandler(["assembler", "asseuser"], asselist)
+
 
 dispatcher.add_handler(SUDO_HANDLER)
 dispatcher.add_handler(SUPPORT_HANDLER)
@@ -561,7 +576,7 @@ dispatcher.add_handler(TIGERLIST_HANDLER)
 dispatcher.add_handler(SUPPORTLIST_HANDLER)
 dispatcher.add_handler(SUDOLIST_HANDLER)
 dispatcher.add_handler(DEVLIST_HANDLER)
-
+dispatcher.add_handler(ASSELIST_HANDLER)
 
 __handlers__ = [
     SUDO_HANDLER, SUPPORT_HANDLER, TIGER_HANDLER, WHITELIST_HANDLER,
