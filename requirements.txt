@@ -3,7 +3,7 @@ emoji
 lxml
 beautifulsoup4
 requests
-sqlalchemy
+sqlalchemy==1.2
 python-telegram-bot==12.8
 cachetools
 psycopg2-binary
