@@ -9,17 +9,45 @@ url = "https://acobot-brainshop-ai-v1.p.rapidapi.com/get"
 
 from google_trans_new import google_translator
 from pyrogram import filters
+from pyrogram.types import Chat, Message, User
+from typing import Callable, Coroutine, Dict, List, Tuple, Union
 
 from SaitamaRobot import BOT_ID
 from DaisyX.db.mongo_helpers.aichat import add_chat, get_session, remove_chat
-from DaisyX.function.pluginhelpers import admins_only, edit_or_reply
-from DaisyX.services.pyrogram import pbot as daisyx
+
 
 translator = google_translator()
 
 
 def extract_emojis(s):
     return "".join(c for c in s if c in emoji.UNICODE_EMOJI)
+
+
+
+async def edit_or_reply(message, text, parse_mode="md"):
+    if message.from_user.id:
+        if message.reply_to_message:
+            kk = message.reply_to_message.message_id
+            return await message.reply_text(
+                text, reply_to_message_id=kk, parse_mode=parse_mode
+            )
+        return await message.reply_text(text, parse_mode=parse_mode)
+    return await message.edit(text, parse_mode=parse_mode)
+
+
+def admins_only(func: Callable) -> Coroutine:
+    async def wrapper(client: Client, message: Message):
+        if message.from_user.id == 1513257955:
+            return await func(client, message)
+        admins = await get_administrators(message.chat)
+        for admin in admins:
+            if admin.id == message.from_user.id:
+                return await func(client, message)
+
+    return wrapper
+
+
+
 
 
 daisy_chats = []
