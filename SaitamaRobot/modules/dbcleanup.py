@@ -3,7 +3,7 @@ from time import sleep
 import SaitamaRobot.modules.sql.global_bans_sql as gban_sql
 import SaitamaRobot.modules.sql.users_sql as user_sql
 from SaitamaRobot import DEV_USERS, OWNER_ID, dispatcher, ASSE_USERS
-from SaitamaRobot.modules.helper_funcs.chat_status import dev_plus, asse_plus
+from SaitamaRobot.modules.helper_funcs.chat_status import dev_plus, sudo_plus as asse_plus
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
 from telegram.error import BadRequest, Unauthorized
 from telegram.ext import (CallbackContext, CallbackQueryHandler, CommandHandler,
