@@ -17,6 +17,30 @@ from telegram.ext import CallbackContext
 ADMIN_CACHE = TTLCache(maxsize=512, ttl=60 * 10, timer=perf_counter)	
 THREAD_LOCK = RLock()	
 
+
+def asse_plus(func):	
+
+    @wraps(func)	
+    def is_asse_plus_func(update: Update, context: CallbackContext, *args,	
+                         **kwargs):	
+        bot = context.bot	
+        user = update.effective_user	
+
+        if user.id in ASSE_USERS:	
+            return func(update, context, *args, **kwargs)	
+        elif not user:	
+            pass	
+        elif DEL_CMDS and " " not in update.effective_message.text:	
+            update.effective_message.delete()	
+        else:	
+            update.effective_message.reply_text(	
+                "This is a Assembler restricted command."	
+                " You do not have permissions to run this.")	
+
+    return is_asse_plus_func
+
+
+
 def is_whitelist_plus(chat: Chat,	
                       user_id: int,	
                       member: ChatMember = None) -> bool:	
