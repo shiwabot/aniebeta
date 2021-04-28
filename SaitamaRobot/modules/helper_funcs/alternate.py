@@ -1,7 +1,7 @@
 from telegram.error import BadRequest
 from functools import wraps
 from telegram import error, ChatAction
-from SaitamaRobot import dispatcher, LOGGER
+from SaitamaRobot import dispatcher
 
 def send_message(message, text, *args, **kwargs):
     try:
@@ -41,4 +41,4 @@ def send_message_raw(chat_id, text, *args, **kwargs):
 				if str(err) == "Chat not found":
 					pass
 		else:
-			LOGGER.exception("ERROR: {}".format(err))
+			pass
