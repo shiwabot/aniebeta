@@ -6,7 +6,7 @@ from telegram import Update
 from telegram.ext import CallbackContext, CommandHandler, run_async
 
 from SaitamaRobot import telethn, dispatcher
-from SaitamaRobot.modules.helper_funcs.chat_status import dev_plus, asse_plus
+from SaitamaRobot.modules.helper_funcs.chat_status import dev_plus, sudo_plus as asse_plus
 
 DEBUG_MODE = False
 
