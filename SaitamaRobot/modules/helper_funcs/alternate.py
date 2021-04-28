@@ -1,7 +1,7 @@
 from telegram.error import BadRequest
 from functools import wraps
 from telegram import error, ChatAction
-from SaitamaRobot import dispatcher
+from SaitamaRobot import dispatcher, LOGGER
 
 def send_message(message, text, *args, **kwargs):
     try:
