@@ -231,9 +231,6 @@ def dwarn_user(update, context):
     args = context.args
 
     user_id, reason = extract_user_and_text(message, args)
-    
-    time.sleep(4)
-    message.delete()
 
     if can_delete(chat, context.bot.id):
         try:
