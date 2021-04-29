@@ -397,6 +397,26 @@ def user_can_ban(func):
 
     return user_is_banhammer	
 
+
+def promote_permission(func):	
+
+    @wraps(func)	
+    def user_is_promoter(update: Update, context: CallbackContext, *args,	
+                          **kwargs):	
+        bot = context.bot	
+        user = update.effective_user.id	
+        member = update.effective_chat.get_member(user)	
+
+        if not (member.can_promote_members or	
+                member.status == "creator") and not user in SUDO_USERS:	
+            update.effective_message.reply_text(	
+                "Sorry son, but you're not worthy to promote users.")	
+            return ""	
+
+        return func(update, context, *args, **kwargs)	
+
+    return user_is_promoter
+
 def user_can_change(func):	
 
     @wraps(func)	
