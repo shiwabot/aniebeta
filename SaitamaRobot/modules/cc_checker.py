@@ -21,7 +21,6 @@ import datetime
 
 from telethon.tl import functions, types
 
-from SaitamaRobot.services.events import register
 from SaitamaRobot.services.telethon import tbot
 from SaitamaRobot.services.telethonuserbot import ubot
 
