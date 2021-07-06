@@ -21,9 +21,9 @@ import datetime
 
 from telethon.tl import functions, types
 
-from DaisyX.services.events import register
-from DaisyX.services.telethon import tbot
-from DaisyX.services.telethonuserbot import ubot
+from SaitamaRobot.services.events import register
+from SaitamaRobot.services.telethon import tbot
+from SaitamaRobot.services.telethonuserbot import ubot
 
 
 async def is_register_admin(chat, user):
