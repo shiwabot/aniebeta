@@ -194,7 +194,7 @@ def start(update: Update, context: CallbackContext):
                      [
                          InlineKeyboardButton(
                              text="🔄Support Group",
-                             url=f"https://t.me/Aniebotsupports"),
+                             url=f"https://t.me/Aniebotsupport"),
                          InlineKeyboardButton(
                              text="🔄Updates Channel",
                              url="https://t.me/Denvil_bots")
