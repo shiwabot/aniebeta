@@ -194,15 +194,15 @@ def start(update: Update, context: CallbackContext):
                      [
                          InlineKeyboardButton(
                              text="🔄Support Group",
-                             url=f"https://t.me/anie_support"),
+                             url=f"https://t.me/Aniebotsupports"),
                          InlineKeyboardButton(
                              text="🔄Updates Channel",
-                             url="https://t.me/anie_news")
+                             url="https://t.me/Denvil_bots")
                      ],
                      [
                          InlineKeyboardButton(
                              text="📖Getting started guide",
-                             url="https://t.me/anie_news/5")
+                             url="https://t.me/Denvil_bots/7")
                      ]]))
                      
     else:
