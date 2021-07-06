@@ -1,5 +1,5 @@
-from ShasaBot import ubot
-from ShasaBot.events import register
+from SaitamaRobot import ubot
+from SaitamaRobot.events import register
 import asyncio, os
 import datetime
 
