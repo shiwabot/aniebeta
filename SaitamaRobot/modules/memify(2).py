@@ -11,9 +11,9 @@ import textwrap
 
 import os
 
-from ShasaBot.events import register
+from SaitamaRobot.events import register
 
-from ShasaBot import (
+from SaitamaRobot import (
 
     LOGGER,
 
@@ -23,7 +23,7 @@ from ShasaBot import (
 
 
 
-from ShasaBot import telethn as bot
+from SaitamaRobot import telethn as bot
 
 
 Credit = "This Plugin Made by Kittu (@A_viyu), if you're using this code in your bot. there is no issue but don't remove this line" 
@@ -101,7 +101,7 @@ async def drawText(image_path, text):
 
     else:
 
-        fnt = "./ShasaBot/resources/Vampire _Wars.ttf"
+        fnt = "./SaitamaRobot/resources/Vampire _Wars.ttf"
 
     m_font = ImageFont.truetype(fnt, int((70 / 640) * i_width))
 
