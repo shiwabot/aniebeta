@@ -1,6 +1,6 @@
 from pyrogram import filters
 
-from ShasaBot import pbot as app
+from SaitamaRobot import pbot as app
 
 @app.on_message(filters.command("webss") & ~filters.private & ~filters.edited)
 async def take_ss(_, message):
