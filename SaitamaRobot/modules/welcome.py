@@ -5,7 +5,6 @@ import time
 from functools import partial
 from io import BytesIO
 import SaitamaRobot.modules.sql.welcome_sql as sql
-from SaitamaRobot import (
     DEV_USERS,
     log,
     OWNER_ID,
