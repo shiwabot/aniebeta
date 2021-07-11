@@ -8,8 +8,6 @@ import SaitamaRobot.modules.sql.welcome_sql as sql
 from SaitamaRobot import(DEV_USERS, ASSE_USERS, LOGGER, OWNER_ID, SUDO_USERS,
                          SUPPORT_USERS, TIGER_USERS, SUPPORT_USERS, sw,
                          dispatcher, JOIN_LOGGER)
-
-)
 from SaitamaRobot.modules.helper_funcs.chat_status import (
     is_user_ban_protected,
     user_admin,
