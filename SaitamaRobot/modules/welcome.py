@@ -5,15 +5,16 @@ import time
 from functools import partial
 from io import BytesIO
 import SaitamaRobot.modules.sql.welcome_sql as sql
+from SaitamaRobot import
     DEV_USERS,
-    log,
+    ASSE_USERS,
     OWNER_ID,
     SUDO_USERS,
     SUPPORT_USERS,
     SARDEGNA_USERS,
     WHITELIST_USERS,
-    sw,
     dispatcher,
+    JOIN_LOGGER
 )
 from SaitamaRobot.modules.helper_funcs.chat_status import (
     is_user_ban_protected,
