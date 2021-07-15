@@ -6,9 +6,9 @@ import time
 from functools import partial
 from contextlib import suppress
 from io import BytesIO
-import YoneRobot.modules.sql.welcome_sql as sql
-import YoneRobot
-from YoneRobot import (
+import SaitamaRobot.modules.sql.welcome_sql as sql
+import SaitamaRobot 
+from SaitamaRobot import (
     DEV_USERS,
     LOGGER,
     OWNER_ID,
@@ -20,19 +20,19 @@ from YoneRobot import (
     dispatcher,
     JOIN_LOGGER
 )
-from YoneRobot.modules.helper_funcs.chat_status import (
+from SaitamaRobot.modules.helper_funcs.chat_status import (
     is_user_ban_protected,
     user_admin,
 )
-from YoneRobot.modules.helper_funcs.misc import build_keyboard, revert_buttons
-from YoneRobot.modules.helper_funcs.msg_types import get_welcome_type
-from YoneRobot.modules.helper_funcs.string_handling import (
+from SaitamaRobot.modules.helper_funcs.misc import build_keyboard, revert_buttons
+from SaitamaRobot.modules.helper_funcs.msg_types import get_welcome_type
+from SaitamaRobot.modules.helper_funcs.string_handling import (
     escape_invalid_curly_brackets,
     markdown_parser,
 )
 from multicolorcaptcha import CaptchaGenerator
-from YoneRobot.modules.log_channel import loggable
-from YoneRobot.modules.sql.global_bans_sql import is_user_gbanned
+from SaitamaRobot.modules.log_channel import loggable
+from SaitamaRobot.modules.sql.global_bans_sql import is_user_gbanned
 from telegram import (
     ChatPermissions,
     InlineKeyboardButton,
