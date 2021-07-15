@@ -14,8 +14,8 @@ from SaitamaRobot import (
     OWNER_ID,
     SUDO_USERS,
     SUPPORT_USERS,
-    TIGERS,
-    WOLVES,
+    TIGER_USERS,
+    WHITELIST_USERS,
     sw,
     dispatcher,
     JOIN_LOGGER
