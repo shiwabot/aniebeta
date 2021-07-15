@@ -215,7 +215,7 @@ def new_member(update: Update, context: CallbackContext):
                 continue
 
             # Welcome Sudos
-            elif new_mem.id in DRAGONS:
+            elif new_mem.id in SUDO_USERS:
                 update.effective_message.reply_text(
                     "Whoa! A Dragon disaster just joined! Stay Alert!",
                     reply_to_message_id=reply,
@@ -228,7 +228,7 @@ def new_member(update: Update, context: CallbackContext):
                 continue
 
             # Welcome Support
-            elif new_mem.id in DEMONS:
+            elif new_mem.id in SUPPORT_USERS:
                 update.effective_message.reply_text(
                     "Huh! Someone with a Demon disaster level just joined!",
                     reply_to_message_id=reply,
@@ -241,7 +241,7 @@ def new_member(update: Update, context: CallbackContext):
                 continue
 
             # Welcome Whitelisted
-            elif new_mem.id in TIGERS:
+            elif new_mem.id in TIGER_USERS:
                 update.effective_message.reply_text(
                     "Roar! A Tiger disaster just joined!", reply_to_message_id=reply
                 )
@@ -253,7 +253,7 @@ def new_member(update: Update, context: CallbackContext):
                 continue
 
             # Welcome Tigers
-            elif new_mem.id in WOLVES:
+            elif new_mem.id in WHITELIST_USERS:
                 update.effective_message.reply_text(
                     "Awoo! A Wolf disaster just joined!", reply_to_message_id=reply
                 )
