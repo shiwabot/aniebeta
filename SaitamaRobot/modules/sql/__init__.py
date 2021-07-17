@@ -2,6 +2,7 @@ from SaitamaRobot import DB_URI
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import scoped_session, sessionmaker
+from SaitamaRobot.modules.sql import antiArabic_sql as sql
 
 
 def start() -> scoped_session:
