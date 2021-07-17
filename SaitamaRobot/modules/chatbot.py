@@ -3,7 +3,7 @@ import re
 import requests
 from time import sleep
 import SaitamaRobot.modules.sql.chatbot_sql as sql
-from tg_bot import AI_BID, AI_API_KEY, dispatcher
+from SaitamaRobot import AI_BID, AI_API_KEY, dispatcher
 from SaitamaRobot.modules.helper_funcs.chat_status import user_admin
 from SaitamaRobot.modules.helper_funcs.filters import CustomFilters
 from telegram import Update
@@ -77,7 +77,7 @@ def check_message(context: CallbackContext, message):
     reply_msg = message.reply_to_message
     if message.text.lower() == "Saber":
         return True
-    if message.text.lower() == "saber":
+    if message.text.lower() == "Anie":
         return True
     if message.text.lower() == "hi":
         return True
