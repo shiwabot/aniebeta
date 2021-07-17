@@ -26,7 +26,7 @@ def antiarabic_setting(update: Update, context: CallbackContext) -> str:
     if chat.type != chat.PRIVATE:
         if len(args) >= 1:
             if args[0].lower() in ("yes", "on", "true"):
-                set_chat_setting(chat.id, True)
+                sql.set_chat_setting(chat.id, True)
                 msg.reply_text("Turned on AntiArabic! Messages sent by any non-admin which contains arabic text will be deleted.")
 
             elif args[0].lower() in ("no", "off", "false"):
