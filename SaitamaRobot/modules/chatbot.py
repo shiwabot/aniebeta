@@ -2,10 +2,10 @@ import html
 import re
 import requests
 from time import sleep
-import tg_bot.modules.sql.chatbot_sql as sql
+import SaitamaRobot.modules.sql.chatbot_sql as sql
 from tg_bot import AI_BID, AI_API_KEY, dispatcher
-from tg_bot.modules.helper_funcs.chat_status import user_admin
-from tg_bot.modules.helper_funcs.filters import CustomFilters
+from SaitamaRobot.modules.helper_funcs.chat_status import user_admin
+from SaitamaRobot.modules.helper_funcs.filters import CustomFilters
 from telegram import Update
 from telegram.ext import (
     CallbackContext,
