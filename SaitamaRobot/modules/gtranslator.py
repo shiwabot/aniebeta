@@ -3,8 +3,8 @@ from emoji import UNICODE_EMOJI
 from telegram import  Update, ParseMode 
 from telegram.ext import run_async ,CallbackContext
 from gpytranslate import SyncTranslator
-from tg_bot import dispatcher
-from tg_bot.modules.disable import DisableAbleCommandHandler
+from SaitamaRobot import dispatcher
+from SaitamaRobot.modules.disable import DisableAbleCommandHandler
 trans = SyncTranslator()
 
 @run_async
