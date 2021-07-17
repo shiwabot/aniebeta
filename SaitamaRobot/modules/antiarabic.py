@@ -8,6 +8,7 @@ from telegram.ext.dispatcher import run_async
 from SaitamaRobot import dispatcher
 from SaitamaRobot.modules.helper_funcs.chat_status import user_not_admin, user_admin, can_delete
 from SaitamaRobot.modules.helper_funcs.extraction import extract_text
+from SaitamaRobot.modules.sql import antiArabic_sql as sql
 
 ANTIARABIC_GROUPS = 12
 
