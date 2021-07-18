@@ -2,9 +2,9 @@
 from SaitamaRobot import telethn, SUDO_USERS
 import time
 import asyncio
-from telethn import events
-from telethn.tl.types import ChannelParticipantsAdmins
-from telethn.errors.rpcerrorlist import MessageDeleteForbiddenError
+from telethon import events
+from telethon.tl.types import ChannelParticipantsAdmins
+from telethon.errors.rpcerrorlist import MessageDeleteForbiddenError
 # Check if user has admin rights
 async def is_administrator(user_id: int, message):
     admin = False
