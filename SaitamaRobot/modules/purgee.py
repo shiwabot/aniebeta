@@ -1,5 +1,5 @@
 
-from SaitamaRobot import client, SUDO_USERS
+from SaitamaRobot import telethn, SUDO_USERS
 import time
 import asyncio
 from telethn import events
