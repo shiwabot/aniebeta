@@ -2,6 +2,7 @@ from emoji import UNICODE_EMOJI
 #from google_trans_new import LANGUAGES, google_translator
 from telegram import  Update, ParseMode 
 from telegram.ext import run_async ,CallbackContext
+from gpytranslate import SyncTranslator
 from SaitamaRobot import dispatcher
 from SaitamaRobot.modules.disable import DisableAbleCommandHandler
 trans = SyncTranslator()
