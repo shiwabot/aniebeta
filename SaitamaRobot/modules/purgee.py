@@ -17,7 +17,7 @@ async def is_administrator(user_id: int, message):
     return admin
 
 
-@telethon.on(events.NewMessage(pattern="^[!/]purge$"))
+@telethn.on(events.NewMessage(pattern="^[!/]purge$"))
 async def purge(event):
     chat = event.chat_id
     start = time.perf_counter()
@@ -61,7 +61,7 @@ async def purge(event):
         await asyncio.sleep(5)
         await del_res.delete()
 
-@telethon.on(events.NewMessage(pattern="^[!/]spurge$"))
+@telethn.on(events.NewMessage(pattern="^[!/]spurge$"))
 async def purge(event):
     chat = event.chat_id
     start = time.perf_counter()
@@ -105,7 +105,7 @@ async def purge(event):
 
    
    
-@telethon.on(events.NewMessage(pattern="^[!/]del$"))
+@telethn.on(events.NewMessage(pattern="^[!/]del$"))
 async def delete_msg(event):
 
     if not await is_administrator(user_id=event.sender_id, message=event) and event.from_id not in [1087968824]:
