@@ -16,7 +16,7 @@ def totranslate(update: Update, context: CallbackContext) -> None:
             "Reply to messages or write messages from other languages ​​for translating into the intended language\n\n"
             "Example: /tr en-ja to translate from English to Japanese\n"
             "Or use: /tr ja for automatic detection and translating it into japanese.\n"
-            "See [List of Language Codes](t.me/fateunionupdates/32) for a list of language codes.",
+            "See [List of Language Codes](t.me/Aniebotsupports/20234) for a list of language codes.",
             parse_mode="markdown",
             disable_web_page_preview=True)
         return
