@@ -6,20 +6,20 @@
 #If you want to improve anything, then you can pull it or join @TheCodeTech.
 #No Copyright Allowed
 
-from Harita import tbot, CMD_HELP, OWNER_ID
+from SaitamaRobot import telethn, CMD_HELP, OWNER_ID
 import os, re, csv, json, time, uuid, pytz
 from datetime import datetime
-from Harita.function import is_admin
+from SaitamaRobot.function import is_admin
 from io import BytesIO
-import Harita.modules.sql.feds_sql as sql
+import SaitamaRobot.modules.sql.feds_sql as sql
 from telethon import *
 from telethon import Button
 from telethon.tl import *
 from telethon.tl.types import User
-from Harita import *
+from SaitamaRobot import *
 from telethon.tl.functions.users import GetFullUserRequest
 from telethon.tl.types import MessageMediaDocument, DocumentAttributeFilename
-from Harita.events import register
+from SaitamaRobot.events import register
 
 
 
@@ -126,7 +126,7 @@ async def smexy(event):
             ],
         )
 
-@tbot.on(events.CallbackQuery(pattern=r"rmfed(\_(.*))"))
+@telethn.on(events.CallbackQuery(pattern=r"rmfed(\_(.*))"))
 async def delete_fed(event):
     tata = event.pattern_match.group(1)
     data = tata.decode()
@@ -134,7 +134,7 @@ async def delete_fed(event):
     delete = sql.del_fed(fed_id)
     await event.edit("You have deleted your federation! All chats linked to it are now federation-less.")
 
-@tbot.on(events.CallbackQuery(pattern=r"nada"))
+@telethn.on(events.CallbackQuery(pattern=r"nada"))
 async def delete_fed(event):
   await event.edit("Federation deletion canceled")
 
@@ -257,9 +257,9 @@ async def p(event):
             
 
 """
-HaritaRobot Features
+SaitamaRobot Features
 """
-@tbot.on(events.CallbackQuery(pattern=r"fkfed(\_(.*))"))
+@telethn.on(events.CallbackQuery(pattern=r"fkfed(\_(.*))"))
 async def smex_fed(event):
   tata = event.pattern_match.group(1)
   data = tata.decode()
@@ -279,7 +279,7 @@ async def smex_fed(event):
 """
 Fully Written by RoseLoverX
 """
-@tbot.on(events.CallbackQuery(pattern=r"smex(\_(.*))"))
+@telethn.on(events.CallbackQuery(pattern=r"smex(\_(.*))"))
 async def smex(event):
   tata = event.pattern_match.group(1)
   data = tata.decode()
@@ -378,7 +378,7 @@ async def info(event):
 
 
 
-@tbot.on(events.CallbackQuery(pattern=r"fedadm(\_(.*))"))
+@telethn.on(events.CallbackQuery(pattern=r"fedadm(\_(.*))"))
 async def smex_fed(event):
   if event.is_group:
     if not await is_admin(event, event.sender_id):
