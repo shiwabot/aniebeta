@@ -1,6 +1,6 @@
 
 from pyrogram import Client, filters
-from tg_bot.modules.pyrogram import member_permissions 
+from SaitamaRobot.modules.pyrogram import member_permissions 
 
 def PurgeDictDataUpdater(chat_id, purge_from=None, purge_to=None, first_messageID=None, purge_from_messageID=None):
     PurgeData = PurgeDictData.PurgeDict
@@ -26,7 +26,7 @@ def PurgeDictDataUpdater(chat_id, purge_from=None, purge_to=None, first_messageI
 class PurgeDictData:
     PurgeDict = dict()
       
-from tg_bot import pbot as StellaCli
+from SaitamaRobot import pbot as StellaCli
 
 from tg_bot import pbot
 @pbot.on_message(
