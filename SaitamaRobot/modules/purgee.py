@@ -1,5 +1,5 @@
 
-from tg_bot import client, SUDO_USERS
+from SaitamaRobot import client, SUDO_USERS
 import time
 import asyncio
 from telethon import events
