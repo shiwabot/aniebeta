@@ -43,3 +43,4 @@ ffmpeg
 ffprobe
 cryptg
 multicolorcaptcha
+gpytranslate
