@@ -28,7 +28,7 @@ class PurgeDictData:
       
 from SaitamaRobot import pbot as StellaCli
 
-from tg_bot import pbot
+from SaitamaRobot import pbot
 @pbot.on_message(
     filters.command(['purgefrom', 'purgeto']))
 async def PurgeBetween(client, message):
