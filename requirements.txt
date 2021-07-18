@@ -44,3 +44,4 @@ ffprobe
 cryptg
 heroku3
 multicolorcaptcha
+gpytranslate
