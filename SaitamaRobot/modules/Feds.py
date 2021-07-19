@@ -244,7 +244,7 @@ async def p(event):
  try:
   mk = f"{user_id}|{name[:5]}|{fed_id}"
   km = f"{user_id}|{event.sender_id}"
-  await tbot.send_message(
+  await telethn.send_message(
             event.chat_id,
             f"Please get [{fname}](tg://user?id={args.id}) to confirm that they would like to be fed admin for {name}",
             buttons=[
@@ -268,7 +268,7 @@ async def smex_fed(event):
   user = user.strip()
   name = owner.strip()
   fed_id = fed_id.strip()
-  rt = await tbot(GetFullUserRequest(int(user)))
+  rt = await telethn(GetFullUserRequest(int(user)))
   fname = rt.user.first_name
   if not event.sender_id == int(user):
     return await event.answer("You are not the user being fpromoted")
@@ -374,7 +374,7 @@ async def info(event):
                 nme = nfo["fname"]
                 caption += f"\n- {nme} (`{x}`)"
   buttons = Button.inline("Check Fed Admins", data="fedadm_{}".format(fed_id))
-  await tbot.send_message(event.chat_id, caption, buttons=buttons)
+  await telethn.send_message(event.chat_id, caption, buttons=buttons)
 
 
 
