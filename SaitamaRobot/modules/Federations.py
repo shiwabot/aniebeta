@@ -9,7 +9,7 @@
 from SaitamaRobot import telethn, SUDO_USERS
 import os, re, csv, json, time, uuid, pytz
 from datetime import datetime
-from SaitamaRobot.function import is_admin
+from SaitamaRobot.modules.helper_funcs.chat_status import is_user_admin as is_admin
 from io import BytesIO
 import SaitamaRobot.modules.sql.feds_sql as sql
 from telethon import *
