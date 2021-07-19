@@ -15,7 +15,6 @@ import SaitamaRobot.modules.sql.feds_sql as sql
 from telethon import *
 from telethon import Button
 from telethon.tl import *
-from SaitamaRobot import CMD_HELP
 from telethon.tl.types import User
 from SaitamaRobot import *
 from telethon.tl.functions.users import GetFullUserRequest
@@ -915,5 +914,3 @@ Federation owner commands:
 - /unsetfedlog <FedId>: Unset the federation log. Events will no longer be logged.
 **Note:** Plugin not yet finished writing.
 """
-
-CMD_HELP.update({file_helpo: [file_helpo, __help__]})
