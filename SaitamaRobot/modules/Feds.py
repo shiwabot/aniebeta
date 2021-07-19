@@ -44,7 +44,7 @@ async def get_user_from_event(event):
     """ Get the user from argument or replied message. """
     if event.reply_to_msg_id:
         previous_message = await event.get_reply_message()
-        user_obj = await tbot.get_entity(previous_message.sender_id)
+        user_obj = await telethn.get_entity(previous_message.sender_id)
         fname = previous_message.sender.first_name
     else:
         user = event.pattern_match.group(1)
@@ -56,7 +56,7 @@ async def get_user_from_event(event):
             return
 
         try:
-            user_obj = await tbot.get_entity(user)
+            user_obj = await telethn.get_entity(user)
         except (TypeError, ValueError) as err:
             await event.reply(str(err))
             return None
