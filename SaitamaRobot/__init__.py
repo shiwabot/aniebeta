@@ -8,7 +8,6 @@ from redis import StrictRedis
 import telegram.ext as tg
 from telethon import TelegramClient
 from pyrogram import Client, errors
-from SaitamaRobot import CMD_HELP
 
 StartTime = time.time()
 
