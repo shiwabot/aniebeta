@@ -15,6 +15,7 @@ import SaitamaRobot.modules.sql.feds_sql as sql
 from telethon import *
 from telethon import Button
 from telethon.tl import *
+from SaitamaRobot import CMD_HELP
 from telethon.tl.types import User
 from SaitamaRobot import *
 from telethon.tl.functions.users import GetFullUserRequest
