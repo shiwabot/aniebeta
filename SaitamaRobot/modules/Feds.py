@@ -229,7 +229,7 @@ async def p(event):
             name = f["fed"]["fname"]
  user_id = args.id
  fban, fbanreason, fbantime = sql.get_fban_user(fed_id, int(args.id))
- replied_user = await tbot(GetFullUserRequest(user_id))
+ replied_user = await telethn(GetFullUserRequest(user_id))
  fname = replied_user.user.first_name
  print(69)
  if fban:
@@ -557,7 +557,7 @@ async def _(event):
     if len(fed_chats) != 0:
         for fedschat in fed_chats:
                 try:
-                    await tbot(
+                    await telethn(
                         EditBannedRequest(int(fedschat), int(fban_user_id), BANNED_RIGHTS)
                         )
                 except Exception:
@@ -568,7 +568,7 @@ async def _(event):
                  all_fedschat = sql.all_fed_chats(fedsid)
                  for fedschat in all_fedschat:
                      try:
-                        await tbot(
+                        await telethn(
                         EditBannedRequest(int(fedschat), int(fban_user_id), BANNED_RIGHTS)
                         )
                      except Exception:
@@ -853,7 +853,7 @@ async def fex(event):
                 backups += "\n"
             with BytesIO(str.encode(backups)) as output:
                 output.name = "fbanned_users.json"
-                await tbot.send_file(
+                await telethn.send_file(
                     event.chat_id,
                     file=output,
                     filename="fbanned_users.json",
