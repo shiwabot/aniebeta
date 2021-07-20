@@ -15,7 +15,7 @@ async def user_is_ban_protected(user_id: int, message):
     return status
 
 
-async def is_admin(user_id: int, message):
+async def is_user_admin(user_id: int, message):
     status = False
     if message.is_private:
         return True
@@ -28,7 +28,7 @@ async def is_admin(user_id: int, message):
     return status
 
 
-async def is_admin(user_id: int, chat_id):
+async def is_user_admin(user_id: int, chat_id):
     status = False
     async for user in telethn.iter_participants(
             chat_id, filter=ChannelParticipantsAdmins):
