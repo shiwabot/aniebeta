@@ -16,7 +16,7 @@ from telethon.tl.types import DocumentAttributeAudio
 from youtubesearchpython import SearchVideos
 from SaitamaRobot.events import register
 from SaitamaRobot.modules.helper_funcs.telethn.chatstatus import (
-    can_delete_messages, user_is_admin, haruka_is_admin, can_ban_users)
+    can_delete_messages, is_user_admin, haruka_is_admin, can_ban_users)
     
 from telethon.errors import (BadRequestError, ChatAdminRequiredError,
                              ImageProcessFailedError, PhotoCropSizeSmallError,
