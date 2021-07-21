@@ -12,7 +12,7 @@ from pyrogram.errors.exceptions.bad_request_400 import (
 )
 from pyrogram.types import ChatPermissions, InlineKeyboardButton, InlineKeyboardMarkup
 
-from SaitamaRobot import DRAGONS as SUDO_USERS
+from SaitamaRobot import SUDO_USERS as SUDO_USERS
 from SaitamaRobot import pbot
 from SaitamaRobot.modules.sql_extended import forceSubscribe_sql as sql
 
@@ -111,7 +111,7 @@ def _check_member(client, message):
                     )
                 except ChatAdminRequired:
                     sent_message.edit(
-                        "❗ **Daisy is not admin here..**\n__Give me ban permissions and retry.. \n#Ending FSub...__"
+                        "❗ **Anie is not admin here..**\n__Give me ban permissions and retry.. \n#Ending FSub...__"
                     )
 
             except ChatAdminRequired:
