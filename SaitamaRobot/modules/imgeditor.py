@@ -56,7 +56,7 @@ from SaitamaRobot.ImageEditor.edit_5 import (  # pylint:disable=import-error
     scanlineglitch_4,
     scanlineglitch_5,
 )
-from SaitamaRobot import pgram as Client
+from SaitamaRobot import pbot as Client
 
 
 lel = 00000000
