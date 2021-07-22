@@ -80,6 +80,7 @@ if ENV:
     API_ID = os.environ.get('API_ID', None)
     API_HASH = os.environ.get('API_HASH', None)
     DB_URI = os.environ.get('DATABASE_URL')
+    MONGO_DB_URI os.environ.get('MONGO_DB_URI',None)
     DONATION_LINK = os.environ.get('DONATION_LINK')
     LOAD = os.environ.get("LOAD", "").split()
     NO_LOAD = os.environ.get("NO_LOAD", "translation").split()
@@ -90,6 +91,7 @@ if ENV:
                                  'CAADAgADOwADPPEcAXkko5EB3YGYAg')
     ALLOW_EXCL = os.environ.get('ALLOW_EXCL', True)
     CASH_API_KEY = os.environ.get('CASH_API_KEY', None)
+    REM_BG_API_KEY = os.environ.get('REM_BG_API_KEY',None)
     TIME_API_KEY = os.environ.get('TIME_API_KEY', None)
     AI_API_KEY = os.environ.get('AI_API_KEY', None)
     AI_BID = os.environ.get('AI_BID', None)
@@ -154,6 +156,7 @@ else:
     API_HASH = Config.API_HASH
 
     DB_URI = Config.SQLALCHEMY_DATABASE_URI
+    MONGO_DB_URI = Config.MONGO_DB_URI
     DONATION_LINK = Config.DONATION_LINK
     LOAD = Config.LOAD
     NO_LOAD = Config.NO_LOAD
@@ -164,6 +167,7 @@ else:
     ALLOW_EXCL = Config.ALLOW_EXCL
     CASH_API_KEY = Config.CASH_API_KEY
     TIME_API_KEY = Config.TIME_API_KEY
+    REM_BG_API_KEY = Config.REM_BG_API_KEY
     AI_API_KEY = Config.AI_API_KEY
     WALL_API = Config.WALL_API
     SUPPORT_CHAT = Config.SUPPORT_CHAT
