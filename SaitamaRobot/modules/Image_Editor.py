@@ -10,7 +10,7 @@ from pyrogram.types import (
 )
 
 # By @TroJanzHEX
-from SaitamaRobot.helper_extra.ImageEditor.edit_1 import (  # pylint:disable=import-error
+from SaitamaRobot.utils_extra.ImageEditor.edit_1 import (  # pylint:disable=import-error
     black_white,
     box_blur,
     bright,
@@ -18,7 +18,7 @@ from SaitamaRobot.helper_extra.ImageEditor.edit_1 import (  # pylint:disable=imp
     mix,
     normal_blur,
 )
-from SaitamaRobot.helper_extra.ImageEditor.edit_2 import (  # pylint:disable=import-error
+from SaitamaRobot.utils_extra.ImageEditor.edit_2 import (  # pylint:disable=import-error
     cartoon,
     circle_with_bg,
     circle_without_bg,
@@ -28,13 +28,13 @@ from SaitamaRobot.helper_extra.ImageEditor.edit_2 import (  # pylint:disable=imp
     sepia_mode,
     sticker,
 )
-from SaitamaRobot.helper_extra.ImageEditor.edit_3 import (  # pylint:disable=import-error
+from SaitamaRobot.utils_extra.ImageEditor.edit_3 import (  # pylint:disable=import-error
     black_border,
     blue_border,
     green_border,
     red_border,
 )
-from SaitamaRobot.helper_extra.ImageEditor.edit_4 import (  # pylint:disable=import-error
+from SaitamaRobot.utils_extra.ImageEditor.edit_4 import (  # pylint:disable=import-error
     inverted,
     removebg_plain,
     removebg_sticker,
@@ -44,7 +44,7 @@ from SaitamaRobot.helper_extra.ImageEditor.edit_4 import (  # pylint:disable=imp
     rotate_270,
     round_sticker,
 )
-from SaitamaRobot.helper_extra.ImageEditor.edit_5 import (  # pylint:disable=import-error
+from SaitamaRobot.utils_extra.ImageEditor.edit_5 import (  # pylint:disable=import-error
     normalglitch_1,
     normalglitch_2,
     normalglitch_3,
