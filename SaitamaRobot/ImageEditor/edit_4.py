@@ -8,9 +8,7 @@ import numpy as np
 import requests
 from PIL import Image, ImageDraw, ImageOps
 
-from SaitamaRobot.conf import get_str_key
-
-RemoveBG_API = get_str_key("REM_BG_API_KEY", required=False)
+from SaitamaRobot import REM_BG_API_KEY
 
 
 async def rotate_90(client, message):
