@@ -18,7 +18,7 @@ from SaitamaRobot.utils_Imageditor.edit_1 import (  # pylint:disable=import-erro
     mix,
     normal_blur,
 )
-from SaitamaRobot.utils_Imageeditor.edit_2 import (  # pylint:disable=import-error
+from SaitamaRobot.utils_Imageditor.edit_2 import (  # pylint:disable=import-error
     cartoon,
     circle_with_bg,
     circle_without_bg,
@@ -28,13 +28,13 @@ from SaitamaRobot.utils_Imageeditor.edit_2 import (  # pylint:disable=import-err
     sepia_mode,
     sticker,
 )
-from SaitamaRobot.utils_Imageeditor.edit_3 import (  # pylint:disable=import-error
+from SaitamaRobot.utils_Imageditor.edit_3 import (  # pylint:disable=import-error
     black_border,
     blue_border,
     green_border,
     red_border,
 )
-from SaitamaRobot.utils_Imageeditor.edit_4 import (  # pylint:disable=import-error
+from SaitamaRobot.utils_Imageditor.edit_4 import (  # pylint:disable=import-error
     inverted,
     removebg_plain,
     removebg_sticker,
@@ -44,7 +44,7 @@ from SaitamaRobot.utils_Imageeditor.edit_4 import (  # pylint:disable=import-err
     rotate_270,
     round_sticker,
 )
-from SaitamaRobot.utils_Imageeditor.edit_5 import (  # pylint:disable=import-error
+from SaitamaRobot.utils_Imageditor.edit_5 import (  # pylint:disable=import-error
     normalglitch_1,
     normalglitch_2,
     normalglitch_3,
