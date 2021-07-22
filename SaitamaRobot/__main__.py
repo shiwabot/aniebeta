@@ -59,7 +59,7 @@ from SaitamaRobot.modules.helper_funcs.readable_time import get_readable_time
 
 
 PM_START_TEXT = """
-Hello there,The name's [𝙎𝙪𝙯𝙪𝙮𝙖](https://telegra.ph/file/5bcbee541234987308553.jpg)
+Hello there,The name's [Anie](https://telegra.ph/file/f56512412e601a26ce292.jpg)
 I am an 𝐴𝑛𝑖𝑚𝑒 Themed Group Managing Bot and I will help in managing your group
 ✪ Make sure you read *INFO* Section Below.✪ 
 """
@@ -77,14 +77,14 @@ buttons = [
     ],
     [
         InlineKeyboardButton(
-        text="💫 Add Suzuya to your group 💫", url="t.me/suzuya_probot?startgroup=true"
+        text="💫 Add Anie to your group 💫", url="t.me/Anierobot_bot?startgroup=true"
         ),
     ]
 ]
 
 
 HELP_STRINGS = """
-*Main Commands :* [ʕ·ᴥ·ʔ](https://telegra.ph/file/5534384d2f2b2d8e6fdbb.jpg)
+*Main Commands :* [ʕ·ᴥ·ʔ](https://telegra.ph/file/f56512412e601a26ce292.jpg)
 ✪ /start: Starts me! You've probably already used this.
 ✪ /help: Click this, I'll let you know about myself!
 ✪ /settings: 
@@ -297,7 +297,7 @@ def SaitamaRobot_about_callback(update, context):
     elif query.data == "aboutmanu_credit":
         query.message.edit_text(
             text=f"*{dispatcher.bot.first_name} Is A Powerful Bot For Managing Groups With Additional Features.*"
-                 f"\n\nFork Of [Shoko](https://github.com/gizmostuffin/Shoko) + [Saitama](https://github.com/AnimeKaizoku/SaitamaRobot)."
+                 f"\n\nFork Of [SaitamaRobot](https://t.me/Denvil_bots) + [Saitama](https://github.com/AnimeKaizoku/SaitamaRobot)."
                  f"\n\n{dispatcher.bot.first_name}'s Licensed Under The GNU _(General Public License v3.0)_"
                  f"\n\nIf Any Question About {dispatcher.bot.first_name}, \nLet Us Know At @{SUPPORT_CHAT}.",
             parse_mode=ParseMode.MARKDOWN,
