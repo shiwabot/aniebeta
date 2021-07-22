@@ -7,7 +7,7 @@ import sys
 from typing import Optional
 
 import SaitamaRobot.modules.sql.users_sql as sql
-from Cutiepii_Robot import (
+from SaitamaRobot import (
     ALLOW_EXCL,
     CERT_PATH,
     DONATION_LINK,
