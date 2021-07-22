@@ -26,7 +26,7 @@ from SaitamaRobot import (
 
 # needed to dynamically load modules
 # NOTE: Module order is not guaranteed, specify that in the config file!
-from SaitamaRobot.modules.import ALL_MODULES
+from SaitamaRobot.modules import ALL_MODULES
 from SaitamaRobot.modules.helper_funcs.chat_status import is_user_admin
 from SaitamaRobot.modules.helper_funcs.alternate import typing_action
 from SaitamaRobot.modules.helper_funcs.misc import paginate_modules
