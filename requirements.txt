@@ -45,3 +45,4 @@ cryptg
 multicolorcaptcha
 gpytranslate
 pytz
+opencv-python-headless
