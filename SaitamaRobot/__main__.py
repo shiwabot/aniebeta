@@ -6,7 +6,7 @@ from sys import argv
 import sys
 from typing import Optional
 
-import Cutiepii_Robot.modules.sql.users_sql as sql
+import SaitamaRobot.modules.sql.users_sql as sql
 from Cutiepii_Robot import (
     ALLOW_EXCL,
     CERT_PATH,
@@ -22,16 +22,15 @@ from Cutiepii_Robot import (
     StartTime,
     telethn,
     updater,
-    pgram, 
-    ubot)
+    pbot,
 
 # needed to dynamically load modules
 # NOTE: Module order is not guaranteed, specify that in the config file!
-from Cutiepii_Robot.modules import ALL_MODULES
-from Cutiepii_Robot.modules.helper_funcs.chat_status import is_user_admin
-from Cutiepii_Robot.modules.helper_funcs.alternate import typing_action
-from Cutiepii_Robot.modules.helper_funcs.misc import paginate_modules
-from Cutiepii_Robot.modules.disable import DisableAbleCommandHandler
+from SaitamaRobot.modules import ALL_MODULES
+from SaitamaRobot.modules.helper_funcs.chat_status import is_user_admin
+from SaitamaRobot.modules.helper_funcs.alternate import typing_action
+from SaitamaRobot.modules.helper_funcs.misc import paginate_modules
+from SaitamaRobot.modules.disable import DisableAbleCommandHandler
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Update
 from telegram.error import (
     BadRequest,
@@ -78,10 +77,10 @@ def get_readable_time(seconds: int) -> str:
     return ping_time
 
 
-CUTIEPII_IMG = "https://telegra.ph/file/57d1e105345723fea0edd.png"
+CUTIEPII_IMG = "https://telegra.ph/file/f56512412e601a26ce292.jpg"
     
 PM_START_TEXT = """
-──「 [Cutiepii](https://telegra.ph/file/5058a17bd9447eb07a47f.png) 」──
+──「 [Anie](https://telegra.ph/file/f56512412e601a26ce292.jpg) 」──
 *Hola! {},*
 *I am an Anime themed advance group management bot with a lot of Sexy Features.*
 ➖➖➖➖➖➖➖➖➖➖➖➖➖
@@ -142,7 +141,7 @@ CHAT_SETTINGS = {}
 USER_SETTINGS = {}
 
 for module_name in ALL_MODULES:
-    imported_module = importlib.import_module("Cutiepii_Robot.modules." + module_name)
+    imported_module = importlib.import_module("SaitamaRobot.modules." + module_name)
     if not hasattr(imported_module, "__mod_name__"):
         imported_module.__mod_name__ = imported_module.__name__
 
