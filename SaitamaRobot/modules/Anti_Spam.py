@@ -181,7 +181,7 @@ async def _(event):
     return
 
 
-@tbot.on(events.NewMessage(pattern=None))
+@telethn.on(events.NewMessage(pattern=None))
 async def _(event):
     if event.is_private:
         return
@@ -360,7 +360,7 @@ async def cleanservice(event):
         return
 
 
-@tbot.on(events.NewMessage(pattern=None))
+@telethn.on(events.NewMessage(pattern=None))
 async def del_profanity(event):
     if event.is_private:
         return
@@ -406,7 +406,7 @@ def extract_emojis(s):
     return "".join(c for c in s if c in emoji.UNICODE_EMOJI)
 
 
-@tbot.on(events.NewMessage(pattern=None))
+@telethn.on(events.NewMessage(pattern=None))
 async def del_profanity(event):
     if event.is_private:
         return
@@ -460,7 +460,7 @@ async def del_profanity(event):
                     await dev.delete()
 
 
-@tbot.on(events.ChatAction())
+@telethn.on(events.ChatAction())
 async def del_cleanservice(event):
     if event.is_private:
         return
