@@ -6,6 +6,7 @@ import spamwatch
 from redis import StrictRedis
 
 import telegram.ext as tg
+from pymongo import MongoClient
 from telethon import TelegramClient
 from pyrogram import Client, errors
 
