@@ -229,7 +229,7 @@ async def p(event):
             name = f["fed"]["fname"]
  user_id = args.id
  fban, fbanreason, fbantime = sql.get_fban_user(fed_id, int(args.id))
- replied_user = await tbot(GetFullUserRequest(user_id))
+ replied_user = await telethn(GetFullUserRequest(user_id))
  fname = replied_user.user.first_name
  print(69)
  if fban:
