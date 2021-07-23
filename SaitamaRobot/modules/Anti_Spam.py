@@ -2,13 +2,13 @@
 #By Eviral (github.com/TeamEviral ; t.me/Eviral)
 #Don't Forget to give credit and make your source public.
 
-from Harita import CMD_HELP, BOT_ID
+from SaitamaRobot import CMD_HELP, BOT_ID
 import nude
 import html
 import re
 import emoji
 import asyncio
-from Harita.modules.sql import cleaner_sql as sql
+from SaitamaRobot.modules.sql import cleaner_sql as sql
 from pymongo import MongoClient
 from Harita import MONGO_DB_URI
 from Harita.events import register
