@@ -101,7 +101,8 @@ if ENV:
     SPAMWATCH_API = os.environ.get('SPAMWATCH_API', None)
     REDIS_URL = os.environ.get('REDIS_URL')
     TEMPORARY_DATA = os.environ.get('TEMPORARY_DATA', None)
-
+    BOT_ID = os.environ.get('BOT_ID', None)
+ 
     try:
         BL_CHATS = set(int(x) for x in os.environ.get('BL_CHATS', "").split())
     except ValueError:
