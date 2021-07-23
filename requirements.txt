@@ -49,3 +49,4 @@ opencv-python-headless
 pymongo
 better_profanity==0.7.0
 dnspython
+nudepy
