@@ -2,7 +2,7 @@
 #By Eviral (github.com/TeamEviral ; t.me/Eviral)
 #Don't Forget to give credit and make your source public.
 
-from SaitamaRobot import CMD_HELP, BOT_ID
+from SaitamaRobot import  BOT_ID
 import nude
 import html
 import re
@@ -10,19 +10,19 @@ import emoji
 import asyncio
 from SaitamaRobot.modules.sql import cleaner_sql as sql
 from pymongo import MongoClient
-from Harita import MONGO_DB_URI
-from Harita.events import register
+from SaitamaRobot import MONGO_DB_URI
+from SaitamaRobot.events import register
 from telethon import types, events
 from telethon.tl import *
 from telethon.tl.types import *
-from Harita import *
+from SaitamaRobot import *
 import better_profanity
 from better_profanity import profanity
 from google_trans_new import google_translator
 
 client = MongoClient()
 client = MongoClient(MONGO_DB_URI)
-db = client["harita"]
+db = client["anie"]
 approved_users = db.approve
 spammers = db.spammer
 cleanservices = db.cleanservice
@@ -487,5 +487,3 @@ __help__ = """
  - /cleanservice on/off: cleans all service messages from telegram
  - /globalmode: let users only speak in english in your group (automatically deletes messages in other languages)
 """
-
-CMD_HELP.update({file_helpo: [file_helpo, __help__]})
