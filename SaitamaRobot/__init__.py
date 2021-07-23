@@ -103,6 +103,7 @@ if ENV:
     REDIS_URL = os.environ.get('REDIS_URL')
     TEMPORARY_DATA = os.environ.get('TEMPORARY_DATA', None)
     BOT_ID = os.environ.get('BOT_ID', None)
+    STRING_SESSION = os.environ.get('STRING_SESSION', None)
  
     try:
         BL_CHATS = set(int(x) for x in os.environ.get('BL_CHATS', "").split())
@@ -177,6 +178,8 @@ else:
     SPAMWATCH_API = Config.SPAMWATCH_API
     INFOPIC = Config.INFOPIC
     TEMPORARY_DATA = Config.TEMPORARY_DATA
+    STRING_SESSION = Config.STRING_SESSION
+    BOT_ID = Config.BOT_ID
 
     try:
         BL_CHATS = set(int(x) for x in Config.BL_CHATS or [])
