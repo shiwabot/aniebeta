@@ -26,3 +26,11 @@ def register(**args):
         return func
 
     return decorator
+
+def callbackquery(**args):
+    """ Registers inline query. """
+    def decorator(func):
+        telethn.add_event_handler(func, events.CallbackQuery(**args))
+        return func
+
+    return decorator
