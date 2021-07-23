@@ -7,7 +7,6 @@ from redis import StrictRedis
 
 import telegram.ext as tg
 from telethon import TelegramClient
-from pymongo import MongoClient
 from pyrogram import Client, errors
 
 StartTime = time.time()
