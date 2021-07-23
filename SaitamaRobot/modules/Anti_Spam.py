@@ -3,7 +3,6 @@
 #Don't Forget to give credit and make your source public.
 
 from SaitamaRobot import  BOT_ID
-import nude
 import html
 import re
 import emoji
