@@ -1,6 +1,6 @@
-from EmceeBot.events import register
-from EmceeBot import OWNER_ID
-from EmceeBot import telethn as tbot
+from SaitamaRobot.events import register
+from SaitamaRobot import OWNER_ID
+from SaitamaRobot import telethn as tbot
 import os 
 from PIL import Image, ImageDraw, ImageFont
 import random
@@ -20,13 +20,13 @@ async def lego(event):
  await event.reply('Creating your logo...wait!')
  try:
     text = event.pattern_match.group(1)
-    img = Image.open('./EmceeBot/resources/blackbg.jpg')
+    img = Image.open('./SaitamaRobot/resources/blackbg.jpg')
     draw = ImageDraw.Draw(img)
     image_widthz, image_heightz = img.size
     pointsize = 500
     fillcolor = "blue"
     shadowcolor = "black"
-    font = ImageFont.truetype("./EmceeBot/resources/Vampire_Wars.ttf", 330)
+    font = ImageFont.truetype("./SaitamaRobot/resources/Vampire_Wars.ttf", 330)
     w, h = draw.textsize(text, font=font)
     h += int(h*0.21)
     image_width, image_height = img.size
@@ -36,7 +36,7 @@ async def lego(event):
     draw.text((x, y), text, font=font, fill="white", stroke_width=25, stroke_fill="blue")
     fname2 = "LogoByEmcee.png"
     img.save(fname2, "png")
-    await tbot.send_file(event.chat_id, fname2, caption="Made By Alexa")
+    await tbot.send_file(event.chat_id, fname2, caption="Made By Anie")
     if os.path.exists(fname2):
             os.remove(fname2)
  except Exception as e:
@@ -60,13 +60,13 @@ async def lego(event):
  await event.reply('Creating your logo...wait!')
  try:
     text = event.pattern_match.group(1)
-    img = Image.open('./EmceeBot/resources/blackbg.jpg')
+    img = Image.open('./SaitamaRobot/resources/blackbg.jpg')
     draw = ImageDraw.Draw(img)
     image_widthz, image_heightz = img.size
     pointsize = 500
     fillcolor = "white"
     shadowcolor = "blue"
-    font = ImageFont.truetype("./EmceeBot/resources/Maghrib.ttf", 1000)
+    font = ImageFont.truetype("./SaitamaRobot/resources/Maghrib.ttf", 1000)
     w, h = draw.textsize(text, font=font)
     h += int(h*0.21)
     image_width, image_height = img.size
@@ -76,7 +76,7 @@ async def lego(event):
     draw.text((x, y), text, font=font, fill="white", stroke_width=0, stroke_fill="white")
     fname2 = "LogoByEmcee.png"
     img.save(fname2, "png")
-    await tbot.send_file(event.chat_id, fname2, caption="Made By Alexa")
+    await tbot.send_file(event.chat_id, fname2, caption="Made By Anie")
     if os.path.exists(fname2):
             os.remove(fname2)
  except Exception as e:
@@ -99,14 +99,14 @@ async def lego(event):
  await event.reply('Creating your logo...wait!')
  try:
     text = event.pattern_match.group(1)
-    img = Image.open('./EmceeBot/resources/blackbg.jpg')
+    img = Image.open('./SaitamaRobot/resources/blackbg.jpg')
     draw = ImageDraw.Draw(img)
     image_widthz, image_heightz = img.size
     pointsize = 500
     fillcolor = "gold"
     shadowcolor = "blue"
     strkcolor = ["yellow", "red", "blue", "purple", "white"]
-    font = ImageFont.truetype("./EmceeBot/resources/Chopsic.otf", 330)
+    font = ImageFont.truetype("./SaitamaRobot/resources/Chopsic.otf", 330)
     w, h = draw.textsize(text, font=font)
     h += int(h*0.21)
     image_width, image_height = img.size
@@ -116,7 +116,7 @@ async def lego(event):
     draw.text((x, y), text, font=font, fill="black", stroke_width=25, stroke_fill= random.choice(strkcolor))
     fname2 = "LogoByEmcee.png"
     img.save(fname2, "png")
-    await tbot.send_file(event.chat_id, fname2, caption="Made By Aniebotsupports")
+    await tbot.send_file(event.chat_id, fname2, caption="Made By Anie")
     if os.path.exists(fname2):
             os.remove(fname2)
  except Exception as e:
