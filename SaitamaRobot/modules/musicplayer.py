@@ -1,70 +1,41 @@
 
-__mod_name__ = "VC PLAYER"
+__mod_name__ = "FEDERATION "
 __help__ = """
           <b>》** ANIE ** 《<b>
             
- SHASAMUSIC plays plays music in your group's voice chat as well as channel voice chats
- 
- Assistant name >> @Anievcplay
- 
- Setting up 
-
-1) Make bot admin (Group and in channel if use cplay)
-2) Start a voice chat
-3) Try /play [song name] for the first time by an admin
-*) If userbot joined enjoy music, If not add @Anievcplay to your group and retry
-
- Commands 
-
-=>> Song Playing 🎧 
-
- - /play: Play song using youtube music
- - /play [yt url] : Play the given yt url
- - /dplay: Play song via deezer
- - /splay: Play song via jio saavn
-  
-=>> Playback ⏯
-
- - /player: Open Settings menu of player
- - /skip: Skips the current track
- - /pause: Pause track
- - /resume: Resumes the paused track
- - /end: Stops media playback
- - /current: Shows the current Playing track
- - /playlist: Shows playlist
-
-=>> Channel Music Play 🛠
-
-For linked group admins only:
-
- - /cplay [song name] - play song you requested
- - /cdplay [song name] - play song you requested via deezer
- - /csplay [song name] - play song you requested via jio saavn
- - /cplaylist - Show now playing list
- - /cccurrent - Show now playing
- - /cplayer - open music player settings panel
- - /cpause - pause song play
- - /cresume - resume song play
- - /cskip - play next song
- - /cend - stop music play
- - /userbotjoinchannel - invite assistant to your chat
-
- channel is also can be used instead of c
-
-  If you donlt like to play in linked group:
-
-   1) Get your channel ID.
-   2) Rename your group to: Channel Music: your_channel_id
-   3) Add @Anierobot_bot as Channel admin with full perms
-   4) add helper to channel
-   5) Simply send commands in your group.
-
-=>> More tools 🧑‍🔧
-
- - /admincache: Updates admin info of your group. Try if bot isn't recognize admin
- - /userbotjoin: Invite @Anievcplay Userbot to your chat
-
-*Player cmd and all other cmds except /play, /current  and /playlist  are only for admins with manage group
-<b> PLEASE NOTE THIS SERVICE IS UNSTABLE AND CAN BE STOPPED ANYTIME </b>
+ ANIE FEDERATION 
 """
 
+Ah, group management. It's all fun and games, until you start getting spammers in, and you need to ban them. Then you need to start banning more, and more, and it gets painful.
+But then you have multiple groups, and you don't want these spammers in any of your groups - how can you deal? Do you have to ban them manually, in all your groups?
+No more! With federations, you can make a ban in one chat overlap to all your other chats.
+You can even appoint federation admins, so that your trustworthiest admins can ban across all the chats that you want to protect.
+Commands:
+- /newfed <fedname>: Creates a new federation with the given name. Only one federation per user. Max 64 chars name allowed.
+- /delfed: Deletes your federation, and any information related to it. Will not unban any banned users.
+- /fedtransfer <reply/username/mention/userid>: Transfer your federation to another user.
+- /renamefed <newname>: Rename your federation.
+- /fedinfo <FedID>: Information about a federation.
+- /fedadmins <FedID>: List the admins in a federation.
+- /fedsubs <FedID>: List all federations your federation is subscribed to.
+- /joinfed <FedID>: Join the current chat to a federation. A chat can only join one federation. Chat owners only.
+- /leavefed: Leave the current federation. Only chat owners can do this.
+- /fedstat: List all the federations you are banned in.
+- /fedstat <user ID>: List all the federations a user has been banned in.
+- /fedstat <user ID> <FedID>: Gives information about a user's ban in a federation.
+- /chatfed: Information about the federation the current chat is in.
+Federation admin commands:
+- /fban: Bans a user from the current chat's federation
+- /unfban: Unbans a user from the current chat's federation
+- /feddemoteme <FedID>: Demote yourself from a fed.
+- /myfeds: List all your feds.
+Federation owner commands:
+- /fpromote: Promote a user to fedadmin in your fed.
+- /fdemote: Demote a federation admin in your fed.
+- /fednotif <yes/no/on/off>: Whether or not to receive PM notifications of every fed action.
+- /subfed <FedId>: Subscribe your federation to another. Users banned in the subscribed fed will also be banned in this one.
+- /unsubfed <FedId>: Unsubscribes your federation from another. Bans from the other fed will no longer take effect.
+- /fedexport <csv/json>: Displays all users who are victimized at the Federation at this time.
+- /fedimport: Import a list of banned users.
+- /setfedlog <FedId>: Sets the current chat as the federation log. All federation events will be logged here.
+- /unsetfedlog <FedId>: Unset the federation log. Events will no longer be logged.
