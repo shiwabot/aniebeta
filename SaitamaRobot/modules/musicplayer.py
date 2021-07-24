@@ -36,3 +36,4 @@ Federation owner commands:
 - /fedimport: Import a list of banned users.
 - /setfedlog <FedId>: Sets the current chat as the federation log. All federation events will be logged here.
 - /unsetfedlog <FedId>: Unset the federation log. Events will no longer be logged.
+ """
