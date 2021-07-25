@@ -1,5 +1,5 @@
-from EmceeBot.events import register
-from EmceeBot import telethn as tbot
+from SaitamaRobot.events import register
+from SaitamaRobot import telethn as tbot
 TMP_DOWNLOAD_DIRECTORY = "./"
 from telethon import events
 import os
