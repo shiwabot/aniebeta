@@ -54,3 +54,4 @@ envparse
 heroku3
 telegraph
 flag
+search_engine_parser
