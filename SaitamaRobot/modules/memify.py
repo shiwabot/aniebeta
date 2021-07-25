@@ -10,9 +10,9 @@ import textwrap
 
 import os
 
-from EmceeBot.events import register
+from SaitamaRobot.events import register
 
-from EmceeBot import (
+from SaitamaRobot import (
 
     LOGGER,
 
@@ -22,7 +22,7 @@ from EmceeBot import (
 
 
 
-from EmceeBot import telethn as bot
+from SaitamaRobot import telethn as bot
 
 
 Credit = "This Plugin Made by Kittu (@A_viyu), if you're using this code in your bot. there is no issue but don't remove this line" 
@@ -100,7 +100,7 @@ async def drawText(image_path, text):
 
     else:
 
-        fnt = "./EmceeBot/resources/Vampire_Wars.ttf"
+        fnt = "./SaitamaRobot/resources/Vampire_Wars.ttf"
 
     m_font = ImageFont.truetype(fnt, int((70 / 640) * i_width))
 
