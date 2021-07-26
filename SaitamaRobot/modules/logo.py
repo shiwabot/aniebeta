@@ -1,4 +1,4 @@
-__mod_name__ = "LOGO"
+__mod_name__ = "Logo"
 
 __help__ = """
  ༆Here is the Help module for Logo and memify༆
