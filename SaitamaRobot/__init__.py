@@ -80,6 +80,8 @@ if ENV:
     CERT_PATH = os.environ.get("CERT_PATH")
     API_ID = os.environ.get('API_ID', None)
     API_HASH = os.environ.get('API_HASH', None)
+    HEROKU_API_KEY = os.environ.get('HEROKU_API_KEY',None)
+    HEROKU_APP_NAME = os.environ.get('HEROKU_APP_NAME',None)
     DB_URI = os.environ.get('DATABASE_URL')
     MONGO_DB_URI = os.environ.get('MONGO_DB_URI',None)
     DONATION_LINK = os.environ.get('DONATION_LINK')
@@ -172,6 +174,8 @@ else:
     ALLOW_EXCL = Config.ALLOW_EXCL
     CASH_API_KEY = Config.CASH_API_KEY
     TIME_API_KEY = Config.TIME_API_KEY
+    HEROKU_API_KEY = Config.HEROKU_API_KEY
+    HEROKU_APP_NAME = Config.HEROKU_APP_NAME
     REM_BG_API_KEY = Config.REM_BG_API_KEY
     AI_API_KEY = Config.AI_API_KEY
     WALL_API = Config.WALL_API
