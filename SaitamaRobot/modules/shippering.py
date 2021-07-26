@@ -1,6 +1,6 @@
-from ShasaBot import pbot as app
-from ShasaBot.utils.errors import capture_err
-from ShasaBot.utils.dbfunc import get_couple, save_couple
+from SaitamaRobot import pbot as app
+from SaitamaRobot.utils.errors import capture_err
+from SaitamaRobot.utils.dbfunc import get_couple, save_couple
 from pyrogram import filters
 import random
 from datetime import datetime
