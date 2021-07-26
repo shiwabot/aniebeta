@@ -4,7 +4,7 @@ from pyrogram import filters
 from pyrogram.types import User, Message
 from pyrogram.raw import functions
 from pyrogram.errors import PeerIdInvalid
-from SaitamaRobot import pgram
+from SaitamaRobot import pbot
 
 def ReplyCheck(message: Message):
     reply_id = None
@@ -46,7 +46,7 @@ def LastOnline(user: User):
 def FullName(user: User):
     return user.first_name + " " + user.last_name if user.last_name else user.first_name
 
-@pgram.on_message(filters.command('whois'))
+@pbot.on_message(filters.command('whois'))
 async def whois(client, message):
     cmd = message.command
     if not message.reply_to_message and len(cmd) == 1:
