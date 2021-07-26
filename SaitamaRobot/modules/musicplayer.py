@@ -1,5 +1,5 @@
 
-__mod_name__ = "FEDERATION "
+__mod_name__ = "federation "
 __help__ = """
           <b>》** ANIE ** 《<b>
             
