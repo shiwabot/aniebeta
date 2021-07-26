@@ -451,10 +451,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
             await removebg_sticker(client, query.message)
 
 
-__mod_name__ = "IMG EDITOR"
+__mod_name__ = "img editor"
 __help__ = """
 <b> IMAGE EDITOR </b>
-EMCEE have some advanced image editing tools inbuilt
+Anie have some advanced image editing tools inbuilt
 Bright, Circle, RemBG, Blur, Border, Flip, Glitch, Sticker maker and more
 
 - /edit [reply to image]: Open the image editor
