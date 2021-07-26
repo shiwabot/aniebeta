@@ -84,5 +84,5 @@ I can upload files to Telegraph
  ❍ /txt :Get Telegraph Link of Replied Text
 """
 
-__mod_name__ = "T GRAPH"
+__mod_name__ = "t graph"
 
