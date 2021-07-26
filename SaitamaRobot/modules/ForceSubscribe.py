@@ -191,4 +191,4 @@ Note: /FSub is an alias of /ForceSubscribe
 By on Anierobot
  
 """
-__mod_name__ = "Subscribe"
+__mod_name__ = "f sub"
