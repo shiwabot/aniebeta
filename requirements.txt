@@ -58,4 +58,3 @@ search_engine_parser
 countryinfo
 html2text
 bing_image_downloader
-couples_mongo
