@@ -6,9 +6,9 @@ from SaitamaRobot.events import register
 from os import remove, execle, path, environ
 import asyncio
 import sys
-from git import Repo
+from SaitamaRobot import Repo
 from git.exc import GitCommandError, InvalidGitRepositoryError, NoSuchPathError
-from Harita import OWNER_ID, telethn, UPSTREAM_REPO_URL
+from SaitamaRobot import OWNER_ID, telethn, UPSTREAM_REPO_URL
 
 async def gen_chlog(repo, diff):
     ch_log = ""
