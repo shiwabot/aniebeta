@@ -56,7 +56,7 @@ async def upstream(ups):
         repo.heads.master.checkout(True)
 
     ac_br = repo.active_branch.name
-    if ac_br != "master":
+    if ac_br != "Anie-Warn":
         await lol.edit(
             f"**[UPDATER]:**` Looks like you are using your own custom branch ({ac_br}). "
             "in that case, Updater is unable to identify "
@@ -112,6 +112,6 @@ async def upstream(ups):
         repo.git.reset("--hard", "FETCH_HEAD")
     
     await lol.edit("`Successfully Updated!\n" "restarting......`")
-    args = [sys.executable, "-m", "Evie"]
+    args = [sys.executable, "-m", "Anie"]
     execle(sys.executable, *args, environ)
     return
