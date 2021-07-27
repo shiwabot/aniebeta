@@ -84,6 +84,7 @@ if ENV:
     API_HASH = os.environ.get('API_HASH', None)
     HEROKU_API_KEY = os.environ.get('HEROKU_API_KEY',None)
     HEROKU_APP_NAME = os.environ.get('HEROKU_APP_NAME',None)
+    UPSTREAM_REPO_URL = os.environ.get('UPSTREAM_REPO_URL',None)
     DB_URI = os.environ.get('DATABASE_URL')
     MONGO_DB_URI = os.environ.get('MONGO_DB_URI',None)
     DONATION_LINK = os.environ.get('DONATION_LINK')
@@ -188,6 +189,7 @@ else:
     TEMPORARY_DATA = Config.TEMPORARY_DATA
     STRING_SESSION = Config.STRING_SESSION
     BOT_ID = Config.BOT_ID
+    UPSTREAM_REPO_URL = Config.UPSTREAM_REPO_URL
 
     try:
         BL_CHATS = set(int(x) for x in Config.BL_CHATS or [])
