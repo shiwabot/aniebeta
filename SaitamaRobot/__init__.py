@@ -1,7 +1,6 @@
 import logging
 import os
 import sys
-import repo
 import time
 import spamwatch
 from redis import StrictRedis
