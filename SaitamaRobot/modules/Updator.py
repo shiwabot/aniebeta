@@ -7,13 +7,9 @@ from git import Repo
 from git.exc import GitCommandError, InvalidGitRepositoryError, NoSuchPathError
 
 from SaitamaRobot import OWNER_ID
-from SaitamaRobot.config import get_str_key
 from SaitamaRobot.services.events import register
 from SaitamaRobot.services.telethon import telethn as update
 
-HEROKU_APP_NAME = get_str_key("HEROKU_APP_NAME", None)
-HEROKU_API_KEY = get_str_key("HEROKU_API_KEY", None)
-UPSTREAM_REPO_URL = get_str_key("UPSTREAM_REPO_URL", None)
 if not UPSTREAM_REPO_URL:
     UPSTREAM_REPO_URL = "https://github.com/shiwabot/aniebeta"
 
