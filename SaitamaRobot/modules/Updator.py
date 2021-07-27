@@ -10,9 +10,6 @@ from SaitamaRobot import OWNER_ID
 from SaitamaRobot.events import register
 from SaitamaRobot import telethn as update
 
-if not UPSTREAM_REPO_URL:
-    UPSTREAM_REPO_URL = "https://github.com/shiwabot/aniebeta"
-
 requirements_path = path.join(
     path.dirname(path.dirname(path.dirname(__file__))), "requirements.txt"
 )
