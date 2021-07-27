@@ -6,16 +6,16 @@ import heroku3
 from git import Repo
 from git.exc import GitCommandError, InvalidGitRepositoryError, NoSuchPathError
 
-from DaisyX import OWNER_ID
-from DaisyX.config import get_str_key
-from DaisyX.services.events import register
-from DaisyX.services.telethon import tbot as update
+from SaitamaRobot import OWNER_ID
+from SaitamaRobot.config import get_str_key
+from SaitamaRobot.services.events import register
+from SaitamaRobot.services.telethon import telethn as update
 
 HEROKU_APP_NAME = get_str_key("HEROKU_APP_NAME", None)
 HEROKU_API_KEY = get_str_key("HEROKU_API_KEY", None)
 UPSTREAM_REPO_URL = get_str_key("UPSTREAM_REPO_URL", None)
 if not UPSTREAM_REPO_URL:
-    UPSTREAM_REPO_URL = "https://github.com/TeamDaisyX/DaisyX-v2.0"
+    UPSTREAM_REPO_URL = "https://github.com/shiwabot/aniebeta"
 
 requirements_path = path.join(
     path.dirname(path.dirname(path.dirname(__file__))), "requirements.txt"
@@ -81,7 +81,7 @@ async def upstream(ups):
         origin = repo.create_remote("upstream", off_repo)
         origin.fetch()
         force_update = True
-        repo.create_head("main", origin.refs.main)
+        repo.create_head("Anie-Warn", origin.refs.main)
         repo.heads.main.set_tracking_branch(origin.refs.main)
         repo.heads.main.checkout(True)
 
@@ -107,7 +107,7 @@ async def upstream(ups):
     changelog = await gen_chlog(repo, f"HEAD..upstream/{ac_br}")
 
     if not changelog and not force_update:
-        await lol.edit("\nYour DaisyX  >>  **up-to-date**  \n")
+        await lol.edit("\nYour Anie  >>  **up-to-date**  \n")
         repo.__del__()
         return
 
@@ -171,7 +171,7 @@ async def upstream(ups):
             else:
                 remote = repo.create_remote("heroku", heroku_git_url)
             try:
-                remote.push(refspec="HEAD:refs/heads/main", force=True)
+                remote.push(refspec="HEAD:refs/heads/Anie-Warn", force=True)
             except GitCommandError as error:
                 await lol.edit(f"{txt}\n`Here is the error log:\n{error}`")
                 repo.__del__()
@@ -184,6 +184,6 @@ async def upstream(ups):
             repo.git.reset("--hard", "FETCH_HEAD")
         await updateme_requirements()
         await lol.edit("`Successfully Updated!\n" "restarting......`")
-        args = [sys.executable, "-m", "DaisyX"]
+        args = [sys.executable, "-m", "SaitamaRobot"]
         execle(sys.executable, *args, environ)
         return
