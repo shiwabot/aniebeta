@@ -59,3 +59,4 @@ countryinfo
 html2text
 bing_image_downloader
 motor
+gitpython
