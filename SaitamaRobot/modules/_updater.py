@@ -6,7 +6,6 @@ from SaitamaRobot.events import register
 from os import remove, execle, path, environ
 import asyncio
 import sys
-from SaitamaRobot import Repo
 from git.exc import GitCommandError, InvalidGitRepositoryError, NoSuchPathError
 from SaitamaRobot import OWNER_ID, telethn, UPSTREAM_REPO_URL
 
