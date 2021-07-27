@@ -7,8 +7,8 @@ from git import Repo
 from git.exc import GitCommandError, InvalidGitRepositoryError, NoSuchPathError
 
 from SaitamaRobot import OWNER_ID
-from SaitamaRobot.services.events import register
-from SaitamaRobot.services.telethon import telethn as update
+from SaitamaRobot.events import register
+from SaitamaRobot.telethon import telethn as update
 
 if not UPSTREAM_REPO_URL:
     UPSTREAM_REPO_URL = "https://github.com/shiwabot/aniebeta"
