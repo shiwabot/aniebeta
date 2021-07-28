@@ -45,6 +45,3 @@ async def github(_, message):
                 print(str(e))
                 pass
     await message.reply_photo(photo=avatar_url, caption=caption)
-
-
-__mod_name__ = "Github"
