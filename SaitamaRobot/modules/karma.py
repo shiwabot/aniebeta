@@ -2,13 +2,13 @@ from pyrogram import filters
 import asyncio 
 import re
 
-from Cutiepii_Robot import pgram as app
-from Cutiepii_Robot.utils.errors import capture_err
-from Cutiepii_Robot.utils.permissions import adminsOnly
-from Cutiepii_Robot.modules.mongo.karma_mongo import (alpha_to_int, get_karma,
+from SaitamaRobot import pgram as app
+from SaitamaRobot.utils.errors import capture_err
+from SaitamaRobot.utils.permissions import adminsOnly
+from SaitamaRobot.modules.mongo.karma_mongo import (alpha_to_int, get_karma,
                                    get_karmas, int_to_alpha, update_karma)                                 
                                    
-from Cutiepii_Robot.modules.mongo.karma_mongo import is_karma_on, karma_off, karma_on
+from SaitamaRobot.modules.mongo.karma_mongo import is_karma_on, karma_off, karma_on
 
 karma_positive_group = 3
 karma_negative_group = 4
