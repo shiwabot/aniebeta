@@ -61,3 +61,4 @@ bing_image_downloader
 motor
 gitpython
 python-arq
+Python_ARQ
