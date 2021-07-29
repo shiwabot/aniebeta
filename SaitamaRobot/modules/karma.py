@@ -2,7 +2,7 @@ from pyrogram import filters
 import asyncio 
 import re
 
-from SaitamaRobot import pgram as app
+from SaitamaRobot import pbot as app
 from SaitamaRobot.utils.errors import capture_err
 from SaitamaRobot.utils.permissions import adminsOnly
 from SaitamaRobot.modules.mongo.karma_mongo import (alpha_to_int, get_karma,
