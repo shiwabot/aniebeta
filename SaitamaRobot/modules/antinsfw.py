@@ -1,6 +1,6 @@
 from os import remove
 from pyrogram import filters
-from SaitamaRobot import arq, pbot as app
+from SaitamaRobot import ARQ, pbot as app
 from SaitamaRobot.utils.errors import capture_err
 from SaitamaRobot.utils.permissions import adminsOnly
 from SaitamaRobot.modules.utils.nsfw_mongo import is_nsfw_on, nsfw_off, nsfw_on
