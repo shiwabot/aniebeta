@@ -3,9 +3,9 @@ from datetime import datetime
 
 from pyrogram import filters
 
-from Cutiepii_Robot import pgram as app
-from Cutiepii_Robot.utils.errors import capture_err
-from Cutiepii_Robot.modules.mongo.couples_mongo import get_couple, save_couple
+from SaitamaRobot import pbot as app
+from SaitamaRobot.utils.errors import capture_err
+from SaitamaRobot.modules.mongo.couples_mongo import get_couple, save_couple
 
 __mod_name__ = "Shippering"
 
