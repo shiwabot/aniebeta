@@ -53,7 +53,7 @@ async def upvote(_, message):
     else:
         karma = 1
         new_karma = {"karma": karma}
-        await update_karma(
+         update_karma(
             chat_id, await int_to_alpha(user_id), new_karma
         )
     await message.reply_text(
