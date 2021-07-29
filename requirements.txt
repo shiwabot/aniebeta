@@ -62,3 +62,4 @@ motor
 gitpython
 python-arq
 Python_ARQ
+alphabet_detector
