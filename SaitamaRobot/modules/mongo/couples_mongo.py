@@ -1,4 +1,4 @@
-from SaitamaRobot import db
+from SaitamaRobot.mongo import db
 from typing import Dict, List, Union
 
 
