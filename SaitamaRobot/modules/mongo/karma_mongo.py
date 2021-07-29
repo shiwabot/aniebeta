@@ -59,7 +59,7 @@ async def update_karma(chat_id: int, name: str, karma: dict):
 
 
 async def is_karma_on(chat_id: int) -> bool:
-    chat = await karmaonoffdb.find_one({"chat_id_toggle": chat_id})
+    chat = karmaonoffdb.find_one({"chat_id_toggle": chat_id})
     if not chat:
         return True
     return False
