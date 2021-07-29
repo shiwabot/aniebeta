@@ -9,7 +9,7 @@ import telegram.ext as tg
 from pymongo import MongoClient
 from telethon.sessions import StringSession
 from telethon import TelegramClient
-from Python_arq import arq
+from Python_ARQ import ARQ
 from pyrogram import Client, errors
 from aiohttp import ClientSession
 
@@ -103,6 +103,8 @@ if ENV:
     TIME_API_KEY = os.environ.get('TIME_API_KEY', None)
     AI_API_KEY = os.environ.get('AI_API_KEY', None)
     AI_BID = os.environ.get('AI_BID', None)
+    ARQ_API_URL = "https://thearq.tech"
+    ARQ_API_KEY = "RUQBNQ-GJOJGU-LTHHJM-JADHXU-ARQ"
     WALL_API = os.environ.get('WALL_API', None)
     SUPPORT_CHAT = os.environ.get('SUPPORT_CHAT', None)
     SPAMWATCH_SUPPORT_CHAT = os.environ.get('SPAMWATCH_SUPPORT_CHAT', None)
