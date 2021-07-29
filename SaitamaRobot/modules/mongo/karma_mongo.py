@@ -69,14 +69,14 @@ async def karma_on(chat_id: int):
     is_karma = await is_karma_on(chat_id)
     if is_karma:
         return
-    return await karmaonoffdb.delete_one({"chat_id_toggle": chat_id})
+    return  karmaonoffdb.delete_one({"chat_id_toggle": chat_id})
 
 
 async def karma_off(chat_id: int):
     is_karma = await is_karma_on(chat_id)
     if not is_karma:
         return
-    return await karmaonoffdb.insert_one({"chat_id_toggle": chat_id})
+    return  karmaonoffdb.insert_one({"chat_id_toggle": chat_id})
 
 async def int_to_alpha(user_id: int) -> str:
     alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"]
