@@ -3,7 +3,7 @@ from pyrogram import filters
 from SaitamaRobot import ARQ, pbot as app
 from SaitamaRobot.utils.errors import capture_err
 from SaitamaRobot.utils.permissions import adminsOnly
-from SaitamaRobot.modules.utils.mongo.nsfw_mongo import is_nsfw_on, nsfw_off, nsfw_on
+from SaitamaRobot.modules.utils.dbfunc import is_nsfw_on, nsfw_off, nsfw_on
 
 
 async def get_file_id_from_message(message):
