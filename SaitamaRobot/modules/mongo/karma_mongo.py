@@ -36,7 +36,7 @@ async def user_global_karma(user_id) -> int:
 
 
 async def get_karmas(chat_id: int) -> Dict[str, int]:
-    karma = await karmadb.find_one({"chat_id": chat_id})
+    karma =  karmadb.find_one({"chat_id": chat_id})
     if not karma:
         return {}
     return karma['karma']
@@ -69,7 +69,7 @@ async def karma_on(chat_id: int):
     is_karma = await is_karma_on(chat_id)
     if is_karma:
         return
-    return  karmaonoffdb.delete_one({"chat_id_toggle": chat_id})
+    return await karmaonoffdb.delete_one({"chat_id_toggle": chat_id})
 
 
 async def karma_off(chat_id: int):
