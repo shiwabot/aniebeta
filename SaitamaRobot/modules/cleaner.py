@@ -38,8 +38,8 @@ def clean_blue_text_must_click(update: Update, context: CallbackContext):
     chat = update.effective_chat
     message = update.effective_message
     k = chat.get_member(update.effective_user.id)
-if k.status == 'administrator' or k.status == 'creator':
-    return
+    if k.status == 'administrator' or k.status == 'creator':
+    
         if sql.is_enabled(chat.id):
             fst_word = message.text.strip().split(None, 1)[0]
 
