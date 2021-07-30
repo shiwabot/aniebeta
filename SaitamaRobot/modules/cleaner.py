@@ -33,6 +33,7 @@ for handler_list in dispatcher.handlers:
 
 
 @run_async
+@user_admin
 def clean_blue_text_must_click(update: Update, context: CallbackContext):
     bot = context.bot
     chat = update.effective_chat
