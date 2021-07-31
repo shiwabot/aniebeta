@@ -12,7 +12,7 @@ from telethon import TelegramClient
 from Python_ARQ import ARQ
 from pyrogram import Client, errors
 from aiohttp import ClientSession
-
+from motor.motor_asyncio import AsyncIOMotorClient as MongoClient
 StartTime = time.time()
 
 # enable logging
@@ -234,7 +234,8 @@ api_hash = API_HASH
 updater = tg.Updater(TOKEN, workers=WORKERS, use_context=True)
 telethn = TelegramClient("saitama", API_ID, API_HASH)
 pbot = Client("saitamaPyro", api_id=API_ID, api_hash=API_HASH, bot_token=TOKEN)
-
+mongo_client = MongoClient(MONGO_DB_URI)
+db = mongo_client.SaitamaRobot
 
 dispatcher = updater.dispatcher
 
