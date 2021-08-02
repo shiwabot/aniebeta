@@ -189,7 +189,7 @@ async def get_user_from_event(event):
                 user_obj = await bot.get_entity(user_id)
                 return user_obj
         try:
-            user_obj = await bot.get_entity(user)
+            user_obj = await telethn.get_entity(user)
         except (TypeError, ValueError) as err:
             await event.reply(str(err))
             return None
@@ -442,10 +442,10 @@ async def get_users(show):
     if show.is_group:
         if not await is_register_admin(show.input_chat, show.sender_id):
             return
-    info = await bot.get_entity(show.chat_id)
+    info = await telethn.get_entity(show.chat_id)
     title = info.title if info.title else "this chat"
     mentions = "Users in {}: \n".format(title)
-    async for user telethn.iter_participants(show.chat_id):
+    async for telethn.iter_participants(show.chat_id):
         if not user.deleted:
             mentions += f"\n[{user.first_name}](tg://user?id={user.id}) {user.id}"
         else:
@@ -486,16 +486,16 @@ async def _(event):
     c = 0
     KICK_RIGHTS = ChatBannedRights(until_date=None, view_messages=True)
     done = await event.reply("Working ...")
-    async for i in bot.iter_participants(event.chat_id):
+    async for i in telethn.iter_participants(event.chat_id):
 
         if isinstance(i.status, UserStatusLastMonth):
-            status = await tbot(EditBannedRequest(event.chat_id, i, KICK_RIGHTS))
+            status = await telethn(EditBannedRequest(event.chat_id, i, KICK_RIGHTS))
             if not status:
                 return
             c = c + 1
 
         if isinstance(i.status, UserStatusLastWeek):
-            status = await tbot(EditBannedRequest(event.chat_id, i, KICK_RIGHTS))
+            status = await telethn(EditBannedRequest(event.chat_id, i, KICK_RIGHTS))
             if not status:
                 return
             c = c + 1
@@ -529,7 +529,7 @@ async def _(event):
 
     done = await event.reply("Searching Participant Lists.")
     p = 0
-    async for i in bot.iter_participants(
+    async for i in telethn.iter_participants(
         event.chat_id, filter=ChannelParticipantsKicked, aggressive=True
     ):
         rights = ChatBannedRights(until_date=0, view_messages=False)
