@@ -570,7 +570,7 @@ async def _(event):
 
     done = await event.reply("Working ...")
     p = 0
-    async for i in bot.iter_participants(
+    async for i in telethn.iter_participants(
         event.chat_id, filter=ChannelParticipantsBanned, aggressive=True
     ):
         rights = ChatBannedRights(
