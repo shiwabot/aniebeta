@@ -442,7 +442,7 @@ async def get_users(show):
     if show.is_group:
         if not await is_register_admin(show.input_chat, show.sender_id):
             return
-    info = await telethn.get_entity(show.chat_id)
+    info = await bot.get_entity(show.chat_id)
     title = info.title if info.title else "this chat"
     mentions = "Users in {}: \n".format(title)
     async for user telethn.iter_participants(show.chat_id):
