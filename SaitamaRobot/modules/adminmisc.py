@@ -32,8 +32,8 @@ from telethon.tl.types import (
     MessageEntityMentionName,
 )
 
-from DaisyX import OWNER_ID
-from DaisyX.services.telethon import tbot as bot
+from SaitamaRobot import OWNER_ID
+from SaitamaRobot.telethon import telethn as bot
 
 # =================== CONSTANT ===================
 PP_TOO_SMOL = "**The image is too small**"
@@ -204,7 +204,7 @@ def find_instance(items, class_or_tuple):
     return None
 
 
-@bot.on(events.NewMessage(pattern="/lowpromote ?(.*)"))
+@telethn.on(events.NewMessage(pattern="/lowpromote ?(.*)"))
 async def lowpromote(promt):
     if promt.is_group:
         if promt.sender_id == OWNER_ID:
@@ -253,7 +253,7 @@ async def lowpromote(promt):
         return
 
 
-@bot.on(events.NewMessage(pattern="/midpromote ?(.*)"))
+@telethn.on(events.NewMessage(pattern="/midpromote ?(.*)"))
 async def midpromote(promt):
     if promt.is_group:
         if promt.sender_id == OWNER_ID:
@@ -302,7 +302,7 @@ async def midpromote(promt):
         return
 
 
-@bot.on(events.NewMessage(pattern="/highpromote ?(.*)"))
+@telethn.on(events.NewMessage(pattern="/highpromote ?(.*)"))
 async def highpromote(promt):
     if promt.is_group:
         if promt.sender_id == OWNER_ID:
@@ -351,7 +351,7 @@ async def highpromote(promt):
         return
 
 
-@bot.on(events.NewMessage(pattern="/lowdemote(?: |$)(.*)"))
+@telethn.on(events.NewMessage(pattern="/lowdemote(?: |$)(.*)"))
 async def lowdemote(dmod):
     if dmod.is_group:
         if not await can_promote_users(message=dmod):
@@ -393,7 +393,7 @@ async def lowdemote(dmod):
         return
 
 
-@bot.on(events.NewMessage(pattern="/middemote(?: |$)(.*)"))
+@telethn.on(events.NewMessage(pattern="/middemote(?: |$)(.*)"))
 async def middemote(dmod):
     if dmod.is_group:
         if not await can_promote_users(message=dmod):
@@ -435,7 +435,7 @@ async def middemote(dmod):
         return
 
 
-@bot.on(events.NewMessage(pattern="/users$"))
+@telethn.on(events.NewMessage(pattern="/users$"))
 async def get_users(show):
     if not show.is_group:
         return
@@ -462,7 +462,7 @@ async def get_users(show):
     os.remove("userslist.txt")
 
 
-@bot.on(events.NewMessage(pattern="/kickthefools$"))
+@telethn.on(events.NewMessage(pattern="/kickthefools$"))
 async def _(event):
     if event.fwd_from:
         return
@@ -508,7 +508,7 @@ async def _(event):
     await event.reply(required_string.format(c))
 
 
-@bot.on(events.NewMessage(pattern="/unbanall$"))
+@telethn.on(events.NewMessage(pattern="/unbanall$"))
 async def _(event):
     if not event.is_group:
         return
@@ -550,7 +550,7 @@ async def _(event):
     await event.reply(required_string.format(p))
 
 
-@bot.on(events.NewMessage(pattern="/unmuteall$"))
+@telethn.on(events.NewMessage(pattern="/unmuteall$"))
 async def _(event):
     if not event.is_group:
         return
@@ -594,7 +594,7 @@ async def _(event):
     await event.reply(required_string.format(p))
 
 
-@bot.on(events.NewMessage(pattern="/banme$"))
+@telethn.on(events.NewMessage(pattern="/banme$"))
 async def banme(bon):
     if not bon.is_group:
         return
@@ -608,7 +608,7 @@ async def banme(bon):
         return
 
 
-@bot.on(events.NewMessage(pattern="/kickme$"))
+@telethn.on(events.NewMessage(pattern="/kickme$"))
 async def kickme(bon):
     if not bon.is_group:
         return
@@ -620,7 +620,7 @@ async def kickme(bon):
         return
 
 
-@bot.on(events.NewMessage(pattern=r"/setdescription ([\s\S]*)"))
+@telethn.on(events.NewMessage(pattern=r"/setdescription ([\s\S]*)"))
 async def set_group_des(gpic):
     input_str = gpic.pattern_match.group(1)
     # print(input_str)
@@ -639,7 +639,7 @@ async def set_group_des(gpic):
         await gpic.reply("Failed to set group description.")
 
 
-@bot.on(events.NewMessage(pattern="/setsticker$"))
+@telethn.on(events.NewMessage(pattern="/setsticker$"))
 async def set_group_sticker(gpic):
     if gpic.is_group:
         if not await can_change_info(message=gpic):
