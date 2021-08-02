@@ -445,7 +445,7 @@ async def get_users(show):
     info = await telethn.get_entity(show.chat_id)
     title = info.title if info.title else "this chat"
     mentions = "Users in {}: \n".format(title)
-    async for telethn.iter_participants(show.chat_id):
+    async for user in telethn.iter_participants(show.chat_id):
         if not user.deleted:
             mentions += f"\n[{user.first_name}](tg://user?id={user.id}) {user.id}"
         else:
