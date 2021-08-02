@@ -78,7 +78,7 @@ async def is_register_admin(chat, user):
     if isinstance(chat, (types.InputPeerChannel, types.InputChannel)):
         return isinstance(
             (
-                await bot(functions.channels.GetParticipantRequest(chat, user))
+                await telethn(functions.channels.GetParticipantRequest(chat, user))
             ).participant,
             (types.ChannelParticipantAdmin, types.ChannelParticipantCreator),
         )
@@ -87,7 +87,7 @@ async def is_register_admin(chat, user):
 
 
 async def can_promote_users(message):
-    result = await bot(
+    result = await telethn(
         functions.channels.GetParticipantRequest(
             channel=message.chat_id,
             user_id=message.sender_id,
@@ -100,7 +100,7 @@ async def can_promote_users(message):
 
 
 async def can_ban_users(message):
-    result = await bot(
+    result = await telethn(
         functions.channels.GetParticipantRequest(
             channel=message.chat_id,
             user_id=message.sender_id,
@@ -113,7 +113,7 @@ async def can_ban_users(message):
 
 
 async def can_change_info(message):
-    result = await bot(
+    result = await telethn(
         functions.channels.GetParticipantRequest(
             channel=message.chat_id,
             user_id=message.sender_id,
@@ -126,7 +126,7 @@ async def can_change_info(message):
 
 
 async def can_del(message):
-    result = await bot(
+    result = await telethn(
         functions.channels.GetParticipantRequest(
             channel=message.chat_id,
             user_id=message.sender_id,
@@ -139,7 +139,7 @@ async def can_del(message):
 
 
 async def can_pin_msg(message):
-    result = await bot(
+    result = await telethn(
         functions.channels.GetParticipantRequest(
             channel=message.chat_id,
             user_id=message.sender_id,
@@ -442,10 +442,10 @@ async def get_users(show):
     if show.is_group:
         if not await is_register_admin(show.input_chat, show.sender_id):
             return
-    info = await bot.get_entity(show.chat_id)
+    info = await telethn.get_entity(show.chat_id)
     title = info.title if info.title else "this chat"
     mentions = "Users in {}: \n".format(title)
-    async for user in bot.iter_participants(show.chat_id):
+    async for user telethn.iter_participants(show.chat_id):
         if not user.deleted:
             mentions += f"\n[{user.first_name}](tg://user?id={user.id}) {user.id}"
         else:
@@ -534,7 +534,7 @@ async def _(event):
     ):
         rights = ChatBannedRights(until_date=0, view_messages=False)
         try:
-            await bot(functions.channels.EditBannedRequest(event.chat_id, i, rights))
+            await telethn(functions.channels.EditBannedRequest(event.chat_id, i, rights))
         except FloodWaitError as ex:
             logger.warn("sleeping for {} seconds".format(ex.seconds))
             sleep(ex.seconds)
@@ -578,7 +578,7 @@ async def _(event):
             send_messages=False,
         )
         try:
-            await bot(functions.channels.EditBannedRequest(event.chat_id, i, rights))
+            await telethn(functions.channels.EditBannedRequest(event.chat_id, i, rights))
         except FloodWaitError as ex:
             logger.warn("sleeping for {} seconds".format(ex.seconds))
             sleep(ex.seconds)
@@ -600,7 +600,7 @@ async def banme(bon):
         return
 
     try:
-        await bot(EditBannedRequest(bon.chat_id, sender, BANNED_RIGHTS))
+        await telethn(EditBannedRequest(bon.chat_id, sender, BANNED_RIGHTS))
         await bon.reply("Ok Banned !")
 
     except Exception:
