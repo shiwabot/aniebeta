@@ -215,7 +215,7 @@ async def lowpromote(promt):
     else:
         return
 
-    user = await is_register_admin(promt)
+    user = await get_user_from_event(promt)
     if promt.is_group:
         if await is_register_admin(promt.input_chat, user.id):
             await promt.reply("**Well! i cant promote user who is already an admin**")
