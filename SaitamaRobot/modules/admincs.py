@@ -178,3 +178,125 @@ async def get_user_sender_id(user, event):
         return None
 
     return user_obj
+
+async def get_user_from_event(event):
+    """Get the user from argument or replied message."""
+    if event.reply_to_msg_id:
+        previous_message = await event.get_reply_message()
+        user_obj = await bot.get_entity(previous_message.sender_id)
+    else:
+        user = event.pattern_match.group(1)
+
+        if user.isnumeric():
+            user = int(user)
+
+        if not user:
+            await event.reply(
+                "**I don't know who you're talking about, you're going to need to specify a user...!**"
+            )
+            return
+
+        if event.message.entities is not None:
+            probable_user_mention_entity = event.message.entities[0]
+
+            if isinstance(probable_user_mention_entity, MessageEntityMentionName):
+                user_id = probable_user_mention_entity.user_id
+                user_obj = await bot.get_entity(user_id)
+                return user_obj
+        try:
+            user_obj = await bot.get_entity(user)
+        except (TypeError, ValueError) as err:
+            await event.reply(str(err))
+            return None
+
+    return user_obj
+
+
+def find_instance(items, class_or_tuple):
+    for item in items:
+        if isinstance(item, class_or_tuple):
+            return item
+    return None
+"""
+@bot.on(events.NewMessage(pattern="/promote ?(.*)"))
+async def promote(promt):
+    if promt.is_group:
+        if promt.sender_id == OWNER_ID:
+            pass
+        else:
+          if not await can_promote_users(message=promt):
+            return
+    else:
+        return
+    user = await get_user_from_event(promt)
+    if promt.is_group:
+        if await is_register_admin(promt.input_chat, user.id):
+            await promt.reply("**Well! i cant promote user who is already an admin**")
+            return
+        pass
+    else:
+        return
+    new_rights = ChatAdminRights(
+        add_admins=True,
+        invite_users=True,
+        change_info=True,
+        ban_users=True,
+        delete_messages=True,
+        pin_messages=True,
+    )
+    if user:
+        pass
+    else:
+        return
+    quew = promt.pattern_match.group(1)
+    if quew:
+        title = quew
+    else:
+        title = "Admin"
+    # Try to promote if current user is admin or creator
+    try:
+        await bot(EditAdminRequest(promt.chat_id, user.id, new_rights, title))
+        await promt.reply("**Successfully promoted!**")
+    # If Telethon spit BadRequestError, assume
+    # we don't have Promote permission
+    except Exception:
+        await promt.reply("Failed to promote.")
+        return
+@bot.on(events.NewMessage(pattern="/demote(?: |$)(.*)"))
+async def demote(dmod):
+    if dmod.is_group:
+        if not await can_promote_users(message=dmod):
+            return
+    else:
+        return
+    user = await get_user_from_event(dmod)
+    if dmod.is_group:
+        if not await is_register_admin(dmod.input_chat, user.id):
+            await dmod.reply("**Hehe, i cant demote non-admin**")
+            return
+        pass
+    else:
+        return
+    if user:
+        pass
+    else:
+        return
+    # New rights after demotion
+    newrights = ChatAdminRights(
+        add_admins=False,
+        invite_users=False,
+        change_info=False,
+        ban_users=False,
+        delete_messages=False,
+        pin_messages=False,
+    )
+    # Edit Admin Permission
+    try:
+        await bot(EditAdminRequest(dmod.chat_id, user.id, newrights, "Admin"))
+        await dmod.reply("**Demoted Successfully!**")
+    # If we catch BadRequestError from Telethon
+    # Assume we don't have permission to demote
+    except Exception:
+        await dmod.reply("**Failed to demote.**")
+        return
+"""
