@@ -300,3 +300,51 @@ async def demote(dmod):
         await dmod.reply("**Failed to demote.**")
         return
 """
+
+@bot.on(events.NewMessage(pattern="/lowpromote ?(.*)"))
+async def lowpromote(promt):
+    if promt.is_group:
+        if promt.sender_id == OWNER_ID:
+            pass
+        else:
+            if not await can_promote_users(message=promt):
+                return
+    else:
+        return
+
+    user = await get_user_from_event(promt)
+    if promt.is_group:
+        if await is_register_admin(promt.input_chat, user.id):
+            await promt.reply("**Well! i cant promote user who is already an admin**")
+            return
+    else:
+        return
+
+    new_rights = ChatAdminRights(
+        add_admins=False,
+        invite_users=True,
+        change_info=False,
+        ban_users=False,
+        delete_messages=True,
+        pin_messages=False,
+    )
+
+    if user:
+        pass
+    else:
+        return
+    quew = promt.pattern_match.group(1)
+    if quew:
+        title = quew
+    else:
+        title = "Moderator"
+    # Try to promote if current user is admin or creator
+    try:
+        await bot(EditAdminRequest(promt.chat_id, user.id, new_rights, title))
+        await promt.reply("**Successfully promoted!**")
+
+    # If Telethon spit BadRequestError, assume
+    # we don't have Promote permission
+    except Exception:
+        await promt.reply("Failed to promote.")
+        return 
