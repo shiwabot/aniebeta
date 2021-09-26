@@ -110,6 +110,85 @@ def promote(update, context):
         )
     )
 
+@run_async
+@connection_status
+@bot_admin
+@can_promote
+@user_admin
+@promote_permission
+@loggable
+def promoteall(update: Update, context: CallbackContext) -> str:
+    bot = context.bot
+    args = context.args
+
+    message = update.effective_message
+    chat = update.effective_chat
+    user = update.effective_user
+
+    promoter = chat.get_member(user.id)
+
+    user_id, title = extract_user_and_text(message, args)
+
+    if not user_id:
+        message.reply_text(
+            "You don't seem to be referring to a user or the ID specified is incorrect..",
+        )
+        return
+
+    try:
+        user_member = chat.get_member(user_id)
+    except:
+        return
+
+    if user_member.status == "administrator" or user_member.status == "creator":
+        message.reply_text("How am I meant to promote someone that's already an admin?")
+        return
+
+    if user_id == bot.id:
+        message.reply_text("I can't promote myself! Get an admin to do it for me.")
+        return
+
+    # set same perms as bot - bot can't assign higher perms than itself!
+    bot_member = chat.get_member(bot.id)
+    #can_promote_members = False
+    #if "all" in permissions and bot_member.can_promote_members:
+    #    can_promote_members = True
+
+    result = requests.post(f"https://api.telegram.org/bot{TOKEN}/promoteChatMember?chat_id={chat.id}&user_id={user_id}&can_change_info={bot_member.can_change_info}&can_post_messages={bot_member.can_post_messages}&can_edit_messages={bot_member.can_edit_messages}&can_delete_messages={bot_member.can_delete_messages}&can_invite_users={bot_member.can_invite_users}&can_promote_members={bot_member.can_promote_members}&can_restrict_members={bot_member.can_restrict_members}&can_pin_messages={bot_member.can_pin_messages}")
+    status = result.json()["ok"]
+    if status == False:
+        message.reply_text("An error occured while promoting.")
+        return
+
+    bot.sendMessage(
+        chat.id,
+        f"♔ {chat.title} Event! \
+        \n• A new admin has been appointed with all rights! \
+        \n• Let's all welcome {mention_html(user_member.user.id, user_member.user.first_name)}",
+        parse_mode=ParseMode.HTML,
+    )
+
+    if len(title) > 16:
+        message.reply_text(
+            "The title length is longer than 16 characters.\nTruncating it to 16 characters.",
+        )
+
+    try:
+        bot.setChatAdministratorCustomTitle(chat.id, user_id, title)
+    except:
+        pass
+
+    log_message = (
+        f"<b>{html.escape(chat.title)}:</b>\n"
+        f"#PROMOTED\n"
+        f"<b>Admin:</b> {mention_html(user.id, user.first_name)}\n"
+        f"<b>User:</b> {mention_html(user_member.user.id, user_member.user.first_name)}"
+    )
+
+    if title != "":
+        log_message += f"<b>Admin Title:</b> {title}"
+
+    return log_message
 
 
 @run_async
@@ -700,7 +779,7 @@ ADMINSLIST_HANDLER = DisableAbleCommandHandler("adminlist", adminslist)
 PIN_HANDLER = CommandHandler("pin", pin, filters=Filters.group)
 UNPIN_HANDLER = CommandHandler("unpin", unpin, filters=Filters.group)
 PERMAPIN_HANDLER = CommandHandler("permapin", permapin, filters=Filters.group)
-
+PROMOTEALL_HANDLER = DisableAbleCommandHandler(["promoteall", "fullpromote"], promoteall)
 INVITE_HANDLER = DisableAbleCommandHandler("invitelink", invite)
 
 PROMOTE_HANDLER = DisableAbleCommandHandler("promote", promote)
@@ -716,6 +795,7 @@ SET_TITLE_HANDLER = CommandHandler("title", set_title)
 dispatcher.add_handler(ADMINLIST_HANDLER)
 dispatcher.add_handler(ADMINSLIST_HANDLER)
 dispatcher.add_handler(PIN_HANDLER)
+dispatcher.add_handler(PROMOTEALL_HANDLER)
 dispatcher.add_handler(PERMAPIN_HANDLER)
 dispatcher.add_handler(UNPIN_HANDLER)
 dispatcher.add_handler(INVITE_HANDLER)
