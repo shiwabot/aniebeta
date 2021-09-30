@@ -22,7 +22,7 @@ from SaitamaRobot import (
 )
 from SaitamaRobot.modules.helper_funcs.chat_status import (
     is_user_ban_protected,
-    user_admin,
+    user_admin, user_can_change,
 )
 from SaitamaRobot.modules.helper_funcs.misc import build_keyboard, revert_buttons
 from SaitamaRobot.modules.helper_funcs.msg_types import get_welcome_type
@@ -815,6 +815,7 @@ def goodbye(update: Update, context: CallbackContext):
 
 @run_async
 @user_admin
+@user_can_change
 @loggable
 def set_welcome(update: Update, context: CallbackContext) -> str:
     chat = update.effective_chat
@@ -840,6 +841,7 @@ def set_welcome(update: Update, context: CallbackContext) -> str:
 
 @run_async
 @user_admin
+@user_can_change
 @loggable
 def reset_welcome(update: Update, context: CallbackContext) -> str:
     chat = update.effective_chat
@@ -860,6 +862,7 @@ def reset_welcome(update: Update, context: CallbackContext) -> str:
 
 @run_async
 @user_admin
+@user_can_change
 @loggable
 def set_goodbye(update: Update, context: CallbackContext) -> str:
     chat = update.effective_chat
@@ -903,6 +906,7 @@ def reset_goodbye(update: Update, context: CallbackContext) -> str:
 
 @run_async
 @user_admin
+@user_can_change
 @loggable
 def welcomemute(update: Update, context: CallbackContext) -> str:
     args = context.args
@@ -971,6 +975,7 @@ def welcomemute(update: Update, context: CallbackContext) -> str:
 
 @run_async
 @user_admin
+@user_can_change
 @loggable
 def clean_welcome(update: Update, context: CallbackContext) -> str:
     args = context.args
@@ -1014,6 +1019,7 @@ def clean_welcome(update: Update, context: CallbackContext) -> str:
 
 @run_async
 @user_admin
+@user_can_change
 def cleanservice(update: Update, context: CallbackContext) -> str:
     args = context.args
     chat = update.effective_chat  # type: Optional[Chat]
