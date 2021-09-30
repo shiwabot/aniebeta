@@ -763,7 +763,7 @@ __help__ = """
  • `/invitelink`*:* gets invitelink
  • `/promote`*:* <title> promotes the user replied to with custom title
  • `/admincache`*:* force refresh the admins list
- • `/tagall` *:* Tag Everyone in Chat
+ • `/fullpromote` *:* promotes the user with all permissions
  • `/cleandeleted`*:* Removed Deleted Accounts In Chat
  • `/cleaninactive`*:* Clean All Inactive Members
  • `/demote`*:* demotes the user replied to
