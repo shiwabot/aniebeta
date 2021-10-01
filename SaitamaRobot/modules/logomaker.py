@@ -11,9 +11,9 @@ from io import BytesIO
 from requests import get
 from telethon.tl.types import InputMessagesFilterPhotos
 
-from EvilBot import OWNER_ID, SUPPORT_CHAT
-from EvilBot.events import register
-from EvilBot import telethn
+from SaitamaRobot import OWNER_ID, SUPPORT_CHAT
+from SaitamaRobot.events import register
+from SaitamaRobot import telethn
 from PIL import Image, ImageDraw, ImageFont
 
 
@@ -268,7 +268,7 @@ async def lego(event):
     pointsize = 500
     fillcolor = "black"
     shadowcolor = "blue"
-    fnt = glob.glob("./EvilBot/resources/logo/*")
+    fnt = glob.glob("./SaitamaRobot/resources/logo/*")
     randf = random.choice(fnt)
     font = ImageFont.truetype(randf, 120)
     w, h = draw.textsize(text, font=font)
@@ -280,7 +280,7 @@ async def lego(event):
     draw.text((x, y), text, font=font, fill="white", stroke_width=1, stroke_fill="black")
     fname = "Zaid.jpg"
     img.save(fname, "png")
-    await telethn.send_file(event.chat_id, file=fname, caption = f"Made by @Zaid2_Robot")         
+    await telethn.send_file(event.chat_id, file=fname, caption = f"Made by @Anierobot_bot")         
     await pesan.delete()
     if os.path.exists(fname):
             os.remove(fname)
