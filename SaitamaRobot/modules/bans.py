@@ -83,8 +83,8 @@ def ban(update: Update, context: CallbackContext) -> str:
                            reply_markup=InlineKeyboardMarkup(
                              [
                                 [
-                                   InlineKeyboardButton(text="Unban", callback_data=f"muteb_mute={user_id}"),
-                                   InlineKeyboardButton(text="delete", callback_data="muteb_del")
+                                   InlineKeyboardButton(text="Unban", callback_data=f"banb_ban={user_id}"),
+                                   InlineKeyboardButton(text="delete", callback_data="banb_del")
                                 ]
                                ),
                               
