@@ -84,7 +84,7 @@ async def is_nsfw(event):
     return is_nsfw
 
 
-@telethn.on(events.NewMessage(pattern="/gshield (.*)"))
+@tbot.on(events.NewMessage(pattern="/gshield (.*)"))
 async def nsfw_watch(event):
     if not event.is_group:
         await event.reply("You Can Only Nsfw Watch in Groups.")
