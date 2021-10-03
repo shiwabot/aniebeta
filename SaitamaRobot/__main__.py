@@ -5,14 +5,14 @@ import re
 from sys import argv
 from typing import Optional
 
-from EmiliaAnimeBot import (ALLOW_EXCL, CERT_PATH, DONATION_LINK, LOGGER,
+from SaitamaRobot import (ALLOW_EXCL, CERT_PATH, DONATION_LINK, LOGGER,
                           OWNER_ID, PORT, SUPPORT_CHAT, TOKEN, URL, WEBHOOK,
                           dispatcher, StartTime, telethn, updater, pgram, BOT_USERNAME, BOT_NAME)
 
-from EmiliaAnimeBot.resources.imagefiles import EMILIA_START_IMG, EMILIA_HELP_IMG, EMILIA_IMG
-from EmiliaAnimeBot.modules import ALL_MODULES
-from EmiliaAnimeBot.modules.helper_funcs.chat_status import is_user_admin
-from EmiliaAnimeBot.modules.helper_funcs.misc import paginate_modules
+from SaitamaRobot.resources.imagefiles import EMILIA_START_IMG, EMILIA_HELP_IMG, EMILIA_IMG
+from SaitamaRobot.modules import ALL_MODULES
+from SaitamaRobot.modules.helper_funcs.chat_status import is_user_admin
+from SaitamaRobot.modules.helper_funcs.misc import paginate_modules
 from telegram import (InlineKeyboardButton, InlineKeyboardMarkup, ParseMode,
                       Update)
 from telegram.error import (BadRequest, ChatMigrated, NetworkError,
@@ -73,7 +73,7 @@ buttons = [
     ],
     [
         InlineKeyboardButton(
-          text="📮 Updates", url="https://t.me/TangentXOfficial"
+          text="📮 Updates", url="https://t.me/Aniebots"
         ),
     ],
          
@@ -84,7 +84,7 @@ buttons = [
     ],
     [
         InlineKeyboardButton(
-          text="✒ Source", url="https://github.com/IzumiCypherX/EmiliaAnimeBot" # If you have a bit of dignity left in you, Do NOT Remove this Button
+          text="✒ Source", url="https://github.com/xdenvil" # If you have a bit of dignity left in you, Do NOT Remove this Button
         ),
      
     ],
@@ -106,7 +106,7 @@ CHAT_SETTINGS = {}
 USER_SETTINGS = {}
 
 for module_name in ALL_MODULES:
-    imported_module = importlib.import_module("EmiliaAnimeBot.modules." + module_name)
+    imported_module = importlib.import_module("SaitamaRobot.modules." + module_name)
     if not hasattr(imported_module, "__mod_name__"):
         imported_module.__mod_name__ = imported_module.__name__
 
@@ -216,7 +216,7 @@ def start(update: Update, context: CallbackContext):
                   InlineKeyboardButton(text="Help", url=f"https://t.me/{BOT_USERNAME}?start=help")
                   ],
                   [
-                  InlineKeyboardButton(text="Sᴏᴜʀᴄᴇ", url="https://github.com/IzumiCypherX/EmiliaAnimeBot")
+                  InlineKeyboardButton(text="Sᴏᴜʀᴄᴇ", url="https://github.com/xdenvil")
                   ]
                 ]
             ),
@@ -398,7 +398,7 @@ def get_help(update: Update, context: CallbackContext):
             InlineKeyboardMarkup(
                 [[InlineKeyboardButton(text="Back", callback_data="help_back"),
                                 InlineKeyboardButton(
-                                    text="Support", url="https://telegram.dog/TangentChats"
+                                    text="Support", url="https://telegram.dog/Aniebotsupports"
                                 )]]
             ),
         )
