@@ -361,7 +361,7 @@ def Masha_about_callback(update: Update, context: CallbackContext):
     query = update.callback_query
     if query.data == "masha_":
         query.message.edit_text(
-            text=""" ℹ️ I'm *Anie*, a powerful group management bot built to help you manage your group easily.
+            text=" ℹ️ I'm *Anie*, a powerful group management bot built to help you manage your group easily.
                  ❍ I can restrict users.
                  ❍ I can greet users with customizable welcome messages and even set a group's rules.
                  ❍ I have an advanced anti-flood system.
@@ -370,7 +370,7 @@ def Masha_about_callback(update: Update, context: CallbackContext):
                  ❍ I check for admins' permissions before executing any command and more stuffs
                  \n_Anie's licensed under the GNU General Public License v3.0_
                  Here is the [💾Repository](https://t.me/Aniebotsupports).
-                 If you have any question about Anie, let us know at @Aniebotsupports.""",
+                 If you have any question about Anie, let us know at @Aniebotsupports."
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
@@ -396,7 +396,7 @@ def Source_about_callback(update: Update, context: CallbackContext):
     query = update.callback_query
     if query.data == "source_":
         query.message.edit_text(
-            text=""" Hi..🤗 I'm *Anie*
+            text=" Hi..🤗 I'm *Anie*
                  \nHere is the [Source Code](https://t.me/Aniebotsupports) .""",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=False,
