@@ -3,7 +3,7 @@ import time
 import re
 from sys import argv
 from typing import Optional
-from EvilBot import (
+from SaitamaRobot import (
     ALLOW_EXCL,
     CERT_PATH,
     DONATION_LINK,
@@ -23,9 +23,9 @@ from EvilBot import (
 )
 # needed to dynamically load modules
 # NOTE: Module order is not guaranteed, specify that in the config file!
-from EvilBot.modules import ALL_MODULES
-from EvilBot.modules.helper_funcs.chat_status import is_user_admin
-from EvilBot.modules.helper_funcs.misc import paginate_modules
+from SaitamaRobot.modules import ALL_MODULES
+from SaitamaRobot.modules.helper_funcs.chat_status import is_user_admin
+from SaitamaRobot.modules.helper_funcs.misc import paginate_modules
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Update
 from telegram.error import (
     BadRequest,
@@ -64,24 +64,24 @@ def get_readable_time(seconds: int) -> str:
     ping_time += ":".join(time_list)
     return ping_time
 PM_START_TEXT = """
-`ʜᴏɪ` [🔥](https://telegra.ph/file/e128bd91b758b7733b0cd.jpg) `ɪ ᴍ ᴢᴀɪᴅ ʀᴏʙᴏᴛ
+`ʜᴏɪ` [🔥](https://telegra.ph/file/7944090b9aca51ef8f562.jpg) `ɪ ᴍ ᴢᴀɪᴅ ʀᴏʙᴏᴛ
 `ɪ ᴍ ʜᴇʀᴇ ᴛᴏ ʜᴇʟᴘ ʏᴏᴜ ᴛᴏ ᴍᴀɴᴀɢᴇ ʏᴏᴜʀ ɢʀᴏᴜᴘꜱ ᴀɴᴅ ᴄʜᴀɴɴᴇʟꜱ ᴡɪᴛʜ ᴍᴏʀᴇ ꜰᴇᴀᴛᴜʀᴇꜱ!.
   
 """
 buttons = [
     [
         InlineKeyboardButton(
-            text="ᴀᴅᴅ ᴍᴇ ᴇʟꜱᴇ ᴜ ɢᴀʏ🔥", url="t.me/ZAID2_ROBOT?startgroup=true"),
+            text="Add me Your group 🔥", url="t.me/Anierobot_bot?startgroup=true"),
     ],
      [
-        InlineKeyboardButton(text="ꜱᴏᴜʀᴄᴇ", url="https://github.com/Itsunknown-12/Zaid-Robot"),
+        InlineKeyboardButton(text="ꜱᴏᴜʀᴄᴇ", url="https://github.com/xdenvil"),
         InlineKeyboardButton(
-            text="ᴏꜰꜰɪᴄɪᴀʟ ᴄʜᴀᴛ", url="https://t.me/zaid_team1"
+            text="ᴏꜰꜰɪᴄɪᴀʟ ᴄʜᴀᴛ", url="https://t.me/Aniebotsupports"
         ),
      ],
      [  
-        InlineKeyboardButton(text="ꜱᴜᴘᴘᴏʀᴛ ➡️", url="https://t.me/SUPERIOR_SUPPORT"),
-        InlineKeyboardButton(text="ᴜᴘᴅᴀᴛᴇꜱ ᴄʜᴀɴɴᴇʟ ☑️", url="https://t.me/SUPERIOR_BOTS"),
+        InlineKeyboardButton(text="ꜱᴜᴘᴘᴏʀᴛ ➡️", url="https://t.me/Aniebotsupports"),
+        InlineKeyboardButton(text="ᴜᴘᴅᴀᴛᴇꜱ ᴄʜᴀɴɴᴇʟ ☑️", url="https://t.me/Aniebots"),
     ], 
 
     [
@@ -89,11 +89,11 @@ buttons = [
     ],
 ]
 HELP_STRINGS = """
-`ʜᴇʏ!.. ɪ'ᴍ` 👿 ᴢᴀɪᴅ ʀᴏʙᴏᴛ [👿](https://telegra.ph/file/48247ba6d2ac0e6285529.mp4)
+`ʜᴇʏ!.. ɪ'ᴍ` 👿 ᴢᴀɪᴅ ʀᴏʙᴏᴛ [👿](https://telegra.ph/file/7944090b9aca51ef8f562.jpg)
 `ᴄʟɪᴄᴋ ᴏɴ ᴛʜᴇ ʙᴜᴛᴛᴏɴꜱ ʙᴇʟᴏᴡ ᴛᴏ ɢᴇᴛ ᴛʜᴀ ɪɴꜰᴏʀᴍᴀᴛɪᴏɴ ᴀʙᴏᴜᴛ ꜱᴘᴇᴄɪꜰɪᴄ ᴄᴍᴅꜱ ᴀɴᴅ ᴍᴏᴅᴜʟᴇꜱ..`"""
 evil_IMG = "https://telegra.ph/file/fede673b8437781068c22.jpg"
 DONATE_STRING = """Heya, glad to hear you want to donate!
- You can support the project via [Paypal](#) or by contacting @Timesisnotwaiting \
+ You can support the project via [Paypal](#) or by contacting @Aniebotsupports \
  Supporting isnt always financial! \
  Those who cannot provide monetary support are welcome to help us develop the bot at ."""
 IMPORTED = {}
@@ -106,7 +106,7 @@ DATA_EXPORT = []
 CHAT_SETTINGS = {}
 USER_SETTINGS = {}
 for module_name in ALL_MODULES:
-    imported_module = importlib.import_module("EvilBot.modules." + module_name)
+    imported_module = importlib.import_module("SaitamaRobot.modules." + module_name)
     if not hasattr(imported_module, "__mod_name__"):
         imported_module.__mod_name__ = imported_module.__name__
     if imported_module.__mod_name__.lower() not in IMPORTED:
@@ -308,7 +308,7 @@ def evil_about_callback(update, context):
                  \n❍ I have a note keeping system, blacklists, and even predetermined replies on certain keywords.
                  \n❍ I check for admins' and I can play Music in voice chat
                  \n\n_My licensed under the GNU General Public License v3.0_ 
-                      here is this [Owner](https://t.me/Timesisnotwaiting) .""",
+                      here is this [Owner](https://t.me/Aniebotsupports) .""",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
@@ -332,8 +332,8 @@ def Source_about_callback(update, context):
     query = update.callback_query
     if query.data == "source_":
         query.message.edit_text(
-            text=""" Hey!.. I'm *Zaid bot*
-                 \nHere is the [Owner](https://t.me/Timesisnotwaiting) .""",
+            text=""" Hey!.. I'm *Anie bot*
+                 \nHere is the [Owner](https://t.me/Aniebotsupports) .""",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
