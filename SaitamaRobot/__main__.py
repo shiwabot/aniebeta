@@ -65,7 +65,7 @@ def get_readable_time(seconds: int) -> str:
     return ping_time
 PM_START_TEXT = """
 `ʜᴏɪ` [🔥](https://telegra.ph/file/7944090b9aca51ef8f562.jpg) `ɪ ᴍ ᴢᴀɪᴅ ʀᴏʙᴏᴛ
-`ɪ ᴍ ʜᴇʀᴇ ᴛᴏ ʜᴇʟᴘ ʏᴏᴜ ᴛᴏ ᴍᴀɴᴀɢᴇ ʏᴏᴜʀ ɢʀᴏᴜᴘꜱ ᴀɴᴅ ᴄʜᴀɴɴᴇʟꜱ ᴡɪᴛʜ ᴍᴏʀᴇ ꜰᴇᴀᴛᴜʀᴇꜱ!.
+`ɪ ᴍ Anie ᴛᴏ ʜᴇʟᴘ ʏᴏᴜ ᴛᴏ ᴍᴀɴᴀɢᴇ ʏᴏᴜʀ ɢʀᴏᴜᴘꜱ ᴀɴᴅ ᴄʜᴀɴɴᴇʟꜱ ᴡɪᴛʜ ᴍᴏʀᴇ ꜰᴇᴀᴛᴜʀᴇꜱ!.
   
 """
 buttons = [
@@ -89,7 +89,7 @@ buttons = [
     ],
 ]
 HELP_STRINGS = """
-`ʜᴇʏ!.. ɪ'ᴍ` 👿 ᴢᴀɪᴅ ʀᴏʙᴏᴛ [👿](https://telegra.ph/file/7944090b9aca51ef8f562.jpg)
+`ʜᴇʏ!.. ɪ'ᴍ` 👿 Amie ʀᴏʙᴏᴛ [👿](https://telegra.ph/file/7944090b9aca51ef8f562.jpg)
 `ᴄʟɪᴄᴋ ᴏɴ ᴛʜᴇ ʙᴜᴛᴛᴏɴꜱ ʙᴇʟᴏᴡ ᴛᴏ ɢᴇᴛ ᴛʜᴀ ɪɴꜰᴏʀᴍᴀᴛɪᴏɴ ᴀʙᴏᴜᴛ ꜱᴘᴇᴄɪꜰɪᴄ ᴄᴍᴅꜱ ᴀɴᴅ ᴍᴏᴅᴜʟᴇꜱ..`"""
 evil_IMG = "https://telegra.ph/file/fede673b8437781068c22.jpg"
 DONATE_STRING = """Heya, glad to hear you want to donate!
