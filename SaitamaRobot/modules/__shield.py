@@ -25,21 +25,21 @@ from google_trans_new import google_translator
 from telethon import events
 from telethon.tl.types import ChatBannedRights
 
-from EvilBot import BOT_ID
-from EvilBot.conf import get_int_key, get_str_key
+from SaitamaRobot import BOT_ID
+from SaitamaRobot.conf import get_int_key, get_str_key
 
-# from EvilBot.db.mongo_helpers.nsfw_guard import add_chat, get_all_nsfw_chats, is_chat_in_db, rm_chat
-from EvilBot.pyrogramee.telethonbasics import is_admin
-from EvilBot.events import register
-from EvilBot import MONGO_DB_URI 
+# from SaitamaRobot.db.mongo_helpers.nsfw_guard import add_chat, get_all_nsfw_chats, is_chat_in_db, rm_chat
+from SaitamaRobot.pyrogramee.telethonbasics import is_admin
+from SaitamaRobot.events import register
+from SaitamaRobot import MONGO_DB_URI 
 from pymongo import MongoClient
-from EvilBot.modules.sql_extended.nsfw_watch_sql import (
+from SaitamaRobot.modules.sql_extended.nsfw_watch_sql import (
     add_nsfwatch,
     get_all_nsfw_enabled_chat,
     is_nsfwatch_indb,
     rmnsfwatch,
 )
-from EvilBot import telethn as tbot
+from SaitamaRobot import telethn as tbot
 
 translator = google_translator()
 MUTE_RIGHTS = ChatBannedRights(until_date=None, send_messages=False)
@@ -48,7 +48,7 @@ MONGO_DB_URI = get_str_key("MONGO_DB_URI")
 
 client = MongoClient()
 client = MongoClient(MONGO_DB_URI)
-db = client["EvilBot"]
+db = client["saitama"]
 
 async def is_nsfw(event):
     lmao = event
@@ -84,7 +84,7 @@ async def is_nsfw(event):
     return is_nsfw
 
 
-@tbot.on(events.NewMessage(pattern="/gshield (.*)"))
+@telethn.on(events.NewMessage(pattern="/gshield (.*)"))
 async def nsfw_watch(event):
     if not event.is_group:
         await event.reply("You Can Only Nsfw Watch in Groups.")
@@ -129,7 +129,7 @@ async def nsfw_watch(event):
         return
 
 
-@tbot.on(events.NewMessage())
+@telethn.on(events.NewMessage())
 async def ws(event):
     warner_starkz = get_all_nsfw_enabled_chat()
     if len(warner_starkz) == 0:
@@ -336,7 +336,7 @@ async def profanity(event):
         return
 
 
-@tbot.on(events.NewMessage(pattern=None))
+@telethn.on(events.NewMessage(pattern=None))
 async def del_profanity(event):
     if event.is_private:
         return
@@ -378,7 +378,7 @@ def extract_emojis(s):
     return "".join(c for c in s if c in emoji.UNICODE_EMOJI)
 
 
-@tbot.on(events.NewMessage(pattern=None))
+@telethn.on(events.NewMessage(pattern=None))
 async def del_profanity(event):
     if event.is_private:
         return
