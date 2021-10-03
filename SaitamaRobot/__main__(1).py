@@ -4,7 +4,7 @@ import re
 from sys import argv
 from typing import Optional
 
-from EmceeBot import (
+from SaitamaRobot import (
     ALLOW_EXCL,
     CERT_PATH,
     DONATION_LINK,
@@ -25,9 +25,9 @@ from EmceeBot import (
 
 # needed to dynamically load modules
 # NOTE: Module order is not guaranteed, specify that in the config file!
-from EmceeBot.modules import ALL_MODULES
-from EmceeBot.modules.helper_funcs.chat_status import is_user_admin
-from EmceeBot.modules.helper_funcs.misc import paginate_modules
+from SaitamaRobot.modules import ALL_MODULES
+from SaitamaRobot.modules.helper_funcs.chat_status import is_user_admin
+from SaitamaRobot.modules.helper_funcs.misc import paginate_modules
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Update
 from telegram.error import (
     BadRequest,
@@ -74,19 +74,18 @@ def get_readable_time(seconds: int) -> str:
 
 
 PM_START_TEXT = """
-`𝙷𝙴𝚈,𝙷𝙸𝙸 𝙸 𝙰𝙼 𝙴𝙼𝙲𝙴𝙴`
+`𝙷𝙴𝚈,𝙷𝙸𝙸 𝙸 𝙰𝙼 Anie`
 `𝙸'𝙰𝙼 𝙰𝙽 𝙰𝙽𝙸𝙼𝙴 𝚃𝙷𝙴𝙼𝙴𝙳 𝙶𝚁𝙾𝚄𝙿 𝙼𝙰𝙽𝙰𝙶𝙸𝙽𝙶 𝙱𝙾𝚃! 𝙲𝙻𝙸𝙲𝙺` *📚𝙲𝙾𝙼𝙼𝙰𝙽𝙳𝚂* `𝙱𝚄𝚃𝚃𝙾𝙽 𝙱𝙴𝙻𝙾𝚆 𝚃𝙾 𝙴𝚇𝙿𝙻𝙾𝚁𝙴 𝙼𝙾𝚁𝙴 𝙰𝙱𝙾𝚄𝚃 𝙼𝙴 𝙰𝙽𝙳 𝙼𝚈 𝙵𝚄𝙽𝙲𝚃𝙸𝙾𝙽𝚂.
-**Powered By** @DaisyXNews` [.](https://telegra.ph/file/14870c995b7b3bf2cd6e3.jpg) 
-"""
+**Powered By** @Aniebots` [.](https://telegra.ph/file/7944090b9aca51ef8f562.jpg""
 
 buttons = [
     [
         InlineKeyboardButton(
-            text="༆ ADD EMCEE TO YOUR GROUP ༆", url="t.me/Emcee_Bot?startgroup=true"),
+            text="༆ ADD ANIE TO YOUR GROUP ༆", url="t.me/ANIEROBOT_BOT?startgroup=true"),
     ],
     [  
-        InlineKeyboardButton(text="❄️EMCEE WEB❄️", url="https://emcee.art.blog/"),
-        InlineKeyboardButton(text="✨EMCEE DEVS✨", url="https://t.me/Emcee_Devs"),
+        InlineKeyboardButton(text="❄️ANIE WEB❄️", url="https://t me/Abiebots"),
+        InlineKeyboardButton(text="✨ANIE DEVS✨", url="https://t.me/Aniebotsupports"),
     ], 
     [
         InlineKeyboardButton(text="ℹ️ABOUT", callback_data="masha_"),
@@ -95,12 +94,12 @@ buttons = [
     ],
     [
         InlineKeyboardButton(
-            text="✨UPDATES✨", url="t.me/Emcee_Updates"),
+            text="✨UPDATES✨", url="t.me/ANIEBOTS"),
         InlineKeyboardButton(
-            text="👥SUPPORT👥", url="https://t.me/Emcee_Support"),
+            text="👥SUPPORT👥", url="https://t.me/Aniebotsupports"),
     ],
     [  
-        InlineKeyboardButton(text="⚓ARCANE UNIVERSE⚓", url="https://t.me/Arcane_Universe"
+        InlineKeyboardButton(text="⚓ARCANE UNIVERSE⚓", url="https://t.me/Aniebotsupports"
     ),
     ], 
     
@@ -115,7 +114,7 @@ HELP_STRINGS = """
 𖣘 *If you facing any issue or find any bugs in any command then you can report it in @Emcee_Support* [.](https://telegra.ph/file/073b380cf13052e500490.jpg)
 """
 
-EMCEE_IMG = "https://telegra.ph/file/6b7c2fed4dc8e80ff83db.mp4"
+EMCEE_IMG = "https://telegra.ph/file/7944090b9aca51ef8f562.jpg"
 
 DONATE_STRING = """No need.. I'm rich"""
 
@@ -130,7 +129,7 @@ CHAT_SETTINGS = {}
 USER_SETTINGS = {}
 
 for module_name in ALL_MODULES:
-    imported_module = importlib.import_module("EmceeBot.modules." + module_name)
+    imported_module = importlib.import_module("SaitamaRobot.modules." + module_name)
     if not hasattr(imported_module, "__mod_name__"):
         imported_module.__mod_name__ = imported_module.__name__
 
@@ -362,16 +361,16 @@ def Masha_about_callback(update: Update, context: CallbackContext):
     query = update.callback_query
     if query.data == "masha_":
         query.message.edit_text(
-            text=""" ℹ️ I'm *EMCEE*, a powerful group management bot built to help you manage your group easily.
+            text=""" ℹ️ I'm *Anie*, a powerful group management bot built to help you manage your group easily.
                  ❍ I can restrict users.
                  ❍ I can greet users with customizable welcome messages and even set a group's rules.
                  ❍ I have an advanced anti-flood system.
                  ❍ I can warn users until they reach max warns, with each predefined actions such as ban, mute, kick, etc.
                  ❍ I have a note keeping system, blacklists, and even predetermined replies on certain keywords.
                  ❍ I check for admins' permissions before executing any command and more stuffs
-                 \n_Emcee's licensed under the GNU General Public License v3.0_
-                 Here is the [💾Repository](https://t.me/Emcee_Support).
-                 If you have any question about Emcee, let us know at @Emceesupport.""",
+                 \n_Anie's licensed under the GNU General Public License v3.0_
+                 Here is the [💾Repository](https://t.me/Aniebotsupports).
+                 If you have any question about Anie, let us know at @Aniebotsupports.""",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
@@ -397,8 +396,8 @@ def Source_about_callback(update: Update, context: CallbackContext):
     query = update.callback_query
     if query.data == "source_":
         query.message.edit_text(
-            text=""" Hi..🤗 I'm *Emcee*
-                 \nHere is the [Source Code](https://t.me/Emcee_Support) .""",
+            text=""" Hi..🤗 I'm *Anie*
+                 \nHere is the [Source Code](https://t.me/Aniebotsupports) .""",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=False,
             reply_markup=InlineKeyboardMarkup(
@@ -693,7 +692,7 @@ def main():
 
     if SUPPORT_CHAT is not None and isinstance(SUPPORT_CHAT, str):
         try:
-            dispatcher.bot.sendMessage(f"@{SUPPORT_CHAT}", "Emcee is back to serve you.✨")
+            dispatcher.bot.sendMessage(f"@{SUPPORT_CHAT}", "Anie is back to serve you.✨")
         except Unauthorized:
             LOGGER.warning(
                 "Bot isnt able to send message to support_chat, go and check!"
