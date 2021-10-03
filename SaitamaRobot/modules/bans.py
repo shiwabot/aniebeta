@@ -79,7 +79,18 @@ def ban(update: Update, context: CallbackContext) -> str:
             message.reply_text("This user has immunity and cannot be banned.")
             return log_message
 
-    log = (
+     message.reply_text(reply_msg,
+                           reply_markup=InlineKeyboardMarkup(
+                             [
+                                [
+                                   InlineKeyboardButton(text="Unban", callback_data=f"muteb_mute={user_id}"),
+                                   InlineKeyboardButton(text="delete", callback_data="muteb_del")
+                                ]
+                               ),
+                              
+                              parse_mode=ParseMode.MARKDOWN
+                          )
+    return (
         f"<b>{html.escape(chat.title)}:</b>\n"
         f"#BANNED\n"
         f"<b>Admin:</b> {mention_html(user.id, user.first_name)}\n"
