@@ -84,6 +84,8 @@ if ENV:
     API_ID = os.environ.get('API_ID', None)
     API_HASH = os.environ.get('API_HASH', None)
     HEROKU_API_KEY = os.environ.get('HEROKU_API_KEY',None)
+    BOT_NAME = os.environ.get('BOT_NAME',None)
+    BOT_USERNAME = os.environ.get('BOT_USERNAME',None)
     HEROKU_APP_NAME = os.environ.get('HEROKU_APP_NAME',None)
     UPSTREAM_REPO_URL = os.environ.get('UPSTREAM_REPO_URL',None)
     DB_URI = os.environ.get('DATABASE_URL')
@@ -192,6 +194,8 @@ else:
     TEMPORARY_DATA = Config.TEMPORARY_DATA
     STRING_SESSION = Config.STRING_SESSION
     BOT_ID = Config.BOT_ID
+    BOT_NAME = Config.BOT_NAME
+    BOT_USERNAME = Config.BOT_USERNAME
     UPSTREAM_REPO_URL = Config.UPSTREAM_REPO_URL
 
     try:
