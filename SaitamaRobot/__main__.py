@@ -108,7 +108,7 @@ buttons = [
 
 
 HELP_STRINGS = """
-༆*EMCEE comes with many special features in it*༆
+"Anie comes with many special features in it"
 ꧁*CHECK ALL BUTTON BELOW TO EXPLORE EVERY COMMANDS OF EMCEE*꧂
 𖣘 *All commands can either be used with* `/` *or* `!`.
 𖣘 *If you facing any issue or find any bugs in any command then you can report it in @Emcee_Support* [.](https://telegra.ph/file/073b380cf13052e500490.jpg)
