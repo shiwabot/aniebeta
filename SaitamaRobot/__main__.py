@@ -116,7 +116,7 @@ HELP_STRINGS = """
 
 EMCEE_IMG = "https://telegra.ph/file/7944090b9aca51ef8f562.jpg"
 
-DONATE_STRING = """No need me  is free."""
+DONATE_STRING = "No need me  is free"
 
 IMPORTED = {}
 MIGRATEABLE = []
