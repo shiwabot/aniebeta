@@ -168,7 +168,7 @@ async def get_user_from_event(event):
     """Get the user from argument or replied message."""
     if event.reply_to_msg_id:
         previous_message = await event.get_reply_message()
-        user_obj = await bot.get_entity(previous_message.sender_id)
+        user_obj = await tbot.get_entity(previous_message.sender_id)
     else:
         user = event.pattern_match.group(1)
 
@@ -186,7 +186,7 @@ async def get_user_from_event(event):
 
             if isinstance(probable_user_mention_entity, MessageEntityMentionName):
                 user_id = probable_user_mention_entity.user_id
-                user_obj = await bot.get_entity(user_id)
+                user_obj = await tbot.get_entity(user_id)
                 return user_obj
         try:
             user_obj = await bot.get_entity(user)
@@ -445,7 +445,7 @@ async def get_users(show):
     info = await bot.get_entity(show.chat_id)
     title = info.title if info.title else "this chat"
     mentions = "Users in {}: \n".format(title)
-    async for user in bot.iter_participants(show.chat_id):
+    async for user in tbot.iter_participants(show.chat_id):
         if not user.deleted:
             mentions += f"\n[{user.first_name}](tg://user?id={user.id}) {user.id}"
         else:
@@ -486,7 +486,7 @@ async def _(event):
     c = 0
     KICK_RIGHTS = ChatBannedRights(until_date=None, view_messages=True)
     done = await event.reply("Working ...")
-    async for i in bot.iter_participants(event.chat_id):
+    async for i in tbot.iter_participants(event.chat_id):
 
         if isinstance(i.status, UserStatusLastMonth):
             status = await tbot(EditBannedRequest(event.chat_id, i, KICK_RIGHTS))
@@ -578,7 +578,7 @@ async def _(event):
             send_messages=False,
         )
         try:
-            await bot(functions.channels.EditBannedRequest(event.chat_id, i, rights))
+            await tbot(functions.channels.EditBannedRequest(event.chat_id, i, rights))
         except FloodWaitError as ex:
             logger.warn("sleeping for {} seconds".format(ex.seconds))
             sleep(ex.seconds)
@@ -600,7 +600,7 @@ async def banme(bon):
         return
 
     try:
-        await bot(EditBannedRequest(bon.chat_id, sender, BANNED_RIGHTS))
+        await tbot(EditBannedRequest(bon.chat_id, sender, BANNED_RIGHTS))
         await bon.reply("Ok Banned !")
 
     except Exception:
