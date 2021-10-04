@@ -100,6 +100,9 @@ if ENV:
     BAN_STICKER = os.environ.get('BAN_STICKER',
                                  'CAADAgADOwADPPEcAXkko5EB3YGYAg')
     ALLOW_EXCL = os.environ.get('ALLOW_EXCL', True)
+    MONGO_URI = os.environ.get('MONGO_URI', None)
+    MONGO_PORT = os.environ.get('MONGO_PORT', None)
+    MONGO_DB = os.environ.get('MONGO_DB', None)
     CASH_API_KEY = os.environ.get('CASH_API_KEY', None)
     REM_BG_API_KEY = os.environ.get('REM_BG_API_KEY',None)
     TIME_API_KEY = os.environ.get('TIME_API_KEY', None)
