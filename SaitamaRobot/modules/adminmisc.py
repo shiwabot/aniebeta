@@ -608,7 +608,7 @@ async def banme(bon):
         return
 
 
-@bot.on(events.NewMessage(pattern="/kickmee$"))
+@tbot.on(events.NewMessage(pattern="/kickmee$"))
 async def kickme(bon):
     if not bon.is_group:
         return
