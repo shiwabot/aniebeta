@@ -41,12 +41,12 @@ from pyrogram.types import (InlineKeyboardButton,
                             InputTextMessageContent)
 from search_engine_parser import GoogleSearch
 
-from wbb import (BOT_USERNAME, MESSAGE_DUMP_CHAT, SUDOERS, USERBOT_ID,
+from SaitamaRobot import (BOT_USERNAME, MESSAGE_DUMP_CHAT, SUDOERS, USERBOT_ID,
                  USERBOT_NAME, USERBOT_USERNAME, aiohttpsession, app,
                  app2, arq)
 from SaitamaRobot.core.types import InlineQueryResultCachedDocument
 from SaitamaRobot.modules.info import get_chat_info, get_user_info
-from wbb.modules.music import download_youtube_audio
+from SaitamaRobot.modules.music import download_youtube_audio
 from SaitamaRobot.utils.functions import test_speedtest
 from SaitamaRobot.utils.http import get
 from SaitamaRobot.utils.pastebin import paste
