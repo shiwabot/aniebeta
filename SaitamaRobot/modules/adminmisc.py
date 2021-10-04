@@ -33,7 +33,7 @@ from telethon.tl.types import (
 )
 
 from SaitamaRobot import OWNER_ID
-from SaitamaRobot.pyrogramme.telethon import telethn as tbot
+from SaitamaRobot import telethn as tbot
 
 # =================== CONSTANT ===================
 PP_TOO_SMOL = "**The image is too small**"
