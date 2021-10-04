@@ -90,6 +90,9 @@ if ENV:
     UPSTREAM_REPO_URL = os.environ.get('UPSTREAM_REPO_URL',None)
     DB_URI = os.environ.get('DATABASE_URL')
     MONGO_DB_URI = os.environ.get('MONGO_DB_URI',None)
+    MESSAGE_DUMP_CHAT =o is.environ.get('MESSAGE_DUMP_CHAT',None)
+    USERBOT_ID = os.environ.get("'USERBOT_ID',None)
+    SUDOERS = os.environ.get('SUDOERS',None)
     DONATION_LINK = os.environ.get('DONATION_LINK')
     TEMP_DOWNLOAD_DIRECTORY = os.environ.get('TEMP_DOWNLOAD_DIRECTORY',None)
     LOAD = os.environ.get("LOAD", "").split()
@@ -199,6 +202,9 @@ else:
     BOT_ID = Config.BOT_ID
     BOT_NAME = Config.BOT_NAME
     BOT_USERNAME = Config.BOT_USERNAME
+    SUDOERS = Config.SUDOERS
+    USERBOT_ID = Config.USERBOT_ID
+    MESSAGE_DUMP_CHAT = Config.MESSAGE_DUMP_CHAT
     UPSTREAM_REPO_URL = Config.UPSTREAM_REPO_URL
 
     try:
