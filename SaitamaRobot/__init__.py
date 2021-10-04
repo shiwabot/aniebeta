@@ -91,7 +91,7 @@ if ENV:
     DB_URI = os.environ.get('DATABASE_URL')
     MONGO_DB_URI = os.environ.get('MONGO_DB_URI',None)
     MESSAGE_DUMP_CHAT = os.environ.get('MESSAGE_DUMP_CHAT',None)
-    USERBOT_ID = os.environ.get("'USERBOT_ID',None)
+    USERBOT_ID = os.environ.get('USERBOT_ID',None)
     SUDOERS = os.environ.get('SUDOERS',None)
     DONATION_LINK = os.environ.get('DONATION_LINK')
     TEMP_DOWNLOAD_DIRECTORY = os.environ.get('TEMP_DOWNLOAD_DIRECTORY',None)
