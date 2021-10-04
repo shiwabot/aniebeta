@@ -44,12 +44,12 @@ from search_engine_parser import GoogleSearch
 from wbb import (BOT_USERNAME, MESSAGE_DUMP_CHAT, SUDOERS, USERBOT_ID,
                  USERBOT_NAME, USERBOT_USERNAME, aiohttpsession, app,
                  app2, arq)
-from wbb.core.types import InlineQueryResultCachedDocument
-from wbb.modules.info import get_chat_info, get_user_info
+from SaitamaRobot.core.types import InlineQueryResultCachedDocument
+from SaitamaRobot.modules.info import get_chat_info, get_user_info
 from wbb.modules.music import download_youtube_audio
-from wbb.utils.functions import test_speedtest
-from wbb.utils.http import get
-from wbb.utils.pastebin import paste
+from SaitamaRobot.utils.functions import test_speedtest
+from SaitamaRobot.utils.http import get
+from SaitamaRobot.utils.pastebin import paste
 
 keywords_list = [
     "alive",
@@ -124,7 +124,7 @@ async def alive_function(answers):
     )
 
     msg = f"""
-**[William✨](https://github.com/thehamkercat/WilliamButcherBot):**
+**[William✨](https://github.com/xdenvil):**
 **MainBot:** `{bot_state}`
 **UserBot:** `{ubot_state}`
 **Python:** `{pyver.split()[0]}`
