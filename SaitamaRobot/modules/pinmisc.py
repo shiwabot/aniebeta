@@ -113,7 +113,7 @@ class MONGO_DB:
 
 
 def __connect_first():
-    _ = mongodb("test")
+    _ = MONGO_DB("test")
 
 
 __connect_first()
