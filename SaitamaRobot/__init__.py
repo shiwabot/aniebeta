@@ -6,6 +6,7 @@ import spamwatch
 from redis import StrictRedis
 
 import telegram.ext as tg
+from aiohttp import ClientSession
 from pymongo import MongoClient
 from telethon.sessions import StringSession
 from telethon import TelegramClient
