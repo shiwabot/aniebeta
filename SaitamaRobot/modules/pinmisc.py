@@ -3,10 +3,14 @@ from re import compile as compile_re
 from pyrogram import filters
 from pyrogram.errors import ChatAdminRequired, RightForbidden, RPCError
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
-
+from pymongo import MongoClient
 from SaitamaRobot.pyrogramme.pluginshelper import member_permissions
-from SaitamaRobot.mongo import MONGO_DB_URI as db
+from SaitamaRobot import MONGO_URI, MONGO_PORT, MONGO_DB
 from SaitamaRobot import pbot as app
+
+#Mongo DB
+mongodb = MongoClient(MONGO_URI, MONGO_PORT)[MONGO_DB]
+db = mongodb
 
 BTN_URL_REGEX = compile_re(r"(\[([^\[]+?)\]\(buttonurl:(?:/{0,2})(.+?)(:same)?\))")
 
