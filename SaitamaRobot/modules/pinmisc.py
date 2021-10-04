@@ -4,9 +4,9 @@ from pyrogram import filters
 from pyrogram.errors import ChatAdminRequired, RightForbidden, RPCError
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 
-from SaitamaRobot.resource.pluginhelpers import member_permissions
-from SaitamaRobot.services.mongo import mongodb as db
-from SaitamaRobot.services.pyrogram import pbot as app
+from SaitamaRobot.pyrogramme.pluginhelpers import member_permissions
+from SaitamaRobot mongo import mongodb as db
+from SaitamaRobot pyrogram import pbot as app
 
 BTN_URL_REGEX = compile_re(r"(\[([^\[]+?)\]\(buttonurl:(?:/{0,2})(.+?)(:same)?\))")
 
@@ -119,7 +119,7 @@ def __connect_first():
 __connect_first()
 
 
-@app.on_message(filters.command("unpinall") & ~filters.private)
+@app.on_message(filters.command("unpinalll") & ~filters.private)
 async def unpinall_message(_, m: Message):
     try:
         chat_id = m.chat.id
