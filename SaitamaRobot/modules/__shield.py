@@ -21,7 +21,7 @@ import emoji
 import nude
 import requests
 from better_profanity import profanity
-from google_trans_new import google_translator
+from gpytranslate import SyncTranslator
 from telethon import events
 from telethon.tl.types import ChatBannedRights
 
@@ -41,7 +41,7 @@ from SaitamaRobot.modules.sql_extended.nsfw_watch_sql import (
 )
 from SaitamaRobot import telethn as tbot
 
-translator = google_translator()
+translator = gpytranslate()
 MUTE_RIGHTS = ChatBannedRights(until_date=None, send_messages=False)
 
 MONGO_DB_URI = get_str_key("MONGO_DB_URI")
