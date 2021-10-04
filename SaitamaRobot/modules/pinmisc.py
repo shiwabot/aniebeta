@@ -170,7 +170,7 @@ class Pins:
     db_name = "antichannelpin"
 
     def __init__(self, chat_id: int) -> None:
-        self.collection = MongoDB(self.db_name)
+        self.collection = MONGO_DB(self.db_name)
         self.chat_id = chat_id
         self.chat_info = self.__ensure_in_db()
 
