@@ -100,7 +100,7 @@ async def can_promote_users(message):
 
 
 async def can_ban_users(message):
-    result = await bot(
+    result = await tbot(
         functions.channels.GetParticipantRequest(
             channel=message.chat_id,
             user_id=message.sender_id,
@@ -113,7 +113,7 @@ async def can_ban_users(message):
 
 
 async def can_change_info(message):
-    result = await bot(
+    result = await tbot(
         functions.channels.GetParticipantRequest(
             channel=message.chat_id,
             user_id=message.sender_id,
@@ -126,7 +126,7 @@ async def can_change_info(message):
 
 
 async def can_del(message):
-    result = await bot(
+    result = await tbot(
         functions.channels.GetParticipantRequest(
             channel=message.chat_id,
             user_id=message.sender_id,
@@ -139,7 +139,7 @@ async def can_del(message):
 
 
 async def can_pin_msg(message):
-    result = await bot(
+    result = await tbot(
         functions.channels.GetParticipantRequest(
             channel=message.chat_id,
             user_id=message.sender_id,
