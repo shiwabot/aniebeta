@@ -53,7 +53,7 @@ async def build_keyboard(buttons):
     return keyb
 
 
-class MongoDB:
+class MONGO_DB:
     """Class for interacting with Bot database."""
 
     def __init__(self, collection) -> None:
