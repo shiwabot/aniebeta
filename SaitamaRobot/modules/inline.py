@@ -25,7 +25,7 @@ SOFTWARE.
 
 import traceback
 
-from SaitamaRobot import app
+from SaitamaRobot import pbot as app
 from SaitamaRobot.utils.inlinefuncs import *
 
 __MODULE__ = "Inline"
