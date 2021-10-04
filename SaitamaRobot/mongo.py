@@ -3,7 +3,7 @@ import asyncio
 import sys
 
 from motor import motor_asyncio
-from SaitamaRobot import MONGO_DB_URI 
+from SaitamaRobot import MONGO_DB_URI, LOGGER
 from pymongo import MongoClient
 from pymongo.errors import ServerSelectionTimeoutError
 from SaitamaRobot.conf import get_int_key, get_str_key
@@ -22,4 +22,4 @@ db = client["shasabot"]
 try:
     asyncio.get_event_loop().run_until_complete(motor.server_info())
 except ServerSelectionTimeoutError:
-    sys.exit(log.critical("Can't connect to mongodb! Exiting..."))
+    sys.exit(LOGGER.warning("Can't connect to mongodb! Exiting..."))
