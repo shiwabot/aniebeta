@@ -5,7 +5,7 @@ from pyrogram.errors import ChatAdminRequired, RightForbidden, RPCError
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 
 from SaitamaRobot.pyrogramme.pluginshelper import member_permissions
-from SaitamaRobot.mongo import mongodb as db
+from SaitamaRobot.mongo import MONGO_DB_URI as db
 from SaitamaRobot.pyrogram import pbot as app
 
 BTN_URL_REGEX = compile_re(r"(\[([^\[]+?)\]\(buttonurl:(?:/{0,2})(.+?)(:same)?\))")
