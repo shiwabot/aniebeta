@@ -529,12 +529,12 @@ async def _(event):
 
     done = await event.reply("Searching Participant Lists.")
     p = 0
-    async for i in bot.iter_participants(
+    async for i in tbot.iter_participants(
         event.chat_id, filter=ChannelParticipantsKicked, aggressive=True
     ):
         rights = ChatBannedRights(until_date=0, view_messages=False)
         try:
-            await bot(functions.channels.EditBannedRequest(event.chat_id, i, rights))
+            await tbot(functions.channels.EditBannedRequest(event.chat_id, i, rights))
         except FloodWaitError as ex:
             logger.warn("sleeping for {} seconds".format(ex.seconds))
             sleep(ex.seconds)
