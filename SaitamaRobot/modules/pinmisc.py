@@ -5,8 +5,8 @@ from pyrogram.errors import ChatAdminRequired, RightForbidden, RPCError
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 
 from SaitamaRobot.pyrogramme.pluginhelpers import member_permissions
-from SaitamaRobot mongo import mongodb as db
-from SaitamaRobot pyrogram import pbot as app
+from SaitamaRobot.mongo import mongodb as db
+from SaitamaRobot.pyrogram import pbot as app
 
 BTN_URL_REGEX = compile_re(r"(\[([^\[]+?)\]\(buttonurl:(?:/{0,2})(.+?)(:same)?\))")
 
@@ -338,7 +338,7 @@ async def clean_linked(_, m: Message):
     return
 
 
-@app.on_message(filters.command("permapin") & ~filters.private)
+@app.on_message(filters.command("permapinn") & ~filters.private)
 async def perma_pin(_, m: Message):
     chat_id = m.chat.id
     user_id = m.from_user.id
