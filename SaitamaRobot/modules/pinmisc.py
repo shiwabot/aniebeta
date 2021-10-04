@@ -6,7 +6,7 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 
 from SaitamaRobot.pyrogramme.pluginshelper import member_permissions
 from SaitamaRobot.mongo import MONGO_DB_URI as db
-from SaitamaRobot. import pbot as app
+from SaitamaRobot import pbot as app
 
 BTN_URL_REGEX = compile_re(r"(\[([^\[]+?)\]\(buttonurl:(?:/{0,2})(.+?)(:same)?\))")
 
