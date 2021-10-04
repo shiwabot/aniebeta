@@ -21,7 +21,7 @@ import emoji
 import nude
 import requests
 from better_profanity import profanity
-from SyncTranslator import gpytranslate
+from google_trans_new import gpytranslate
 from telethon import events
 from telethon.tl.types import ChatBannedRights
 
