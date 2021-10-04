@@ -453,7 +453,7 @@ async def get_users(show):
     file = open("userslist.txt", "w+")
     file.write(mentions)
     file.close()
-    await bot.send_file(
+    await tbot.send_file(
         show.chat_id,
         "userslist.txt",
         caption="Users in {}".format(title),
