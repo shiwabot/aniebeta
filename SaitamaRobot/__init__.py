@@ -93,6 +93,7 @@ if ENV:
     MESSAGE_DUMP_CHAT = os.environ.get('MESSAGE_DUMP_CHAT',None)
     USERBOT_ID = os.environ.get('USERBOT_ID',None)
     SUDOERS = os.environ.get('SUDOERS',None)
+    USERBOT_USERNAME = os.environ.get('USERBOT_USERNAME',None)
     USERBOT_NAME = os.environ.get('USERBOT_NAME',None)
     DONATION_LINK = os.environ.get('DONATION_LINK')
     TEMP_DOWNLOAD_DIRECTORY = os.environ.get('TEMP_DOWNLOAD_DIRECTORY',None)
@@ -205,6 +206,7 @@ else:
     BOT_USERNAME = Config.BOT_USERNAME
     SUDOERS = Config.SUDOERS
     USERBOT_ID = Config.USERBOT_ID
+    USERBOT_USERNAME = Config.USERBOT_USERNAME
     MESSAGE_DUMP_CHAT = Config.MESSAGE_DUMP_CHAT
     UPSTREAM_REPO_URL = Config.UPSTREAM_REPO_URL
 
