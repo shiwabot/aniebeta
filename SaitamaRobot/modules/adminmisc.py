@@ -32,8 +32,8 @@ from telethon.tl.types import (
     MessageEntityMentionName,
 )
 
-from DaisyX import OWNER_ID
-from DaisyX.services.telethon import tbot as bot
+from SaitamaRobot import OWNER_ID
+from SaitamaRobot.telethon import telethn as tbot
 
 # =================== CONSTANT ===================
 PP_TOO_SMOL = "**The image is too small**"
@@ -608,7 +608,7 @@ async def banme(bon):
         return
 
 
-@bot.on(events.NewMessage(pattern="/kickme$"))
+@bot.on(events.NewMessage(pattern="/kickmee$"))
 async def kickme(bon):
     if not bon.is_group:
         return
