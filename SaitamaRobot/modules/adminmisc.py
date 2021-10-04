@@ -87,7 +87,7 @@ async def is_register_admin(chat, user):
 
 
 async def can_promote_users(message):
-    result = await bot(
+    result = await tbot(
         functions.channels.GetParticipantRequest(
             channel=message.chat_id,
             user_id=message.sender_id,
