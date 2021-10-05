@@ -64,7 +64,7 @@ def get_readable_time(seconds: int) -> str:
     ping_time += ":".join(time_list)
     return ping_time
 PM_START_TEXT = """
-`ʜᴏɪ` [🔥](https://telegra.ph/file/7944090b9aca51ef8f562.jpg) `ɪ ᴍ ᴢᴀɪᴅ ʀᴏʙᴏᴛ
+`ʜᴏɪ` [🔥](https://telegra.ph/file/7944090b9aca51ef8f562.jpg) `ɪ ᴍ Anie ʀᴏʙᴏᴛ
 `ɪ ᴍ Anie ᴛᴏ ʜᴇʟᴘ ʏᴏᴜ ᴛᴏ ᴍᴀɴᴀɢᴇ ʏᴏᴜʀ ɢʀᴏᴜᴘꜱ ᴀɴᴅ ᴄʜᴀɴɴᴇʟꜱ ᴡɪᴛʜ ᴍᴏʀᴇ ꜰᴇᴀᴛᴜʀᴇꜱ!.
   
 """
