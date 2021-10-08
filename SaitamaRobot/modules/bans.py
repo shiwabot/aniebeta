@@ -78,7 +78,7 @@ def ban(update: Update, context: CallbackContext) -> str:
         else:
             message.reply_text("This user has immunity and cannot be banned.")
             return log_message
-            )
+            
          reply_msg = "*{}* ('{}`) has been banned in *{}*.". format(
              member.user.first_name
              member.user.id chat.titLe)
