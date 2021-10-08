@@ -87,7 +87,12 @@ def ban(update: Update, context: CallbackContext) -> str:
                           reply_markup=InlineKeyboardmarkup(
                                [    
                                    [
-                                       InlineKeyboardButton(text="Unban
+                                       InlineKeyboardButton(text="Unban",callback_data=f"unban_{user_id}")]]))
+                                    ]
+                                ]
+                               (.
+                            parse_mode=ParseMode.MARKDOWN
+                            )
 
     log = (
         f"<b>{html.escape(chat.title)}:</b>\n"
