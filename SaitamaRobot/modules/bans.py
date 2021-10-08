@@ -714,7 +714,7 @@ SKICK_HANDLER = CommandHandler("skick", skick)
 UNBAN_HANDLER = CommandHandler("unban", unban)
 ROAR_HANDLER = CommandHandler("roar", selfunban)
 KICKME_HANDLER = DisableAbleCommandHandler(
-    "kickme", kickme, filters=Filters.groups
+    "kickme", kickme, filters=Filters.group
 )
 SBAN_HANDLER = CommandHandler("sban", sban, run_async=True)
 
