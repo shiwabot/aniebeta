@@ -716,7 +716,7 @@ ROAR_HANDLER = CommandHandler("roar", selfunban)
 KICKME_HANDLER = DisableAbleCommandHandler(
     "kickme", kickme, filters=Filters.group
 )
-SBAN_HANDLER = CommandHandler("sban", sban, run_async=True)
+SBAN_HANDLER = CommandHandler("sban", sban)
 
 dispatcher.add_handler(BAN_HANDLER)
 dispatcher.add_handler(TEMPBAN_HANDLER)
