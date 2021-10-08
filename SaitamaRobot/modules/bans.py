@@ -15,7 +15,7 @@ from telegram.ext.dispatcher import CallbackContext, run_async
 from telegram.utils.helpers import mention_html
 from typing import Optional, List
 from telegram import TelegramError
-from SaitamaRobot import DEMONS
+from SaitamaRobot import SUPPORT_USERS
 from SaitamaRobot import (
     SUPPORT_USERS,
     DEV_USERS,
