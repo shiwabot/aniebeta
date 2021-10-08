@@ -77,28 +77,28 @@ def ban(update: Update, context: CallbackContext) -> str:
 
     if is_user_ban_protected(chat, user_id, member) and user not in DEV_USERS:
         if user_id == OWNER_ID:
-            message.reply_text("Trying to put me against a God level Hunter huh?")
+            message.reply_text("Trying to put me against my creator huh?")
             return log_message
         elif user_id in DEV_USERS:
             message.reply_text("I can't act against our own.")
             return log_message
-        elif user_id in DRAGONS:
+        elif user_id in SUDO_USERS:
             message.reply_text(
-                "Fighting this S-RANK HUNTER here will put civilian lives at risk."
+                "Fighting this Sudo User here will put civilian lives at risk."
             )
             return log_message
-        elif user_id in DEMONS:
+        elif user_id in SUPPORT_USERS:
             message.reply_text(
-                "Bring an order from SOLO•GUILD to fight a A-RANK HUNTER."
+                "Bring an order from my Creator to fight a Support User."
             )
             return log_message
-        elif user_id in TIGERS:
+        elif user_id in TIGER_USERS:
             message.reply_text(
-                "Bring an order from SOLO•GUILD to fight a B-RANK HUNTER."
+                "Bring an order from my Creator to fight a Tiger User."
             )
             return log_message
-        elif user_id in WOLVES:
-            message.reply_text("C-RANK HUNTER abilities make them ban immune!")
+        elif user_id in WHITELIST_USERS:
+            message.reply_text("Whitelisted users abilities make them ban immune!")
             return log_message
         else:
             message.reply_text("This user has immunity and cannot be banned.")
@@ -117,7 +117,7 @@ def ban(update: Update, context: CallbackContext) -> str:
         chat.kick_member(user_id)
         # bot.send_sticker(chat.id, BAN_STICKER)  # banhammer marie sticker
         reply = (
-            f"<b>Banned❗</b>\n"
+            f"<b>Banned ! </b>\n"
             f"<b>• User:</b> {mention_html(member.user.id, html.escape(member.user.first_name))}"
         )
         if reason:
@@ -129,9 +129,9 @@ def ban(update: Update, context: CallbackContext) -> str:
                 [
                     [
                         InlineKeyboardButton(
-                            text="Unban❗", callback_data=f"unban_un={user_id}"
+                            text="Unban", callback_data=f"unban_un={user_id}"
                         ),
-                        InlineKeyboardButton(text="Delete❓", callback_data="unban_del"),
+                        InlineKeyboardButton(text="Delete", callback_data="unban_del"),
                     ]
                 ]
             ),
@@ -286,7 +286,7 @@ def temp_ban(update: Update, context: CallbackContext) -> str:
     try:
         chat.kick_member(user_id, until_date=bantime)
         reply_msg = (
-            f"❗<b>Time Banned</b>\n"
+            f"! <b>Time Banned</b>\n"
             f"<b>• User:</b> {mention_html(member.user.id, html.escape(member.user.first_name))}\n"
             f"<b>• Banned for: {time_val}</b>"
         )
@@ -301,9 +301,9 @@ def temp_ban(update: Update, context: CallbackContext) -> str:
                 [
                     [
                         InlineKeyboardButton(
-                            text="Unban❗", callback_data=f"unban_un={user_id}"
+                            text="Unban", callback_data=f"unban_un={user_id}"
                         ),
-                        InlineKeyboardButton(text="Delete❓", callback_data="unban_del"),
+                        InlineKeyboardButton(text="Delete", callback_data="unban_del"),
                     ]
                 ]
             ),
