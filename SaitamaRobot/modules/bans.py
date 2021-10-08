@@ -22,7 +22,7 @@ from SaitamaRobot import (
     SUDO_USERS,
     LOGGER,
     OWNER_ID,
-    TIGERS_USERS,
+    TIGER_USERS,
     WHITELIST_USERS,
     dispatcher,
 )
