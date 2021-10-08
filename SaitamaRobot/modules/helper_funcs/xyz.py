@@ -38,7 +38,6 @@ class IgrisxHandler:
                             command,
                             func,
                             filters=filters,
-                            run_async=run_async,
                             pass_args=pass_args,
                             admin_ok=admin_ok,
                         ),
@@ -49,8 +48,7 @@ class IgrisxHandler:
                         CommandHandler(
                             command,
                             func,
-                            filters=filters,
-                            run_async=run_async,
+                            filters=filters,                            
                             pass_args=pass_args,
                         ),
                         group,
@@ -64,8 +62,7 @@ class IgrisxHandler:
                         DisableAbleCommandHandler(
                             command,
                             func,
-                            filters=filters,
-                            run_async=run_async,
+                            filters=filters,                            
                             pass_args=pass_args,
                             admin_ok=admin_ok,
                             pass_chat_data=pass_chat_data,
@@ -76,8 +73,7 @@ class IgrisxHandler:
                         CommandHandler(
                             command,
                             func,
-                            filters=filters,
-                            run_async=run_async,
+                            filters=filters,                            
                             pass_args=pass_args,
                             pass_chat_data=pass_chat_data,
                         )
@@ -159,8 +155,7 @@ class IgrisxHandler:
             self._dispatcher.add_handler(
                 InlineQueryHandler(
                     pattern=pattern,
-                    callback=func,
-                    run_async=run_async,
+                    callback=func,                    
                     pass_user_data=pass_user_data,
                     pass_chat_data=pass_chat_data,
                     chat_types=chat_types,
