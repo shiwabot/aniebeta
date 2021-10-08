@@ -137,7 +137,7 @@ class IgrisxHandler:
         def _callbackquery(func):
             self._dispatcher.add_handler(
                 CallbackQueryHandler(
-                    pattern=pattern, callback=func, run_async=run_async
+                    pattern=pattern, callback=func
                 )
             )
             LOGGER.debug(
