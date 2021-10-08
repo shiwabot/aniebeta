@@ -78,10 +78,10 @@ def ban(update: Update, context: CallbackContext) -> str:
     if is_user_ban_protected(chat, user_id, member) and user not in DEV_USERS:
         if user_id == OWNER_ID:
             message.reply_text("Trying to put me against my creator huh?")
-            return log_message
+#             return log_message
         elif user_id in DEV_USERS:
             message.reply_text("I can't act against our own.")
-            return log_message
+#             return log_message
         elif user_id in SUDO_USERS:
             message.reply_text(
                 "Fighting this Sudo User here will put civilian lives at risk."
@@ -91,12 +91,12 @@ def ban(update: Update, context: CallbackContext) -> str:
             message.reply_text(
                 "You can't ban HeLLxGodLike"
             )
-            return log_message
+#             return log_message
         elif user_id in SUPPORT_USERS:
             message.reply_text(
                 "Bring an order from my Creator to fight a Support User."
             )
-            return log_message
+#             return log_message
         elif user_id in TIGER_USERS:
             message.reply_text(
                 "Bring an order from my Creator to fight a Tiger User."
@@ -104,10 +104,10 @@ def ban(update: Update, context: CallbackContext) -> str:
             return log_message
         elif user_id in WHITELIST_USERS:
             message.reply_text("Whitelisted users abilities make them ban immune!")
-            return log_message
+#             return log_message
         else:
             message.reply_text("This user has immunity and cannot be banned.")
-            return log_message
+#             return log_message
 
     log = (
         f"<b>{html.escape(chat.title)}:</b>\n"
