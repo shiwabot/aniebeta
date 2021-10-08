@@ -8,6 +8,7 @@ from telegram.ext import (
     MessageHandler,
     CallbackQueryHandler,
     InlineQueryHandler,
+    run_async,
 )
 from telegram.ext.filters import BaseFilter
 from SaitamaRobot import dispatcher as d, LOGGER
