@@ -17,13 +17,13 @@ from typing import Optional, List
 from telegram import TelegramError
 from SaitamaRobot import DEMONS
 from SaitamaRobot import (
-    DEMONS,
+    SUPPORT_USERS,
     DEV_USERS,
-    DRAGONS,
+    SUDO_USERS,
     LOGGER,
     OWNER_ID,
-    TIGERS,
-    WOLVES,
+    TIGERS_USERS,
+    WHITELIST_USERS,
     dispatcher,
 )
 from SaitamaRobot.modules.disable import DisableAbleCommandHandler
