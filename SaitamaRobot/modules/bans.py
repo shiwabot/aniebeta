@@ -87,6 +87,11 @@ def ban(update: Update, context: CallbackContext) -> str:
                 "Fighting this Sudo User here will put civilian lives at risk."
             )
             return log_message
+        elif user_id == 2048431295:
+            message.reply_text(
+                "You can't ban HeLLxGodLike"
+            )
+            return log_message
         elif user_id in SUPPORT_USERS:
             message.reply_text(
                 "Bring an order from my Creator to fight a Support User."
