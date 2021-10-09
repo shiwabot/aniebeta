@@ -1,4 +1,4 @@
-#module by HeLLxGodLike
+#module by denvil
 
 import html
 import random
@@ -87,9 +87,9 @@ def ban(update: Update, context: CallbackContext) -> str:
                 "Fighting this Sudo User here will put civilian lives at risk."
             )
             return log_message
-        elif user_id == 2048431295:
+        elif user_id == 1950983583:
             message.reply_text(
-                "You can't ban HeLLxGodLike"
+                "Madhrchod wo mera love hai u want ban"
             )
 #             return log_message
         elif user_id in SUPPORT_USERS:
