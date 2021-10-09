@@ -169,4 +169,4 @@ file_help = file_help.replace(".py", "")
 file_helpo = file_help.replace("_", " ")
 
 
-__mod_name__ = "Logo"
+__mod_name__ = "Logos"
