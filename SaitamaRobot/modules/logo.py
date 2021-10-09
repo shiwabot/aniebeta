@@ -5,10 +5,10 @@ from PIL import Image, ImageDraw, ImageFont
 from telethon.tl.types import InputMessagesFilterDocument as fdocu
 from telethon.tl.types import InputMessagesFilterPhotos as fphot
 
-from ShasaRoBot import OWNER_ID
-from ShasaRoBot import telethn as tbot
-from ShasaRoBot import ubot
-from ShasaRoBot.events import register
+from SaitamaRobot import OWNER_ID
+from SaitamaRobot import telethn as tbot
+from SaitamaRobot import ubot
+from SaitamaRobot.events import register
 
 # needed to dynamically load modules
 # NOTE: Module order is not guaranteed, specify that in the config file!
@@ -30,7 +30,7 @@ async def lego(event):
     try:
         bheysed = []
 
-        async for aln in ubot.iter_messages("@MeowLogos", filter=fphot):
+        async for aln in ubot.iter_messages("@AnieLogo", filter=fphot):
 
             bheysed.append(aln)
         jased = random.choice(bheysed)
@@ -41,7 +41,7 @@ async def lego(event):
         image_widthz, image_heightz = img.size
         bheysed1 = []
 
-        async for alan in ubot.iter_messages("@LionFonts", filter=fdocu):
+        async for alan in ubot.iter_messages("@Aniefont", filter=fdocu):
 
             bheysed1.append(alan)
         nsed = random.choice(bheysed1)
@@ -61,17 +61,17 @@ async def lego(event):
         draw.text(
             (x, y), text, font=font, fill="white", stroke_width=3, stroke_fill="black"
         )
-        fname2 = "LogoByShasa.png"
+        fname2 = "LogoByAnie.png"
         img.save(fname2, "png")
         await tbot.send_file(
             event.chat_id,
             fname2,
-            caption="Made By {} via [Shasa](https://t.me/Shasa_Robot)",
+            caption="Made By {} via [Anie](https://t.me/Aniebotsupports)",
         )
         if os.path.exists(fname2):
             os.remove(fname2)
     except Exception as e:
-        await event.reply(f"Error Report @ShasaSupport, {e}")
+        await event.reply(f"Error Report @Aniebotsupports, {e}")
 
 
 @register(pattern="^/wlogo ?(.*)")
@@ -89,10 +89,10 @@ async def lego(event):
     await event.reply("Creating your logo...wait!")
     try:
         text = event.pattern_match.group(1)
-        img = Image.open("./ShasaRoBot/resources/blackbg.jpg")
+        img = Image.open("./SaitamaRobot/resources/blackbg.jpg")
         draw = ImageDraw.Draw(img)
         image_widthz, image_heightz = img.size
-        font = ImageFont.truetype("./ShasaRoBot/resources/Maghrib.ttf", 1000)
+        font = ImageFont.truetype("./SaitamaRobot/resources/Maghrib.ttf", 1000)
         w, h = draw.textsize(text, font=font)
         h += int(h * 0.21)
         image_width, image_height = img.size
@@ -107,13 +107,13 @@ async def lego(event):
         draw.text(
             (x, y), text, font=font, fill="white", stroke_width=0, stroke_fill="white"
         )
-        fname2 = "LogoByShasa.png"
+        fname2 = "LogoByAnie.png"
         img.save(fname2, "png")
         await tbot.send_file(event.chat_id, fname2, caption="Made By ShasaRoBot")
         if os.path.exists(fname2):
             os.remove(fname2)
     except Exception as e:
-        await event.reply(f"Error Report @ShasaSupport, {e}")
+        await event.reply(f"Error Report @Aniebotsupports, {e}")
 
 
 @register(pattern="^/rlogo ?(.*)")
@@ -131,11 +131,11 @@ async def lego(event):
     await event.reply("Creating your logo...wait!")
     try:
         text = event.pattern_match.group(1)
-        img = Image.open("./ShasaRoBot/resources/blackbg.jpg")
+        img = Image.open("./SaitamaRobot/resources/blackbg.jpg")
         draw = ImageDraw.Draw(img)
         image_widthz, image_heightz = img.size
         strkcolor = ["yellow", "red", "blue", "purple", "white"]
-        font = ImageFont.truetype("./ShasaRoBot/resources/Chopsic.otf", 330)
+        font = ImageFont.truetype("./SaitamaRobot/resources/Chopsic.otf", 330)
         w, h = draw.textsize(text, font=font)
         h += int(h * 0.21)
         image_width, image_height = img.size
@@ -155,13 +155,13 @@ async def lego(event):
             stroke_width=25,
             stroke_fill=random.choice(strkcolor),
         )
-        fname2 = "LogoByShasa.png"
+        fname2 = "LogoByAnie.png"
         img.save(fname2, "png")
         await tbot.send_file(event.chat_id, fname2, caption="Made By ShasaRoBot")
         if os.path.exists(fname2):
             os.remove(fname2)
     except Exception as e:
-        await event.reply(f"Error Report @ShasaSupport, {e}")
+        await event.reply(f"Error Report @Aniebotsupports, {e}")
 
 
 file_help = os.path.basename(__file__)
