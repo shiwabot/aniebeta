@@ -6,20 +6,20 @@
 #If you want to improve anything, then you can pull it or join @TheCodeTech.
 #No Copyright Allowed
 
-from Harita import tbot, CMD_HELP, OWNER_ID
+from SaitamaRobot import tbot, OWNER_ID
 import os, re, csv, json, time, uuid, pytz
 from datetime import datetime
-from Harita.function import is_admin
+from SaitamaRobot.function import is_admin
 from io import BytesIO
-import Harita.modules.sql.feds_sql as sql
+import SaitamaRobot.modules.sql.feds_sql as sql
 from telethon import *
 from telethon import Button
 from telethon.tl import *
 from telethon.tl.types import User
-from Harita import *
+from SaitamaRobot import *
 from telethon.tl.functions.users import GetFullUserRequest
 from telethon.tl.types import MessageMediaDocument, DocumentAttributeFilename
-from Harita.events import register
+from SaitamaRobot.events import register
 
 
 
@@ -914,5 +914,3 @@ Federation owner commands:
 - /unsetfedlog <FedId>: Unset the federation log. Events will no longer be logged.
 **Note:** Plugin not yet finished writing.
 """
-
-CMD_HELP.update({file_helpo: [file_helpo, __help__]})
