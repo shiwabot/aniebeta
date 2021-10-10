@@ -1,9 +1,9 @@
-from telethon.tl import functions
+from telethon.tl import helper.funcs
 from telethon.tl import types
-from Harita import tbot
-import Harita.modules.sql.elevated_sql as sql
-from Harita.modules.sql.chats_sql import add_chat, rmchat, is_chat, get_all_chat_id
-from Harita.modules.sql.setbio_sql import set_bio, rm_bio, check_bio_status, is_bio, get_all_bio_id
+from SaitamaRobot import telethn as tbot
+import SaitamaRobot.modules.sql.elevated_sql as sql
+from SaitamaRobot.modules.sql.chats_sql import add_chat, rmchat, is_chat, get_all_chat_id
+from SaitamaRobot.modules.sql.setbio_sql import set_bio, rm_bio, check_bio_status, is_bio, get_all_bio_id
 
 
 async def is_admin(event, user):
