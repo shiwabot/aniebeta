@@ -165,7 +165,7 @@ Chatbot utilizes the Anie's api which allows Kuki to talk and provide a more int
 *Admins only Commands*:
   ➢ `/Chatbot`*:* Shows chatbot control panel
   
- Reports bugs at Kuki-api.tk
+ Reports bugs at @Aniebotsupports 
 *Powered by ItelAi* (https://github/xdenvil) from @Aniebotsupports 
 """
 
