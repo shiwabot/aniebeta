@@ -6,7 +6,7 @@
 #If you want to improve anything, then you can pull it or join @TheCodeTech.
 #No Copyright Allowed
 
-from SaitamaRobot import tbot, OWNER_ID
+from SaitamaRobot import telethn as tbot
 import os, re, csv, json, time, uuid, pytz
 from datetime import datetime
 from SaitamaRobot.function import is_admin
