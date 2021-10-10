@@ -1,4 +1,4 @@
-from telethon.tl import helper.funcs
+from telethon.tl import helper_funcs
 from telethon.tl import types
 from SaitamaRobot import telethn as tbot
 import SaitamaRobot.modules.sql.elevated_sql as sql
