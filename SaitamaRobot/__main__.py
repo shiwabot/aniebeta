@@ -74,7 +74,7 @@ buttons = [
             text="Add me Your group 🔥", url="t.me/Anierobot_bot?startgroup=true"),
     ],
      [
-        InlineKeyboardButton(text="ꜱᴏᴜʀᴄᴇ", url="https://github.com/xdenvil"),
+        InlineKeyboardButton(text="vc Commands", url="https://telegra.ph/Anie-commands-10-09"),
         InlineKeyboardButton(
             text="ᴏꜰꜰɪᴄɪᴀʟ ᴄʜᴀᴛ", url="https://t.me/Aniebotsupports"
         ),
