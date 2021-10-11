@@ -25,12 +25,12 @@ import re
 import os
 import html
 import requests
-import MoeZillaBot.modules.sql.kuki_sql as sql
+import SaitamaRobot.modules.sql.kuki_sql as sql
 
 from time import sleep
 from telegram import ParseMode
-from MoeZillaBot import dispatcher, updater, SUPPORT_CHAT
-from MoeZillaBot.modules.log_channel import gloggable
+from SaitamaRobot import dispatcher, updater, SUPPORT_CHAT
+from SaitamaRobot.modules.log_channel import gloggable
 from telegram import (CallbackQuery, Chat, MessageEntity, InlineKeyboardButton,
                       InlineKeyboardMarkup, Message, ParseMode, Update, Bot, User)
 
@@ -40,8 +40,8 @@ from telegram.ext import (CallbackContext, CallbackQueryHandler, CommandHandler,
 
 from telegram.error import BadRequest, RetryAfter, Unauthorized
 
-from MoeZillaBot.modules.helper_funcs.filters import CustomFilters
-from MoeZillaBot.modules.helper_funcs.chat_status import user_admin, user_admin_no_reply
+from SaitamaRobot.modules.helper_funcs.filters import CustomFilters
+from SaitamaRobot.modules.helper_funcs.chat_status import user_admin, user_admin_no_reply
 
 from telegram.utils.helpers import mention_html, mention_markdown, escape_markdown
 
@@ -65,7 +65,7 @@ def kukirm(update: Update, context: CallbackContext) -> str:
             )
         else:
             update.effective_message.edit_text(
-                "Chatbot disable by {}.".format(mention_html(user.id, user.first_name)),
+                "Anie Chatbot disable by {}.".format(mention_html(user.id, user.first_name)),
                 parse_mode=ParseMode.HTML,
             )
 
@@ -90,7 +90,7 @@ def kukiadd(update: Update, context: CallbackContext) -> str:
             )
         else:
             update.effective_message.edit_text(
-                "Chatbot enable by {}.".format(mention_html(user.id, user.first_name)),
+                "Anie Chatbot enable by {}.".format(mention_html(user.id, user.first_name)),
                 parse_mode=ParseMode.HTML,
             )
 
@@ -140,7 +140,7 @@ def chatbot(update: Update, context: CallbackContext):
             return
         Message = message.text
         bot.send_chat_action(chat_id, action="typing")
-        kukiurl = requests.get('https://www.kuki-api.tk/api/Kuki/MoeZilla/message='+Message)
+        kukiurl = requests.get('http://kukiApi.xyz/api/apikey=KUKIfV2d86eRK/anie/Anie/message=hi)
         Kuki = json.loads(kukiurl.text)
         kuki = Kuki['reply']
         sleep(0.3)
@@ -165,8 +165,8 @@ Chatbot utilizes the Kuki's api which allows Kuki to talk and provide a more int
 *Admins only Commands*:
   ➢ `/Chatbot`*:* Shows chatbot control panel
   
- Reports bugs at Kuki-api.tk
-*Powered by ItelAi* (https://github/itelai) from @KukiUpdates
+ Reports bugs at @Aniebotsupports 
+*Powered by denvil
 """
 
 __mod_name__ = "ChatBot"
