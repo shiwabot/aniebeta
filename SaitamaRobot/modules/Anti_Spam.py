@@ -2,23 +2,24 @@
 #By Eviral (github.com/TeamEviral ; t.me/Eviral)
 #Don't Forget to give credit and make your source public.
 
-from Harita import CMD_HELP, BOT_ID
+from SaitamaRobot import BOT_ID
 import nude
 import html
 import re
 import emoji
 import asyncio
-from Harita.modules.sql import cleaner_sql as sql
+from SaitamaRobot.modules.sql import cleaner_sql as sql
 from pymongo import MongoClient
-from Harita import MONGO_DB_URI
-from Harita.events import register
+from SaitamaRobot import MONGO_DB_URI
+from SaitamaRobot.events import register
 from telethon import types, events
 from telethon.tl import *
 from telethon.tl.types import *
-from Harita import *
+from SaitamaRobot import *
 import better_profanity
 from better_profanity import profanity
-from google_trans_new import google_translator
+#from google_trans_new import google_translator 
+from gpytranslate import SyncTranslator
 
 client = MongoClient()
 client = MongoClient(MONGO_DB_URI)
@@ -31,7 +32,7 @@ globalchat = db.globchat
 CMD_STARTERS = "/"
 profanity.load_censor_words_from_file("./profanity_wordlist.txt")
 
-translator = google_translator()
+translator = SyncTranslator()
 
 
 async def can_change_info(message):
@@ -59,7 +60,7 @@ async def is_register_admin(chat, user):
         return True
 
 
-@register(pattern="^/cleanbluetext ?(.*)")
+@register(pattern="^/cleanbluetexts ?(.*)")
 async def _(event):
     if event.is_group:
         if not await can_change_info(message=event):
@@ -95,7 +96,7 @@ async def _(event):
         await event.reply(reply, parse_mode="html")
 
 
-@register(pattern="^/ignorecleanbluetext ?(.*)")
+@register(pattern="^/ignorecleanbluetexts ?(.*)")
 async def _(event):
     if event.is_group:
         if not await can_change_info(message=event):
@@ -121,7 +122,7 @@ async def _(event):
         await event.reply(reply)
 
 
-@register(pattern="^/unignorecleanbluetext ?(.*)")
+@register(pattern="^/unignorecleanbluetexts ?(.*)")
 async def _(event):
     if event.is_group:
         if not await can_change_info(message=event):
@@ -147,7 +148,7 @@ async def _(event):
         await event.reply(reply)
 
 
-@register(pattern="^/listcleanbluetext$")
+@register(pattern="^/listcleanbluetexet$")
 async def _(event):
 
     if event.is_group:
@@ -312,7 +313,7 @@ async def profanity(event):
         return
 
 
-@register(pattern="^/cleanservice(?: |$)(.*)")
+@register(pattern="^/cleanservices(?: |$)(.*)")
 async def cleanservice(event):
     if event.fwd_from:
         return
@@ -487,5 +488,3 @@ __help__ = """
  - /cleanservice on/off: cleans all service messages from telegram
  - /globalmode: let users only speak in english in your group (automatically deletes messages in other languages)
 """
-
-CMD_HELP.update({file_helpo: [file_helpo, __help__]})
