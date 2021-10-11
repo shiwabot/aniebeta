@@ -21,34 +21,35 @@ import emoji
 import nude
 import requests
 from better_profanity import profanity
-from google_trans_new import google_translator
+#from google_trans_new import google_translator
+from gpytranslate import SyncTranslator
 from telethon import events
 from telethon.tl.types import ChatBannedRights
 
-from EvilBot import BOT_ID
-from EvilBot.conf import get_int_key, get_str_key
+from SaitamaRobot import BOT_ID
+from SaitamaRobot.conf import get_int_key, get_str_key
 
-# from EvilBot.db.mongo_helpers.nsfw_guard import add_chat, get_all_nsfw_chats, is_chat_in_db, rm_chat
-from EvilBot.pyrogramee.telethonbasics import is_admin
-from EvilBot.events import register
-from EvilBot import MONGO_DB_URI 
+# from SaitamaRobot.db.mongo_helpers.nsfw_guard import add_chat, get_all_nsfw_chats, is_chat_in_db, rm_chat
+from SaitamaRobot.pyrogramee.telethonbasics import is_admin
+from SaitamaRobot.events import register
+from SaitamaRobot import MONGO_DB_URI 
 from pymongo import MongoClient
-from EvilBot.modules.sql_extended.nsfw_watch_sql import (
+from SaitamaRobot.modules.sql_extended.nsfw_watch_sql import (
     add_nsfwatch,
     get_all_nsfw_enabled_chat,
     is_nsfwatch_indb,
     rmnsfwatch,
 )
-from EvilBot import telethn as tbot
+from SaitamaRobot import telethn as tbot
 
-translator = google_translator()
+translator = SyncTranslator()
 MUTE_RIGHTS = ChatBannedRights(until_date=None, send_messages=False)
 
 MONGO_DB_URI = get_str_key("MONGO_DB_URI")
 
 client = MongoClient()
 client = MongoClient(MONGO_DB_URI)
-db = client["EvilBot"]
+db = client["saitama"]
 
 async def is_nsfw(event):
     lmao = event
