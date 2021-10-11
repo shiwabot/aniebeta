@@ -20,6 +20,7 @@ import better_profanity
 from better_profanity import profanity
 #from google_trans_new import google_translator 
 from gpytranslate import SyncTranslator
+from SaitamaRobot import telethn as tbot
 
 client = MongoClient()
 client = MongoClient(MONGO_DB_URI)
