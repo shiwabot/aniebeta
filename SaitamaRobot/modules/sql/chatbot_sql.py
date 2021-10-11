@@ -27,7 +27,7 @@ SOFTWARE.
 import threading
 
 from sqlalchemy import Column, String
-from Cutiepii_Robot.modules.sql import BASE, SESSION
+from SaitamaRobot.modules.sql import BASE, SESSION
 
 class KukiChats(BASE):
     __tablename__ = "kuki_chats"
