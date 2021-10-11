@@ -1,50 +1,49 @@
-"""
-MIT License
+# Copyright (C) 2021 MoeZilla
 
-Copyright (C) 2021 xdenvil 
+# This file is part of Kuki (Telegram Bot)
 
-This file is part of @Anierobot_bot (Telegram Bot)
+# Follow My Github Id https://github.com/MoeZilla/
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as
+# published by the Free Software Foundation, either version 3 of the
+# License, or (at your option) any later version.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU Affero General Public License for more details.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-"""
+# You should have received a copy of the GNU Affero General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+
+
 
 import json
 import re
 import os
 import html
 import requests
-import SaitamaRobot.modules.sql.chatbot_sql as sql
+import MoeZillaBot.modules.sql.kuki_sql as sql
 
 from time import sleep
 from telegram import ParseMode
+from MoeZillaBot import dispatcher, updater, SUPPORT_CHAT
+from MoeZillaBot.modules.log_channel import gloggable
 from telegram import (CallbackQuery, Chat, MessageEntity, InlineKeyboardButton,
                       InlineKeyboardMarkup, Message, ParseMode, Update, Bot, User)
+
 from telegram.ext import (CallbackContext, CallbackQueryHandler, CommandHandler,
                           DispatcherHandlerStop, Filters, MessageHandler,
                           run_async)
-from telegram.error import BadRequest, RetryAfter, Unauthorized
-from telegram.utils.helpers import mention_html, mention_markdown, escape_markdown
 
-from SaitamaRobot.modules.helper_funcs.filters import CustomFilters
-from SaitamaRobot.modules.helper_funcs.chat_status import user_admin, user_admin_no_reply
-from SaitamaRobot import dispatcher, updater, SUPPORT_CHAT
-from SaitamaRobot.modules.log_channel import gloggable
+from telegram.error import BadRequest, RetryAfter, Unauthorized
+
+from MoeZillaBot.modules.helper_funcs.filters import CustomFilters
+from MoeZillaBot.modules.helper_funcs.chat_status import user_admin, user_admin_no_reply
+
+from telegram.utils.helpers import mention_html, mention_markdown, escape_markdown
 
  
 @user_admin_no_reply
@@ -66,7 +65,7 @@ def kukirm(update: Update, context: CallbackContext) -> str:
             )
         else:
             update.effective_message.edit_text(
-                "Anie Chatbot disable by {}.".format(mention_html(user.id, user.first_name)),
+                "Chatbot disable by {}.".format(mention_html(user.id, user.first_name)),
                 parse_mode=ParseMode.HTML,
             )
 
@@ -91,7 +90,7 @@ def kukiadd(update: Update, context: CallbackContext) -> str:
             )
         else:
             update.effective_message.edit_text(
-                "Anie Chatbot enable by {}.".format(mention_html(user.id, user.first_name)),
+                "Chatbot enable by {}.".format(mention_html(user.id, user.first_name)),
                 parse_mode=ParseMode.HTML,
             )
 
@@ -102,7 +101,7 @@ def kukiadd(update: Update, context: CallbackContext) -> str:
 def kuki(update: Update, context: CallbackContext):
     user = update.effective_user
     message = update.effective_message
-    msg = "Choose an option"
+    msg = f"Choose an option"
     keyboard = InlineKeyboardMarkup([[
         InlineKeyboardButton(
             text="Enable",
@@ -141,7 +140,7 @@ def chatbot(update: Update, context: CallbackContext):
             return
         Message = message.text
         bot.send_chat_action(chat_id, action="typing")
-        kukiurl = requests.get('https://www.kukiapi.xyz/api/apikey=KUKIfV2d86eRK/Anie/denvil/message='+Message)
+        kukiurl = requests.get('https://www.kuki-api.tk/api/Kuki/MoeZilla/message='+Message)
         Kuki = json.loads(kukiurl.text)
         kuki = Kuki['reply']
         sleep(0.3)
@@ -149,7 +148,7 @@ def chatbot(update: Update, context: CallbackContext):
 
 def list_all_chats(update: Update, context: CallbackContext):
     chats = sql.get_all_kuki_chats()
-    text = "<b>Cutiepii Enabled Chats</b>\n"
+    text = "<b>KUKI-Enabled Chats</b>\n"
     for chat in chats:
         try:
             x = context.bot.get_chat(int(*chat))
@@ -163,24 +162,24 @@ def list_all_chats(update: Update, context: CallbackContext):
 
 __help__ = """
 Chatbot utilizes the Kuki's api which allows Kuki to talk and provide a more interactive group chat experience.
-
 *Admins only Commands*:
   ➢ `/Chatbot`*:* Shows chatbot control panel
-
-*Powered by @Aniebotsupports*
+  
+ Reports bugs at Kuki-api.tk
+*Powered by ItelAi* (https://github/itelai) from @KukiUpdates
 """
 
 __mod_name__ = "ChatBot"
 
 
-CHATBOTK_HANDLER = CommandHandler("chatbot", kuki, run_async=True)
-ADD_CHAT_HANDLER = CallbackQueryHandler(kukiadd, pattern=r"add_chat", run_async=True)
-RM_CHAT_HANDLER = CallbackQueryHandler(kukirm, pattern=r"rm_chat", run_async=True)
+CHATBOTK_HANDLER = CommandHandler("chatbot", kuki)
+ADD_CHAT_HANDLER = CallbackQueryHandler(kukiadd, pattern=r"add_chat")
+RM_CHAT_HANDLER = CallbackQueryHandler(kukirm, pattern=r"rm_chat")
 CHATBOT_HANDLER = MessageHandler(
     Filters.text & (~Filters.regex(r"^#[^\s]+") & ~Filters.regex(r"^!")
-                    & ~Filters.regex(r"^\/")), chatbot, run_async=True)
+                    & ~Filters.regex(r"^\/")), chatbot)
 LIST_ALL_CHATS_HANDLER = CommandHandler(
-    "allchats", list_all_chats, filters=CustomFilters.dev_filter, run_async=True)
+    "allchats", list_all_chats, filters=CustomFilters.dev_filter)
 
 dispatcher.add_handler(ADD_CHAT_HANDLER)
 dispatcher.add_handler(CHATBOTK_HANDLER)
