@@ -1,9 +1,9 @@
 """
 MIT License
 
-Copyright (C) 2021 Awesome-RJ
+Copyright (C) 2021 xdenvil 
 
-This file is part of @Cutiepii_Robot (Telegram Bot)
+This file is part of @Anierobot_bot (Telegram Bot)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -29,7 +29,7 @@ import re
 import os
 import html
 import requests
-import Cutiepii_Robot.modules.sql.chatbot_sql as sql
+import SaitamaRobot.modules.sql.chatbot_sql as sql
 
 from time import sleep
 from telegram import ParseMode
@@ -41,10 +41,10 @@ from telegram.ext import (CallbackContext, CallbackQueryHandler, CommandHandler,
 from telegram.error import BadRequest, RetryAfter, Unauthorized
 from telegram.utils.helpers import mention_html, mention_markdown, escape_markdown
 
-from Cutiepii_Robot.modules.helper_funcs.filters import CustomFilters
-from Cutiepii_Robot.modules.helper_funcs.chat_status import user_admin, user_admin_no_reply
-from Cutiepii_Robot import dispatcher, updater, SUPPORT_CHAT
-from Cutiepii_Robot.modules.log_channel import gloggable
+from SaitamaRobot.modules.helper_funcs.filters import CustomFilters
+from SaitamaRobot.modules.helper_funcs.chat_status import user_admin, user_admin_no_reply
+from SaitamaRobot import dispatcher, updater, SUPPORT_CHAT
+from SaitamaRobot.modules.log_channel import gloggable
 
  
 @user_admin_no_reply
@@ -141,7 +141,7 @@ def chatbot(update: Update, context: CallbackContext):
             return
         Message = message.text
         bot.send_chat_action(chat_id, action="typing")
-        kukiurl = requests.get('https://www.kukiapi.xyz/api/apikey=KUKIIpKP9ma73/botname/owner/message='+Message)
+        kukiurl = requests.get('https://www.kukiapi.xyz/api/apikey=KUKIfV2d86eRK/Anie/denvil/message='+Message)
         Kuki = json.loads(kukiurl.text)
         kuki = Kuki['reply']
         sleep(0.3)
@@ -167,7 +167,7 @@ Chatbot utilizes the Kuki's api which allows Kuki to talk and provide a more int
 *Admins only Commands*:
   ➢ `/Chatbot`*:* Shows chatbot control panel
 
-*Powered by ItelAi*
+*Powered by @Aniebotsupports*
 """
 
 __mod_name__ = "ChatBot"
