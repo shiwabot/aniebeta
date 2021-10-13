@@ -110,4 +110,3 @@ async def _(event):
     else:
         await event.reply(mentions)
     await event.delete()
-"""
