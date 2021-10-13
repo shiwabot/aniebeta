@@ -291,9 +291,6 @@ async def profanity(event):
         await event.reply("You Can Only enable global mode Watch in Groups.")
         return
     event.pattern_match.group(1)
-    if not await is_admin(event, BOT_ID):
-        await event.reply("`I Should Be Admin To Do This!`")
-        return
     if await is_admin(event, event.message.sender_id):
 
         input = event.pattern_match.group(1)
