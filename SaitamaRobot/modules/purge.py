@@ -110,13 +110,4 @@ async def _(event):
     else:
         await event.reply(mentions)
     await event.delete()
-
-
-__help__ = """
-*Admin only:*
- - /del: deletes the message you replied to
- - /purge: deletes all messages between this and the replied to message.
- - /purge <integer X>: deletes the replied message, and X messages following it if replied to a message.
 """
-
-__mod_name__ = "Purges"
