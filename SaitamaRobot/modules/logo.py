@@ -2,13 +2,12 @@ import os
 import random
 
 from PIL import Image, ImageDraw, ImageFont
-from telethon.tl.types import InputMessagesFilterDocument as fdocu
-from telethon.tl.types import InputMessagesFilterPhotos as fphot
-
 from SaitamaRobot import OWNER_ID
 from SaitamaRobot import telethn as tbot
 from SaitamaRobot import ubot
 from SaitamaRobot.events import register
+from telethon.tl.types import InputMessagesFilterDocument as fdocu
+from telethon.tl.types import InputMessagesFilterPhotos as fphot
 
 # needed to dynamically load modules
 # NOTE: Module order is not guaranteed, specify that in the config file!
@@ -26,7 +25,7 @@ async def lego(event):
             return
         else:
             pass
-    await event.reply("```Creating logo...wait!```")
+    xnxx = await event.reply("```Creating logo...wait!```")
     try:
         bheysed = []
 
@@ -63,10 +62,11 @@ async def lego(event):
         )
         fname2 = "LogoByAnie.png"
         img.save(fname2, "png")
+        await xnxx.delete()
         await tbot.send_file(
             event.chat_id,
             fname2,
-            caption="Made By {} via [Anie](https://t.me/Aniebotsupports)",
+            caption=f"Made By {event.sender.first_name} via [Anie](https://t.me/Aniebotsupports)",
         )
         if os.path.exists(fname2):
             os.remove(fname2)
