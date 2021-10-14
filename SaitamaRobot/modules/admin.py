@@ -587,6 +587,37 @@ def unpin(update: Update, context: CallbackContext) -> str:
 
 @run_async
 @bot_admin
+def pinned(update: Update, context: CallbackContext) -> str:
+    bot = context.bot
+    msg = update.effective_message
+    msg_id = (
+        update.effective_message.reply_to_message.message_id
+        if update.effective_message.reply_to_message
+        else update.effective_message.message_id
+    )
+
+    chat = bot.getChat(chat_id=msg.chat.id)
+    if chat.pinned_message:
+        pinned_id = chat.pinned_message.message_id
+        if msg.chat.username:
+            link_chat_id = msg.chat.username
+            message_link = f"https://t.me/{link_chat_id}/{pinned_id}"
+        elif (str(msg.chat.id)).startswith("-100"):
+            link_chat_id = (str(msg.chat.id)).replace("-100", "")
+            message_link = f"https://t.me/c/{link_chat_id}/{pinned_id}"
+
+        msg.reply_text(
+            f'The pinned message of {html.escape(chat.title)} is <a href="{message_link}">here</a>.',
+            reply_to_message_id=msg_id,
+            parse_mode=ParseMode.HTML,
+            disable_web_page_preview=True,
+        )
+    else:
+        msg.reply_text(f"There is no pinned message in {html.escape(chat.title)}!")
+
+
+@run_async
+@bot_admin
 @user_admin
 @connection_status
 def invite(update: Update, context: CallbackContext):
@@ -754,7 +785,8 @@ def __chat_settings__(chat_id, user_id):
 
 __help__ = """
  • `/admins`*:* list of admins in the chat
- • `adminlist`*:* List of admins in chat
+ • `/adminlist`*:* List of admins in chat
+ • `/pinned`*:* to get the current pinned message
 
 *Admins only:*
  • `/pin`*:* silently pins the message replied to - add `'loud'` or `'notify'` to give notifs to users.
@@ -779,39 +811,55 @@ ADMINSLIST_HANDLER = DisableAbleCommandHandler("adminlist", adminslist)
 
 PIN_HANDLER = CommandHandler("pin", pin, filters=Filters.group)
 UNPIN_HANDLER = CommandHandler("unpin", unpin, filters=Filters.group)
+PINNED_HANDLER = CommandHandler("pinned", pinned, filters=Filters.group)
 PERMAPIN_HANDLER = CommandHandler("permapin", permapin, filters=Filters.group)
-PROMOTEALL_HANDLER = DisableAbleCommandHandler(["promoteall", "fullpromote"], promoteall)
+PROMOTEALL_HANDLER = DisableAbleCommandHandler(
+    ["promoteall", "fullpromote"], promoteall
+)
 INVITE_HANDLER = DisableAbleCommandHandler("invitelink", invite)
 
 PROMOTE_HANDLER = DisableAbleCommandHandler("promote", promote)
 DEMOTE_HANDLER = DisableAbleCommandHandler("demote", demote)
-PERMANENT_PIN_SET_HANDLER = CommandHandler("permanentpin", permanent_pin_set, pass_args=True, filters=Filters.group)
-PERMANENT_PIN_HANDLER = MessageHandler(Filters.status_update.pinned_message | Filters.user(777000), permanent_pin)
+PERMANENT_PIN_SET_HANDLER = CommandHandler(
+    "permanentpin", permanent_pin_set, pass_args=True, filters=Filters.group
+)
+PERMANENT_PIN_HANDLER = MessageHandler(
+    Filters.status_update.pinned_message | Filters.user(777000), permanent_pin
+)
 
 ADMIN_REFRESH_HANDLER = CommandHandler(
-    "admincache", refresh_admin, filters=Filters.group)
+    "admincache", refresh_admin, filters=Filters.group
+)
 
 SET_TITLE_HANDLER = CommandHandler("title", set_title)
-#FED_ADMIN_HANDLER = CommandHandler("fedadmin", fed_admin)
+# FED_ADMIN_HANDLER = CommandHandler("fedadmin", fed_admin)
 dispatcher.add_handler(ADMINLIST_HANDLER)
 dispatcher.add_handler(ADMINSLIST_HANDLER)
 dispatcher.add_handler(PIN_HANDLER)
 dispatcher.add_handler(PROMOTEALL_HANDLER)
 dispatcher.add_handler(PERMAPIN_HANDLER)
 dispatcher.add_handler(UNPIN_HANDLER)
+dispatcher.add_handler(PINNED_HANDLER)
 dispatcher.add_handler(INVITE_HANDLER)
 dispatcher.add_handler(PROMOTE_HANDLER)
 dispatcher.add_handler(PERMANENT_PIN_SET_HANDLER)
 dispatcher.add_handler(PERMANENT_PIN_HANDLER)
-#dispatcher.add_handler(XPROMOTE_HANDLER)
+# dispatcher.add_handler(XPROMOTE_HANDLER)
 dispatcher.add_handler(DEMOTE_HANDLER)
 dispatcher.add_handler(SET_TITLE_HANDLER)
-#dispatcher.add_handler(FED_ADMIN_HANDLER)
+# dispatcher.add_handler(FED_ADMIN_HANDLER)
 dispatcher.add_handler(ADMIN_REFRESH_HANDLER)
 
 __mod_name__ = "Admin"
 __command_list__ = ["adminlist", "admins", "invitelink", "promote", "demote"]
 __handlers__ = [
-    ADMINLIST_HANDLER, ADMINSLIST_HANDLER, PIN_HANDLER, UNPIN_HANDLER, INVITE_HANDLER,
-    PROMOTE_HANDLER, DEMOTE_HANDLER, SET_TITLE_HANDLER
+    ADMINLIST_HANDLER,
+    ADMINSLIST_HANDLER,
+    PIN_HANDLER,
+    UNPIN_HANDLER,
+    PINNED_HANDLER,
+    INVITE_HANDLER,
+    PROMOTE_HANDLER,
+    DEMOTE_HANDLER,
+    SET_TITLE_HANDLER,
 ]
