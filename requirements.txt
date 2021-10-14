@@ -3,7 +3,7 @@ emoji
 lxml
 beautifulsoup4
 requests
-sqlalchemy==1.3.20 
+sqlalchemy==1.3.20
 python-telegram-bot==12.8
 cachetools
 psycopg2-binary
@@ -15,7 +15,7 @@ geopy
 nltk
 psutil
 aiohttp
-Pillow>=4.2.0
+pillow
 CurrencyConverter
 google_trans_new
 jikanpy
