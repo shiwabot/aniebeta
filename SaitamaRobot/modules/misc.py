@@ -193,7 +193,7 @@ Group admins/group owners do not need these commands.
  ╠ `/eval`*:* Self explanatory
  ╠ `/sh`*:* Self explanator
  ╚ `/py`*:* Self explanatory.""",
-        parse_mode=ParseMode.MARKDOWN)
+       parse_mode=ParseMode.MARKDOWN)
 
 def approvehelp(update: Update, context):
     update.effective_message.reply_text(
@@ -204,7 +204,7 @@ def approvehelp(update: Update, context):
 - /unapprove: Unapprove of a user. They will now be subject to locks, blacklists, and antiflood again.
 - /approved: List all approved users.
 - /unapproveall unapproved all users """,
-           parse_mode=ParseMode.MARKDOWN)
+        parse_mode=ParseMode.MARKDOWN)
 
 def connecthelp(update: Update, context):
     update.effective_message.reply_text(
@@ -219,7 +219,7 @@ but any member in the group can view your data.
 • /disconnect: Disconnect from a chat 
 • /helpconnect: List available commands that can be used remotely*Admin only:* 
 • /allowconnect <yes/no>: allow a user to connect to a chat"""
-            parse_mode=ParseMode.MARKDOWN)
+         parse_mode=ParseMode.MARKDOWN)
 
 def blacklisthelp(update: Update, context):
     update.effective_message.reply_text(
@@ -232,7 +232,7 @@ A good combo is sometimes to pair this up with warn filters!*NOTE* : Blacklists 
 • `/unblacklist <triggers>`*:* Remove triggers from the blacklist. Same newline logic applies here, so you can remove multiple triggers at once. 
 • `/blacklistmode <off/del/warn/ban/kick/mute/tban/tmute>`*:* Action to perform when someone sends blacklisted words. 
 • `/unblacklistall` Remove All Blacklisted triggers at once [ Chat Owner Only ]"""
-                     parse_mode=ParseMode.MARKDOWN)  
+         parse_mode=ParseMode.MARKDOWN)  
 
 def rulshelp(update: Update, context):
     update.effective_message.reply_text(
