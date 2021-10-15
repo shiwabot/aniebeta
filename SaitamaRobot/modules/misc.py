@@ -219,7 +219,7 @@ but any member in the group can view your data.
 • /disconnect: Disconnect from a chat 
 • /helpconnect: List available commands that can be used remotely*Admin only:* 
 • /allowconnect <yes/no>: allow a user to connect to a chat"""
-                  parse_mode=ParseMode.MARKDOWN)
+            parse_mode=ParseMode.MARKDOWN)
 
 def blacklisthelp(update: Update, context):
     update.effective_message.reply_text(
