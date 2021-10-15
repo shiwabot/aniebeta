@@ -221,15 +221,29 @@ but any member in the group can view your data.
 • /helpconnect: List available commands that can be used remotely*Admin only:* 
 • /allowconnect <yes/no>: allow a user to connect to a chat"""
                   parse_mode=ParseMode.MARKDOWN)
+def blacklisthelp(update: Update, context):
+    update.effective_message.reply_text(
+           """*Examples:*
+Blacklists are used to stop certain triggers from being said in a group. 
+Any time the trigger is mentioned, the message will immediately be deleted. 
+A good combo is sometimes to pair this up with warn filters!*NOTE* : Blacklists do not affect group admins. 
+• `/blacklist`*:* View the current blacklisted words.Admin only: 
+• `/addblacklist <triggers>`*:* Add a trigger to the blacklist. Each line is considered one trigger, so using different lines will allow you to add multiple triggers. 
+• `/unblacklist <triggers>`*:* Remove triggers from the blacklist. Same newline logic applies here, so you can remove multiple triggers at once. 
+• `/blacklistmode <off/del/warn/ban/kick/mute/tban/tmute>`*:* Action to perform when someone sends blacklisted words. 
+• `/unblacklistall` Remove All Blacklisted triggers at once [ Chat Owner Only ]"""
+                     parse_mode=ParseMode.MARKDOWN)  
 
 __help__ = """
 *Available commands:*
 *GlobalHandlers*
-• `/disasterhelp` *:* *Get Disasters Help*
+• `/disasterhelp`*:* *Get Disasters Help*
 *BlacklistSticker*
-• `/blacklistst` *:* Get BlSticker Help
+• `/blacklistst`*:* Get BlSticker Help
+*blacklisthelp*
+•`blacklisthelp`*:* get blacklist help
 *FUN*
-• `/funhelp` *:* Get Fun Help
+• `/funhelp`*:* Get Fun Help
 *Approve*
 •`Approvehelp`*:* get approval help
 *Connect*
