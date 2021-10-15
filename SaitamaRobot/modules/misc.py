@@ -195,6 +195,17 @@ Group admins/group owners do not need these commands.
  ╚ `/py`*:* Self explanatory.""",
         parse_mode=ParseMode.MARKDOWN)
 
+def approvehelp(update: Update, context):
+    update.effective_message.reply_text(
+          """*Examples:*
+
+*Admin commands:*
+- /approval: Check a user's approval status in this chat.
+- /approve: Approve of a user. Locks, blacklists, and antiflood won't apply to them anymore.
+- /unapprove: Unapprove of a user. They will now be subject to locks, blacklists, and antiflood again.
+- /approved: List all approved users.
+- /unapproveall unapproved all users
+
 __help__ = """
 *Available commands:*
 *GlobalHandlers*
@@ -203,6 +214,8 @@ __help__ = """
 • `/blacklistst` *:* Get BlSticker Help
 *FUN*
 • `/funhelp` *:* Get Fun Help
+*Approve*
+•`Approvehelp`*:* get approval help
 *Cleaner*
 • `/cleanerhelp` *:* Get Cleaner Help
 *Markdown:*
