@@ -198,7 +198,6 @@ Group admins/group owners do not need these commands.
 def approvehelp(update: Update, context):
     update.effective_message.reply_text(
          """*Examples:*
-
 *Admin commands:*
 - /approval: Check a user's approval status in this chat.
 - /approve: Approve of a user. Locks, blacklists, and antiflood won't apply to them anymore.
@@ -209,7 +208,7 @@ def approvehelp(update: Update, context):
 
 def connecthelp(update: Update, context):
     update.effective_message.reply_text(
-         """*Examples:* 
+         """ example """
 Sometimes, you just want to add some notes and filters to a group chat, 
 but you don't want everyone to see; This is where connections come in...This allows you to connect to a chat's database, 
 and add things to it without the commands appearing in chat! 
@@ -223,7 +222,7 @@ but any member in the group can view your data.
                   parse_mode=ParseMode.MARKDOWN)
 def blacklisthelp(update: Update, context):
     update.effective_message.reply_text(
-        """*Examples:*
+          """ example """
 Blacklists are used to stop certain triggers from being said in a group. 
 Any time the trigger is mentioned, the message will immediately be deleted. 
 A good combo is sometimes to pair this up with warn filters!*NOTE* : Blacklists do not affect group admins. 
@@ -235,8 +234,7 @@ A good combo is sometimes to pair this up with warn filters!*NOTE* : Blacklists 
                      parse_mode=ParseMode.MARKDOWN)  
 def rulshelp(update: Update, context):
     update.effective_message.reply_text(
-         """*Examples:*
-
+         """ example """
 • `/rules`*:* get the rules for this chat.*Admins only:* 
 • `/setrules <your rules here>`*:* set the rules for this chat. 
 • `/clearrules`*:* clear the rules for this chat."""
