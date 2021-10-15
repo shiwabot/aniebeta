@@ -204,7 +204,7 @@ def approvehelp(update: Update, context):
 - /unapprove: Unapprove of a user. They will now be subject to locks, blacklists, and antiflood again.
 - /approved: List all approved users.
 - /unapproveall unapproved all users """,
-        parse_mode=ParseMode.MARKDOWN)
+        parse_mode=ParseMode.TEXT)
 
 def connecthelp(update: Update, context):
     update.effective_message.reply_text(
