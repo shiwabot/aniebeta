@@ -220,6 +220,7 @@ but any member in the group can view your data.
 • /helpconnect: List available commands that can be used remotely*Admin only:* 
 • /allowconnect <yes/no>: allow a user to connect to a chat"""
                   parse_mode=ParseMode.MARKDOWN)
+
 def blacklisthelp(update: Update, context):
     update.effective_message.reply_text(
           """ example 
@@ -232,6 +233,7 @@ A good combo is sometimes to pair this up with warn filters!*NOTE* : Blacklists 
 • `/blacklistmode <off/del/warn/ban/kick/mute/tban/tmute>`*:* Action to perform when someone sends blacklisted words. 
 • `/unblacklistall` Remove All Blacklisted triggers at once [ Chat Owner Only ]"""
                      parse_mode=ParseMode.MARKDOWN)  
+
 def rulshelp(update: Update, context):
     update.effective_message.reply_text(
          """ example 
