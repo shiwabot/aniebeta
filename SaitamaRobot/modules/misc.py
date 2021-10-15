@@ -233,6 +233,15 @@ A good combo is sometimes to pair this up with warn filters!*NOTE* : Blacklists 
 • `/blacklistmode <off/del/warn/ban/kick/mute/tban/tmute>`*:* Action to perform when someone sends blacklisted words. 
 • `/unblacklistall` Remove All Blacklisted triggers at once [ Chat Owner Only ]"""
                      parse_mode=ParseMode.MARKDOWN)  
+def rulshelp(update: Update, context):
+    update.effective_message.reply_text(
+           """*Examples:*
+
+• `/rules`*:* get the rules for this chat.*Admins only:* 
+• `/setrules <your rules here>`*:* set the rules for this chat. 
+• `/clearrules`*:* clear the rules for this chat."""
+                       parse_mode=ParseMode.MARKDOWN)
+
 
 __help__ = """
 *Available commands:*
@@ -243,6 +252,8 @@ __help__ = """
 *blacklisthelp*
 •`blacklisthelp`*:* get blacklist help
 *FUN*
+*ruls*
+•`Rulshelp`*:* get ruls help
 • `/funhelp`*:* Get Fun Help
 *Approve*
 •`Approvehelp`*:* get approval help
