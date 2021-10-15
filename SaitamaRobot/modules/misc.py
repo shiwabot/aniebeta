@@ -251,9 +251,9 @@ __help__ = """
 • `/blacklistst`*:* Get BlSticker Help
 *blacklisthelp*
 •`blacklisthelp`*:* get blacklist help
-*FUN*
 *ruls*
 •`Rulshelp`*:* get ruls help
+*Fun*
 • `/funhelp`*:* Get Fun Help
 *Approve*
 •`Approvehelp`*:* get approval help
