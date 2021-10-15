@@ -209,7 +209,7 @@ def approvehelp(update: Update, context):
 
 def connecthelp(update: Update, context):
     update.effective_message.reply_text(
-        """*Examples:*
+         """*Examples:* 
 Sometimes, you just want to add some notes and filters to a group chat, 
 but you don't want everyone to see; This is where connections come in...This allows you to connect to a chat's database, 
 and add things to it without the commands appearing in chat! 
@@ -235,7 +235,7 @@ A good combo is sometimes to pair this up with warn filters!*NOTE* : Blacklists 
                      parse_mode=ParseMode.MARKDOWN)  
 def rulshelp(update: Update, context):
     update.effective_message.reply_text(
-        """*Examples:*
+         """*Examples:*
 
 • `/rules`*:* get the rules for this chat.*Admins only:* 
 • `/setrules <your rules here>`*:* set the rules for this chat. 
