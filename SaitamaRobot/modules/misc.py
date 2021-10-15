@@ -232,6 +232,8 @@ __help__ = """
 • `/funhelp` *:* Get Fun Help
 *Approve*
 •`Approvehelp`*:* get approval help
+*Connect*
+•`/connecthelp`*:* get connection help
 *Cleaner*
 • `/cleanerhelp` *:* Get Cleaner Help
 *Markdown:*
