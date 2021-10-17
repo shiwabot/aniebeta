@@ -222,7 +222,6 @@ but any member in the group can view your data.
 
          "parse_mode=ParseMode.HTML"
 
-@run_async
 def blacklisthelp(update: Update, context):
     update.effective_message.reply_text(
           """ example 
