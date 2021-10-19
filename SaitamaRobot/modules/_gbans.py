@@ -4,7 +4,7 @@ from telethon.tl.types import Channel
 from .. import BOT_ID, OWNER_ID, telethn as tbot
 from SaitamaRobot import DEV_USERS, SUDO_USERS, db
 from SaitamaRobot.pyrogramme.telethonbasics import is_admin
-from SaitamaRobot MONGO_DB.chats_db import get_all_chat_id
+from SaitamaRobot.MONGO_DB.chats_db import get_all_chat_id
 
 gbanned = db.gbanned
 asp = db.anti_spam
