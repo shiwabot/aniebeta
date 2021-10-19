@@ -2,7 +2,7 @@ from telethon import Button, events
 from telethon.tl.types import Channel
 
 from .. import BOT_ID, OWNER_ID, telethn as tbot
-from . import DEV_USERS, SUDO_USERS, db, get_user, is_admin
+from SaitamaRobot import DEV_USERS, SUDO_USERS, db, get_user, is_admin
 from .mongodb.chats_db import get_all_chat_id
 
 gbanned = db.gbanned
