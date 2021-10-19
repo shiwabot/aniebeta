@@ -1,9 +1,9 @@
 from telethon import Button, events
 from telethon.tl.types import Channel
 
-from .. import BOT_ID, OWNER_ID, tbot
+from .. import BOT_ID, OWNER_ID, telethn as tbot
 from ..utils import Cbot
-from . import DEVS, SUDO_USERS, db, get_user, is_admin
+from . import DEV_USERS, SUDO_USERS, db, get_user, is_admin
 from .mongodb.chats_db import get_all_chat_id
 
 gbanned = db.gbanned
@@ -77,7 +77,7 @@ gbanned_acc = """
 <b>#Alert</b>
 <i>GBANNED User detected, banned.</i>
 <b>User:</b> <a href="tg://user?id={}">{}</a> (<code>{}</code>)
-<b>Appeal: @NekoChan_Support</b>
+<b>Appeal: @Aniebotsupports</b>
 """
 
 
@@ -110,7 +110,7 @@ CODES = {
 async def gban(event):
     if (
         not event.sender_id in SUDO_USERS
-        and not event.sender_id in DEVS
+        and not event.sender_id in DEV_USERS 
         and not event.sender_id == OWNER_ID
     ):
         return
@@ -157,7 +157,7 @@ async def gban(event):
     if event.sender_id in SUDO_USERS:
         await event.reply(
             "__Your request sent to DEVS waiting for approval. Till that send proofs to DEVS__.",
-            buttons=Button.url("Send here", "t.me/RxturnZbot"),
+            buttons=Button.url("Send here", "t.me/Aniebotsupports"),
         )
         cb_data = str(event.sender_id) + "|" + str(user.id) + "|" + str(cb_reason)
         buttons = [
@@ -183,8 +183,8 @@ async def gban(event):
         )
         buttons = [
             [
-                Button.url("Appeal", "https://t.me/NekoChan_Support"),
-                Button.url("Proofs", "https://t.me/NekoChan_Support"),
+                Button.url("Appeal", "https://t.me/Aniebotsupports"),
+                Button.url("Proofs", "https://t.me/Aniebotsupports"),
             ],
             [
                 Button.url(
@@ -269,8 +269,8 @@ async def cb_gban(event):
             pass
     buttons = [
         [
-            Button.url("Appeal", "t.me/NekoChan_Support"),
-            Button.url("Proofs", "t.me/NekoChan_Support"),
+            Button.url("Appeal", "t.me/Aniebotsupports"),
+            Button.url("Proofs", "t.me/Aniebotsupports"),
         ],
         [
             Button.url(
@@ -358,7 +358,7 @@ async def ungban(event):
         gbanned.delete_one({"user": user.id})
         buttons = [
             [
-                Button.url("Appeal", "https://t.me/NekoChan_Support"),
+                Button.url("Appeal", "https://t.me/Aniebotsupports"),
             ],
             [
                 Button.url(
