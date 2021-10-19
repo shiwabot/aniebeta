@@ -64,4 +64,3 @@ python-arq
 Python_ARQ
 alphabet_detector
 pykeyboard
-get_user
