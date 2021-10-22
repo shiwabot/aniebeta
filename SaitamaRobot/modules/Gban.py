@@ -52,6 +52,28 @@ UNGBAN_ERRORS = {
       message = update.effective_message # type: Optional[Message] 
       chat = update.effective_chat
 
+      user_id, reason = extract_user_and_text(message, args)
+
+      if not user_id: 
+          message.reply_text("You don't seem to be referring to a user.") 
+          return
+
+      if int(user_id) == OWNER_ID: 
+              message.reply_text("Fuck Off🖕, Never Going to GBAN my Owner😡") 
+              return
+
+      if user_id == 920437078: 
+              message.reply_text("There is no way I can gban this user.He is my Creator/Developer") 
+              return
+
+      if int(user_id) in DEV_USERS: 
+              message.reply_text("With His Little Hand Someone Trying To Ban a Apologypse.") 
+              return
+
+      if int(user_id) in SUDO_USERS: 
+              message.reply_text("Yay There is Nothing I Can Do Because This User is Scorpion And I Scare With Scorpions😫") 
+              return
+
 
 
 
