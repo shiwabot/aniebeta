@@ -74,6 +74,40 @@ UNGBAN_ERRORS = {
               message.reply_text("Yay There is Nothing I Can Do Because This User is Scorpion And I Scare With Scorpions😫") 
               return
 
+      if int(user_id) in SUPPORT_USERS: 
+              message.reply_text("Wew You Are Trying To Ban A Mortal So Sed:/") 
+              return 
+
+       if int(user_id) in WHITELIST_USERS: 
+              message.reply_text("I Can't Ban a Knight.") 
+              return
+
+       if user_id == bot.id: 
+              message.reply_text("-_- So funny, lets gban myself why don't I? Nice try.") 
+              return
+
+       try: 
+              user_chat = bot.get_chat(user_id) 
+           except BadRequest as excp: 
+              message.reply_text(excp.message)
+              return
+
+       if user_chat.type != 'private': 
+              message.reply_text("That's not a user!") 
+              return
+      
+       if sql.is_user_gbanned(user_id): if not reason: 
+              message.reply_text("This user is already gbanned; I'd change the reason, but you haven't given me one...") 
+              return
+
+           old_reason = sql.update_gban_reason(user_id, user_chat.username or user_chat.first_name, reason) 
+           if old_reason: 
+              message.reply_text("This user is already gbanned, for the following reason:\n" 
+                                 "<code>{}</code>\n" 
+                                 "I've gone and updated it with your new reason!".format(html.escape(old_reason)), parse_mode=ParseMode.HTML) 
+           else:
+
+
 
 
 
