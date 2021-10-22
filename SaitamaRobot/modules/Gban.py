@@ -106,6 +106,37 @@ UNGBAN_ERRORS = {
                                  "<code>{}</code>\n" 
                                  "I've gone and updated it with your new reason!".format(html.escape(old_reason)), parse_mode=ParseMode.HTML) 
            else:
+               message.reply_text("This user is already gbanned, but had no reason set; I've gone and updated")
+     
+           return 
+
+       message.reply_text("*Getting Ready To GBAN*")
+
+       start_time = time.time() 
+       datetime_fmt = "%H:%M - %d-%m-%Y" 
+       current_time = datetime.utcnow().strftime(datetime_fmt) 
+
+       if chat.type != 'private': 
+           chat_origin = "<b>{} ({})</b>\n".format(html.escape(chat.title), chat.id)
+       else:
+           chat_origin = "<b>{}</b>\n".format(chat.id)
+
+       banner = update.effective_user # type: Optional[User] 
+       log_message = ( 
+                    "<b>Global Ban</b>" \ 
+                    "\n#GBANNED" \ 
+                    "\n<b>Originated from:</b> {}" \ 
+                    "\n<b>Status:</b> <code>Enforcing</code>" \ 
+                    "\n<b>Scorpion User:</b> {}" \ 
+                    "\n<b>User:</b> {}" \ 
+                    "\n<b>ID:</b> <code>{}</code>" \ 
+                    "\n<b>Event Stamp:</b> {}" \ 
+                    "\n<b>Reason:</b> {}".format(chat_origin, mention_html(banner.id, banner.first_name), 
+                                                 mention_html(user_chat.id, user_chat.first_name), 
+                                                              user_chat.id, current_time, reason or "No reason given")) 
+
+
+
 
 
 
