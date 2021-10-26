@@ -4,14 +4,14 @@ import re
 from sys import argv
 from typing import Optional
 
-from GreysonBot import (ALLOW_EXCL, CERT_PATH, DONATION_LINK, LOGGER,
+from SaitamaRobot import (ALLOW_EXCL, CERT_PATH, DONATION_LINK, LOGGER,
                           OWNER_ID, PORT, SUPPORT_CHAT, TOKEN, URL, WEBHOOK,
                           dispatcher, StartTime, telethn, updater)
 # needed to dynamically load modules 
 # NOTE: Module order is not guaranteed, specify that in the config file!
-from GreysonBot.modules import ALL_MODULES
-from GreysonBot.modules.helper_funcs.chat_status import is_user_admin
-from GreysonBot.modules.helper_funcs.misc import paginate_modules
+from SaitamaRobot.modules import ALL_MODULES
+from SaitamaRobot.modules.helper_funcs.chat_status import is_user_admin
+from SaitamaRobot.modules.helper_funcs.misc import paginate_modules
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Update
 from telegram.error import (
     BadRequest,
@@ -58,18 +58,18 @@ def get_readable_time(seconds: int) -> str:
 
 
 PM_START_TEXT = """
-Hello there, I am *Greyson* - I'm here to help you to manage your chats with ease. 
+Hello there, I am *Anie* - I'm here to help you to manage your chats with ease. 
 
 ➡️ Just add me in your group as admin .
 
 Hit /help to know my commands .
 
-You can get my news everyday at @GraysonNews .
+You can get my news everyday at @Aniebots .
 
-Use the /privacy command to view the privacy policy, and interact with your data.
+Use the /help command to view the privacy policy, and interact with your data.
 """
 G_START_TEXT = """
-Hello Greyson here , How can I help you ?
+Hello Anie here , How can I help you ?
 """
 GREYSON_HOME_TEXT = """
 *Excellent!* \nNow the Bot is ready to use!\n\nUse /help to Know all modules and features
@@ -87,7 +87,7 @@ Thank you for your generosity!"""
 buttons = [
     [
         InlineKeyboardButton(
-            text="➕️ Add Grayson to chat!  ➕️", url="t.me/MrGreysonBot?startgroup=true"),
+            text="➕️ Add Anie to chat!  ➕️", url="t.me/Anierobot_bot?startgroup=true"),
     ],
     [
         InlineKeyboardButton(text="📚 Guide 📚", callback_data="guidemenu_"),
@@ -101,14 +101,14 @@ buttons = [
 ]
 
 gbuttons = [[InlineKeyboardButton(text="⚙️ help ⚙️",
-                                  url="http://t.me/MrGreysonBot?start=help")]]
+                                  url="http://t.me/Anierobot_bot?start=help")]]
 
 videobuttons = [[InlineKeyboardButton(text="✅ Done ✅",
                                   callback_data="tutmanu_home")]]
 
 HELP_STRINGS = """
 *Help*
-Hey! My name is Greyson . I am a group management bot, here to help you get around and keep the order in your groups!
+Hey! My name is Anie . I am a group management bot, here to help you get around and keep the order in your groups!
 
 I have lots of handy features, such as flood control, a warning system, a note keeping system, and even predetermined replies on certain keywords.
 
@@ -119,15 +119,15 @@ I have lots of handy features, such as flood control, a warning system, a note k
 
 If you have any bugs or questions on how to use me head to @GreysonChats. \n\nAll commands can be used with the following: / !\n\nAnd the following :-"""
 
-GreysonG_IMG = "https://telegra.ph/file/83dbae46536c4f88a28b7.jpg"
+GreysonG_IMG = "https://telegra.ph/file/7944090b9aca51ef8f562.jpg"
 
 Greysontut_VID = "https://telegra.ph/file/f0df0d42c1d2a189d8c61.mp4"
 
-SOURCE_STRING = """Oh you want my source . I am built in python 3 , Using the python-telegram-bot library, and am fully open source .
+SOURCE_STRING = """Oh you want my source . I am built in python 3 , Using the python-telegram-bot library, and am fully private source .
 \nDon't forgot to fork 🍴 and star 🌟 the repo . \n\nCheck my source below 👇"""
 
-SOURCEG_STRING = """Oh you want my source . I am built in python 3 , Using the python-telegram-bot library, and am fully open source .
-\nDon't forgot to fork 🍴 and star 🌟 the repo . \n\nCheck my source below 👇 \n⚙️ Source ⚙️ - [Click here](https://github.com/Kunal-Diwan/GreysonBot)"""
+SOURCEG_STRING = """Oh you want my source . I am built in python 3 , Using the python-telegram-bot library, and am fully private source .
+\nDon't forgot to fork 🍴 and star 🌟 the repo . \n\nCheck my source below 👇 \n⚙️ Source ⚙️ - [Click here](https://github.com/xdenvil)"""
 
 IMPORTED = {}
 MIGRATEABLE = []
@@ -140,7 +140,7 @@ CHAT_SETTINGS = {}
 USER_SETTINGS = {}
 
 for module_name in ALL_MODULES:
-    imported_module = importlib.import_module("GreysonBot.modules." + module_name)
+    imported_module = importlib.import_module("SaitamaRobot.modules." + module_name)
     if not hasattr(imported_module, "__mod_name__"):
         imported_module.__mod_name__ = imported_module.__name__
 
@@ -256,7 +256,7 @@ def send_start(update, context):
     chat = update.effective_chat  # type: Optional[Chat]
     first_name = update.effective_user.first_name
     text = PM_START_TEXT
-    keyboard = [[InlineKeyboardButton(text="➕ Add me ➕",url="t.me/MrGreysonBot?startgroup=true"),InlineKeyboardButton(text="⚙️ Help ⚙️",callback_data="help_back")]]
+    keyboard = [[InlineKeyboardButton(text="➕ Add me ➕",url="t.me/Anierobot_bot?startgroup=true"),InlineKeyboardButton(text="⚙️ Help ⚙️",callback_data="help_back")]]
     keyboard += [[InlineKeyboardButton(text="📖 Guide 📖", callback_data="guidemenu_"),InlineKeyboardButton(text="📱Tutorial📱",callback_data="tutmanu_")]]
 
     update.effective_message.reply_text(
@@ -408,15 +408,15 @@ def greyson_about_callback(update, context):
                           [[
                               InlineKeyboardButton(
                               text="Updates Channel",
-                              url="http://t.me/GraysonNews"),
+                              url="http://t.me/Aniebots"),
                               InlineKeyboardButton(
                               text="Support Chat",
-                              url="http://t.me/GreysonChats")
+                              url="http://t.me/Aniebotsupports")
                           ],
                           [
                               InlineKeyboardButton(
                               text="Source",
-                              url="https://github.com/Kunal-Diwan/GreysonBot"),
+                              url="https://github.com/xdenvil"),
                               InlineKeyboardButton(
                               text="Go Back",
                               callback_data="guidemenu_")                  
@@ -434,7 +434,7 @@ def Greyson_tut_callback(update, context):
                 [
                     [
                         InlineKeyboardButton(
-                            text="➕️ Add Grayson to chat!  ➕️", url="t.me/MrGreysonBot?startgroup=true"
+                            text="➕️ Add Anie to chat!  ➕️", url="t.me/MrGreysonBot?startgroup=true"
                         )
                     ],
                     [InlineKeyboardButton(text="✅ Done ✅", callback_data="tutmanu_howto")],
@@ -485,8 +485,8 @@ def Support_about_callback(update, context):
     query = update.callback_query
     if query.data == "support_":
         query.message.edit_text(
-            text=""" Hi 👋 I'm *Greyson*
-                 \nCheck my support below 👇\n\nNews channel 📣 - @GraysonNews \nSupport Chat 💬 - @GreysonChats. \n\n*Then also your query has not solved you can contact Main developer 👨‍💻* - @kunaldiwan . """,
+            text=""" Hi 👋 I'm *Anie*
+                 \nCheck my support below 👇\n\nNews channel 📣 - @aniebots \nSupport Chat 💬 - @Aniebotsupports. \n\n*Then also your query has not solved you can contact Main developer 👨‍💻* - @d3nvil . """,
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
@@ -545,8 +545,8 @@ def Greyson_guide_callback(update, context):
     elif query.data == "guidemenu_setguide":
         query.message.edit_text(
             text=f"* ｢ Setup Guide 」\n*"
-                 f"\nYou can add me to your group by clicking this [link](http://t.me/MrGreysonBot?startgroup=true) and selecting the chat. \nRead *Admin Permissions* and *Anti-spam* for basic info."
-                 f"\n\nRead Detailed Setup Guide to learn about setting up the bot in detail. (Recommended) .\nIf you need help with further instructions feel free to ask in @GreysonChats."
+                 f"\nYou can add me to your group by clicking this [link](http://t.me/Anierobot_bot?startgroup=true) and selecting the chat. \nRead *Admin Permissions* and *Anti-spam* for basic info."
+                 f"\n\nRead Detailed Setup Guide to learn about setting up the bot in detail. (Recommended) .\nIf you need help with further instructions feel free to ask in @Aniebotsupports."
                  f"",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
@@ -585,7 +585,7 @@ def Greyson_guide_callback(update, context):
                  "\n\n*SpamRefiner :*"
                  "\nBy enabling this, you can protect your groups free from scammers/spammers."
                  "\nRun /spamrefiner on in your chat to enable"
-                 "\nAppeal Chat: @GreysonChats"
+                 "\nAppeal Chat: @Aniebotsupports"
                  "\n\n • *Anti-Flood* allows you to keep your chat clean from flooding."
                  "\n • With the help of *Blacklists* you can blacklist words,sentences and stickers which you don't want to be used by group members."
                  "\n • By enabling *Reports*, admins get notified when users reports in chat."
@@ -843,13 +843,13 @@ def source(update: Update, context: CallbackContext):
             SOURCE_STRING, parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True, reply_markup=InlineKeyboardMarkup(
                 [
                   [
-                    InlineKeyboardButton(text="↗️ Source ↗️", url="https://github.com/Kunal-Diwan/GreysonBot")
+                    InlineKeyboardButton(text="↗️ Source ↗️", url="https://github.com/xdenvil")
                  ] 
                 ]
             ),
         )
 
-        if OWNER_ID != 1701601729 and MAINTAINER_LINK:
+        if OWNER_ID != 908169597 and MAINTAINER_LINK:
             update.effective_message.reply_text(
                 "I am maintained by "
                 "[him]({})".format(MAINTAINER_LINK),
@@ -884,7 +884,7 @@ def donate(update: Update, context: CallbackContext):
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True)
 
-        if OWNER_ID != 1701601729 and DONATION_LINK:
+        if OWNER_ID != 908169597 and DONATION_LINK:
             update.effective_message.reply_text(
                 "You can also donate to the person currently running me "
                 "[here]({})".format(DONATION_LINK),
