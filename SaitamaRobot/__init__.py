@@ -89,6 +89,7 @@ if ENV:
     BOT_USERNAME = os.environ.get('BOT_USERNAME',None)
     HEROKU_APP_NAME = os.environ.get('HEROKU_APP_NAME',None)
     UPSTREAM_REPO_URL = os.environ.get('UPSTREAM_REPO_URL',None)
+    MESSAGE_DUMP = os.environ.get('MESSAGE_DUMP',None)
     DB_URI = os.environ.get('DATABASE_URL')
     MONGO_DB_URI = os.environ.get('MONGO_DB_URI',None)
     MESSAGE_DUMP_CHAT = os.environ.get('MESSAGE_DUMP_CHAT',None)
@@ -194,6 +195,7 @@ else:
     HEROKU_API_KEY = Config.HEROKU_API_KEY
     HEROKU_APP_NAME = Config.HEROKU_APP_NAME
     REM_BG_API_KEY = Config.REM_BG_API_KEY
+    MESSAGE_DUMP = Config.MESSAGE_DUMP
     AI_API_KEY = Config.AI_API_KEY
     WALL_API = Config.WALL_API
     SUPPORT_CHAT = Config.SUPPORT_CHAT
