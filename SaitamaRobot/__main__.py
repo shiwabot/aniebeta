@@ -117,7 +117,7 @@ I have lots of handy features, such as flood control, a warning system, a note k
 ✪ /help: Sends this message; I'll tell you more about myself!
 ✪ /source: Gives you my source .
 
-If you have any bugs or questions on how to use me head to @GreysonChats. \n\nAll commands can be used with the following: / !\n\nAnd the following :-"""
+If you have any bugs or questions on how to use me head to @Aniebotsupports. \n\nAll commands can be used with the following: / !\n\nAnd the following :-"""
 
 GreysonG_IMG = "https://telegra.ph/file/7944090b9aca51ef8f562.jpg"
 
@@ -395,12 +395,12 @@ def greyson_about_callback(update, context):
     query = update.callback_query
     if query.data == "greyson_":
         query.message.edit_text(
-            text=""" My name is *Greyson* , I have been written in python3 using mixed libraries. I'm online since 14 June 2021 and is constantly updated! \n
+            text=""" My name is *Anie* , I have been written in python3 using mixed libraries. I'm online since 14 June 2021 and is constantly updated! \n
 *Bot Version*: _3.1_ \n
 *Bot Admins* : 
-• @kunaldiwan - bot creator and main developer 
-• @Grizzypal - server manager and developer
-• @Jimmioooo - support director \n
+• @d3nvil - bot creator and main developer 
+• @noobanon - server manager and developer
+• @Aniebotsupports - support director \n
 *And finally special thanks of gratitude to all my users who relied on me for managing their groups, I hope you will always like me; My developers are constantly working to improve me!*""",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
@@ -426,15 +426,15 @@ def Greyson_tut_callback(update, context):
     query = update.callback_query
     if query.data == "tutmanu_":
         query.message.edit_text(
-            text=f"*Welcome to the Greyson configuration tutorial.* "
-            f"\n\n👇 The first thing to do is to *add Greyson to your group*! For doing that, press the under button and select your group, then press *Done* to continue the tutorial. 👇",
+            text=f"*Welcome to the Anie configuration tutorial.* "
+            f"\n\n👇 The first thing to do is to *add Anie to your group*! For doing that, press the under button and select your group, then press *Done* to continue the tutorial. 👇",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(
-                            text="➕️ Add Anie to chat!  ➕️", url="t.me/MrGreysonBot?startgroup=true"
+                            text="➕️ Add Anie to chat!  ➕️", url="t.me/Anierobot_bot?startgroup=true"
                         )
                     ],
                     [InlineKeyboardButton(text="✅ Done ✅", callback_data="tutmanu_howto")],
@@ -565,7 +565,7 @@ def Greyson_guide_callback(update, context):
                  f"\n\nIf any question about {dispatcher.bot.first_name}, \nLet us know at Support Chat.",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
-            reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="☎️ Support",url="t.me/GreysonChats"),InlineKeyboardButton(text="🔙 Back",callback_data="guidemenu_tac")]]),
+            reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="☎️ Support",url="t.me/Aniebotsupports"),InlineKeyboardButton(text="🔙 Back",callback_data="guidemenu_tac")]]),
         )
     elif query.data == "guidemenu_permis":
         query.message.edit_text(
