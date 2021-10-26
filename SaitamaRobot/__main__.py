@@ -446,7 +446,7 @@ def Greyson_tut_callback(update, context):
             text=f"* Ok, well done! *"
             f"\nNow for let me work correctly, you need to make me *Admin of your Group*! \n"
             f"\nTo do that, follow this easy steps:\n"
-            f"▫️ Go to your group \n▫️ Press the Group's name \n▫️ Press Modify \n▫️ Press on Administrator \n▫️ Press Add Administrator \n▫️ Press the Magnifying Glass \n▫️ Search @MrGreysonBot \n▫️ Confirm"
+            f"▫️ Go to your group \n▫️ Press the Group's name \n▫️ Press Modify \n▫️ Press on Administrator \n▫️ Press Add Administrator \n▫️ Press the Magnifying Glass \n▫️ Search @Anierobot_bot \n▫️ Confirm"
             f"",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
