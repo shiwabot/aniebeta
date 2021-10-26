@@ -22,7 +22,7 @@ from SaitamaRobot.modules.helper_funcs.extraction import (extract_unt_fedban,
                                                           extract_user,
                                                           extract_user_fban)
 from SaitamaRobot.modules.helper_funcs.msg_types import get_message_type
-from SaitamaRobot.modules.helper_funcs.misc import build_keyboard_alternate
+from SaitamaRobot.modules.helper_funcs.misc import build_keyboard_parser
 from SaitamaRobot.modules.log_channel import loggable
 from SaitamaRobot.modules.connection import connected
 from SaitamaRobot.modules.sql import admin_sql as sql
