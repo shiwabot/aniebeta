@@ -189,7 +189,7 @@ def tagme(update, context):
 @bot_admin
 @user_admin
 @typing_action
-def tagall(update, context):
+def tagalll(update, context):
     chat = update.effective_chat 
     user = update.effective_user 
     message = update.effective_message
@@ -238,20 +238,7 @@ def untagall(update, context):
         REDIS.srem(f'tagall2_{chat_id}', tag_user)
     message.reply_text(
         "Successully removed all users from {}'s tag list.".format(chat.title)
-    )
-        
-__mod_name__ = "tagger"    
-
-__help__ = """ 
-Tagger is an essential feature to mention all subscribed members in the group. Any chat members can subscribe to tagger.
-- /tagme: registers to the chat tag list.
-- /untagme: unsubscribes from the chat tag list.
-*Admin only:*
-- /tagall: mention all subscribed members.
-- /untagall: clears all subscribed members. 
-- /addtag <userhandle>: add a user to chat tag list. (via handle, or reply)
-- /removetag <userhandle>: remove a user to chat tag list. (via handle, or reply)
-"""    
+    ) 
 
 TAG_ALL_HANDLER = DisableAbleCommandHandler("tagall", tagall, filters=Filters.group)
 UNTAG_ALL_HANDLER = DisableAbleCommandHandler("untagall", untagall, filters=Filters.group)
