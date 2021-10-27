@@ -25,7 +25,7 @@ SOFTWARE.
 """
 
 from sqlalchemy import Boolean, Column, Integer, String, UnicodeText
-from Cutiepii_Robot.modules.sql import BASE, SESSION
+from SaitamaRobot.modules.sql import BASE, SESSION
 
 
 class Nightmode(BASE):
