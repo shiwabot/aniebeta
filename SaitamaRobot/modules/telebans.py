@@ -1,7 +1,7 @@
-from GreysonBot import greyson
-from GreysonBot import telethn
+from SaitamaRobot import greyson
+from SaitamaRobot import telethn
 from telethon import events
-from GreysonBot.modules.helper_funcs.telethn.chatstatus import (
+from SaitamaRobot.modules.helper_funcs.telethn.chatstatus import (
     can_ban_users, user_is_admin)
 from telegram import User
 from telethon.tl.functions.channels import EditBannedRequest
