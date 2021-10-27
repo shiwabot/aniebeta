@@ -29,8 +29,8 @@ import asyncio
 from telethon import events
 from telethon.tl.types import ChannelParticipantsAdmins
 
-from Cutiepii_Robot import telethn, BOT_NAME
-from Cutiepii_Robot.events import register as cutiepii
+from SaitamaRobot import telethn, BOT_NAME
+from SaitamaRobot.events import register as cutiepii
 
 
 
