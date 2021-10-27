@@ -32,7 +32,7 @@ from telethon import Button
 from telethon import events
 from telethon.tl.types import ChannelParticipantsAdmins
 
-from Cutiepii_Robot import telethn
+from SaitamaRobot import telethn
 
 @telethn.on(events.NewMessage(pattern="^/tagall|/call|/tall|/all|/mentionall|#all|@all?(.*)"))
 async def mentionall(event):
