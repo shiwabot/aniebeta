@@ -93,7 +93,7 @@ buttons = [
     [
         InlineKeyboardButton(text="ʟᴏɢꜱ", url=f"https://t.me/Anielogs"),
         InlineKeyboardButton(
-            text="Updates", url=f"https://t.me/Aniebote"
+            text="Updates", url=f"https://t.me/Aniebots"
         ),
     ],
     [
@@ -365,7 +365,7 @@ def layla_about_callback(update, context):
                  \n❍ I have a note keeping system, blacklists, and even predetermined replies on certain keywords.
                  \n❍ I check for admins' permissions before executing any command and more stuffs
                  \n\n_Layla's licensed under the GNU General Public License v3.0_
-                 \n❍ Awesome Bots @Aniebote
+                 \n❍ Awesome Bots @Aniebots
                  \n❍ Support Group @Aniebotsupports 
                  \n❍ Assistant @Anievcplay.
                  \nHere is the [💾Repository](https://github.com/xdenvil).
