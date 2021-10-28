@@ -10,7 +10,7 @@ from telethon.tl.types import ChannelParticipantsAdmins
 # Check if user has admin rights
 async def is_administrator(user_id: int, message):
     admin = False
-    async for user in client.iter_participants(
+    async for user in telethn.iter_participants(
         message.chat_id, filter=ChannelParticipantsAdmins
     ):
         if user_id == user.id or user_id in SUDO_USERS:
@@ -24,18 +24,15 @@ async def purge_msg(event):
     chat = event.chat_id
     start = time.perf_counter()
     msgs = []
-
     if not await is_administrator(
         user_id=event.sender_id, message=event
     ) and event.from_id not in [1087968824]:
         await event.reply("You're Not An Admin!")
         return
-
     msg = await event.get_reply_message()
     if not msg:
         await event.reply("Reply to a message to select where to start purging from.")
         return
-
     try:
         msg_id = msg.id
         count = 0
@@ -48,16 +45,13 @@ async def purge_msg(event):
             if len(msgs) == 100:
                 await event.client.delete_messages(chat, msgs)
                 msgs = []
-
         await event.client.delete_messages(chat, msgs)
         time_ = time.perf_counter() - start
         del_res = await event.client.send_message(
             event.chat_id, f"Purged {count} Messages In {time_:0.2f} Secs."
         )
-
         await asyncio.sleep(4)
         await del_res.delete()
-
     except MessageDeleteForbiddenError:
         text = "Failed to delete messages.\n"
         text += "Messages maybe too old or I'm not admin! or dont have delete rights!"
@@ -71,18 +65,15 @@ async def spurge(event):
     chat = event.chat_id
     start = time.perf_counter()
     msgs = []
-
     if not await is_administrator(
         user_id=event.sender_id, message=event
     ) and event.from_id not in [1087968824]:
         await event.reply("You're Not An Admin!")
         return
-
     msg = await event.get_reply_message()
     if not msg:
         await event.reply("Reply to a message to select where to start purging from.")
         return
-
     try:
         msg_id = msg.id
         count = 0
@@ -95,14 +86,11 @@ async def spurge(event):
             if len(msgs) == 100:
                 await event.client.delete_messages(chat, msgs)
                 msgs = []
-
         await event.client.delete_messages(chat, msgs)
         time.perf_counter() - start
         del_res = await event.client.send_message()
-
         await asyncio.sleep(4)
         await del_res.delete()
-
     except MessageDeleteForbiddenError:
         text = "Failed to delete messages.\n"
         text += "Messages maybe too old or I'm not admin! or dont have delete rights!"
@@ -113,13 +101,11 @@ async def spurge(event):
 
 @telethn.on(events.NewMessage(pattern="^[!/]del$"))
 async def delete_msg(event):
-
     if not await is_administrator(
         user_id=event.sender_id, message=event
     ) and event.from_id not in [1087968824]:
         await event.reply("You're not an admin!")
         return
-
     chat = event.chat_id
     msg = await event.get_reply_message()
     if not msg:
@@ -149,7 +135,6 @@ async def report_spam(event):
 
 
 __mod_name__ = "Purges"
-
 __help__ = """
 **Admin commands:**
 - /purge: Delete all messages from the replied to message, to the current message.
