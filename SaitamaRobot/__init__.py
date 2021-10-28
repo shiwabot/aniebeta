@@ -3,7 +3,6 @@ import os
 import sys
 import time
 import spamwatch
-import aiohttpsession 
 from redis import StrictRedis
 
 import telegram.ext as tg
