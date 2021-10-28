@@ -33,9 +33,9 @@ from pykeyboard import InlineKeyboard
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardButton
 
-from Cutiepii_Robot import pgram, aiohttpsession
-from Cutiepii_Robot.utils.errors import capture_err
-from Cutiepii_Robot.utils.pastebin import paste
+from SaitamaRobot import pbot, aiohttpsession
+from SaitamaRobot.utils.errors import capture_err
+from SaitamaRobot.utils.pastebin import paste
 
 pattern = re.compile(
     r"^text/|json$|yaml$|xml$|toml$|x-sh$|x-shellscript$"
@@ -57,7 +57,7 @@ async def isPreviewUp(preview: str) -> bool:
     return False
 
 
-@pgram.on_message(filters.command("paste") & ~filters.edited)
+@pbot.on_message(filters.command("paste") & ~filters.edited)
 @capture_err
 async def paste_func(_, message):
     if not message.reply_to_message:
