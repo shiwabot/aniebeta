@@ -45,7 +45,7 @@ pattern = re.compile(
 async def isPreviewUp(preview: str) -> bool:
     for _ in range(7):
         try:
-            async with aiohttpsession.head(preview, timeout=2) as resp:
+            async with ClientSession.head(preview, timeout=2) as resp:
                 status = resp.status
                 size = resp.content_length
         except asyncio.exceptions.TimeoutError:
