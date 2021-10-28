@@ -33,7 +33,7 @@ from pykeyboard import InlineKeyboard
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardButton
 
-from SaitamaRobot import pbot, aiohttpsession
+from SaitamaRobot import pbot, aiohttp
 from SaitamaRobot.utils.errors import capture_err
 from SaitamaRobot.utils.pastebin import paste
 
