@@ -171,4 +171,4 @@ __help__ = """
 and Automatically openned at 6am(IST) To Prevent Night Spams.
 Night mode is devloper restricted command so if you wanna use nightmode in your group then ask at @Aniebotsupports 
 """
-__mod_name__ = "NIGHTMODE"
+__mod_name__ = "Nightmode"
