@@ -236,6 +236,9 @@ try:
     LOGGER.info("Your redis server is now alive!")
 except BaseException:
     raise Exception("Your redis server is not alive, please check again.")
+
+print("SaitamaRobot): INITIALIZING AIOHTTP SESSION")
+aiohttpsession = ClientSession()
     
 finally:
    REDIS.ping()
