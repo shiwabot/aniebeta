@@ -2,8 +2,8 @@ from SaitamaRobot.modules.sql.night_mode_sql import add_nightmode, rmnightmode, 
 from telethon.tl.types import ChatBannedRights
 from apscheduler.schedulers.asyncio import AsyncIOScheduler 
 from telethon import functions
-from EmceeBot.events import register
-from EmceeBot import telethn, OWNER_ID
+from SaitamaRobot.events import register
+from SaitamaRobot import telethn, OWNER_ID
 import os
 from telethon import *
 from telethon import Button, custom, events
