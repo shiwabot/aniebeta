@@ -33,7 +33,7 @@ from pykeyboard import InlineKeyboard
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardButton
 
-from SaitamaRobot import pbot, ClientSession
+from SaitamaRobot import pbot, aiohttpsession
 from SaitamaRobot.utils.errors import capture_err
 from SaitamaRobot.utils.pastebin import paste
 
@@ -45,7 +45,7 @@ pattern = re.compile(
 async def isPreviewUp(preview: str) -> bool:
     for _ in range(7):
         try:
-            async with ClientSession.head(preview, timeout=2) as resp:
+            async with aiohttpsession.head(preview, timeout=2) as resp:
                 status = resp.status
                 size = resp.content_length
         except asyncio.exceptions.TimeoutError:
