@@ -237,9 +237,6 @@ try:
 except BaseException:
     raise Exception("Your redis server is not alive, please check again.")
 
-print("SaitamaRobot): INITIALIZING AIOHTTP SESSION")
-aiohttpsession = ClientSession()
-    
 finally:
    REDIS.ping()
    LOGGER.info("Your redis server is now alive!")
@@ -251,6 +248,9 @@ except BaseException:
     print("Userbot Error ! Have you added a STRING_SESSION in deploying??")
     sys.exit(1)
 
+print("SaitamaRobot): INITIALIZING AIOHTTP SESSION")
+aiohttpsession = ClientSession()
+    
 api_id = API_ID
 api_hash = API_HASH
 updater = tg.Updater(TOKEN, workers=WORKERS, use_context=True)
