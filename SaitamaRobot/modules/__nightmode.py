@@ -1,4 +1,4 @@
-from EmceeBot.modules.sql.night_mode_sql import add_nightmode, rmnightmode, get_all_chat_id, is_nightmode_indb
+from SaitamaRobot.modules.sql.night_mode_sql import add_nightmode, rmnightmode, get_all_chat_id, is_nightmode_indb
 from telethon.tl.types import ChatBannedRights
 from apscheduler.schedulers.asyncio import AsyncIOScheduler 
 from telethon import functions
@@ -123,7 +123,7 @@ async def job_close():
     for pro in chats:
         try:
             await telethn.send_message(
-              int(pro.chat_id), "12:00 Am, Group Is Closing Till 6 Am. Night Mode Started ! \n**Powered By @Emcee_Devs**"
+              int(pro.chat_id), "12:00 Am, Group Is Closing Till 6 Am. Night Mode Started ! \n**Powered By @Aniebotsupports**"
             )
             await telethn(
             functions.messages.EditChatDefaultBannedRightsRequest(
@@ -145,7 +145,7 @@ async def job_open():
     for pro in chats:
         try:
             await telethn.send_message(
-              int(pro.chat_id), "06:00 Am, Group Is Opening.\n**Powered By @Emcee_Devs**"
+              int(pro.chat_id), "06:00 Am, Group Is Opening.\n**Powered By @Aniebotsupports**"
             )
             await telethn(
             functions.messages.EditChatDefaultBannedRightsRequest(
@@ -169,6 +169,6 @@ __help__ = """
 
 **Note:** Night Mode chats get Automatically closed at 12pm(IST)
 and Automatically openned at 6am(IST) To Prevent Night Spams.
-Night mode is devloper restricted command so if you wanna use nightmode in your group then ask at @emcee_support
+Night mode is devloper restricted command so if you wanna use nightmode in your group then ask at @Aniebotsupports 
 """
 __mod_name__ = "NIGHTMODE"
