@@ -801,6 +801,20 @@ __help__ = """
  • `/demote`*:* demotes the user replied to
  • `/title <title here>`*:* sets a custom title for an admin that the bot promoted
 
+*Log Channel*: 
+➢ `/logchannel`*:* get log channel info 
+➢ `/setlog`*:* set the log channel. 
+➢ `/unsetlog`*:* unset the log channel.
+*Setting the log channel is done by*: 
+➩ adding the bot to the desired channel (as an admin!) 
+➩ sending `/setlog` in the channel 
+➩ forwarding the `/setlog` to the group 
+
+*Rules*: 
+➢ `/rules`*:* get the rules for this chat. 
+➢ `/setrules <your rules here>`*:* set the rules for this chat. 
+➢ `/clearrules`*:* clear the rules for this chat.
+"""
 
 Sometimes, you promote or demote an admin manually, and Anie doesn't realise it immediately. This is because to avoid spamming telegram servers, admin status is cached locally.
 This means that you sometimes have to wait a few minutes for admin rights to update. If you want to update them immediately, you can use the /admincache command; that'll force Anie to check who the admins are again.
