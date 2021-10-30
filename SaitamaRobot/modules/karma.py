@@ -3,9 +3,9 @@ import re
 
 from pyrogram import filters
 
-from ShasaRoBot import BOT_USERNAME
-from ShasaRoBot import pbot as app
-from ShasaRoBot.modules.mongo.karma_mongo import (
+from SaitamaRobot import BOT_USERNAME
+from SaitamaRobot import pbot as app
+from SaitamaRobot.modules.mongo.karma_mongo import (
     alpha_to_int,
     get_karma,
     get_karmas,
@@ -15,8 +15,8 @@ from ShasaRoBot.modules.mongo.karma_mongo import (
     karma_on,
     update_karma,
 )
-from ShasaRoBot.utils.errors import capture_err
-from ShasaRoBot.utils.permission import adminsOnly
+from SaitamaRobot.utils.errors import capture_err
+from SaitamaRobot.utils.permission import adminsOnly
 
 karma_positive_group = 3
 karma_negative_group = 4
