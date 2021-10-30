@@ -31,8 +31,8 @@ import requests
 from datetime import datetime
 from telethon import types
 from telethon.tl import functions
-from Cutiepii_Robot.events import register
-from Cutiepii_Robot import TEMP_DOWNLOAD_DIRECTORY, REM_BG_API_KEY, telethn, SUPPORT_CHAT
+from SaitamaRobot.events import register
+from SaitamaRobot import TEMP_DOWNLOAD_DIRECTORY, REM_BG_API_KEY, telethn, SUPPORT_CHAT
 
 async def is_register_admin(chat, user):
     if isinstance(chat, (types.InputPeerChannel, types.InputChannel)):
