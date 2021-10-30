@@ -32,9 +32,9 @@ from telethon import functions
 from telethon import *
 from telethon import Button, custom, events
 
-from Cutiepii_Robot.modules.sql.night_mode_sql import add_nightmode, rmnightmode, get_all_chat_id, is_nightmode_indb
-from Cutiepii_Robot.events import register
-from Cutiepii_Robot import OWNER_ID, telethn, LOGGER
+from SaitamaRobot.modules.sql.night_mode_sql import add_nightmode, rmnightmode, get_all_chat_id, is_nightmode_indb
+from SaitamaRobot.events import register
+from SaitamaRobot import OWNER_ID, telethn, LOGGER
 
 hehes = ChatBannedRights(
     until_date=None,
