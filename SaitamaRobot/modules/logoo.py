@@ -1,10 +1,11 @@
-__mod_name__ = "Logo"
+__mod_name__ = "Sg-Cpls"
 
 __help__ = """
- ༆Here is the Help module for Logo and memify༆
+ ༆Here is the Help module for sanghmata and couples ༆
  
- ❍ /logo <text> *:* Create your logo with any name.
- ❍ /wlogo <text> *:* Create your logo with a different font.
+ 
+ ❍ /couples - To Choose Couple Of The Day
+ ❍ /sg - View user name history.
  ❍ /rlogo <text> *:* Create your logo with differnt Colours.
  
  ❍ /mmf <upper text ; lower text> *:* reply to sticker or image.
