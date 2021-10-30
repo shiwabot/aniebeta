@@ -814,7 +814,6 @@ __help__ = """
 ➢ `/rules`*:* get the rules for this chat. 
 ➢ `/setrules <your rules here>`*:* set the rules for this chat. 
 ➢ `/clearrules`*:* clear the rules for this chat.
-"""
 
 Sometimes, you promote or demote an admin manually, and Anie doesn't realise it immediately. This is because to avoid spamming telegram servers, admin status is cached locally.
 This means that you sometimes have to wait a few minutes for admin rights to update. If you want to update them immediately, you can use the /admincache command; that'll force Anie to check who the admins are again.
