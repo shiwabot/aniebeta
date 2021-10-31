@@ -3,15 +3,18 @@ import re
 import time
 import requests
 import wget
+import html5lib
 
 from bs4 import BeautifulSoup
 from pyrogram import filters
 
 from SaitamaRobot  import OWNER_ID, SUPPORT_CHAT
 from SaitamaRobot import pbot as pgram
+from SaitamaRobot.pyrogramme.pluginshelper import admin_only
 
 
 @pgram.on_message(filters.command("mod") & ~filters.edited & ~filters.bot)
+@admin_only
 async def modapk(client, message):
     pablo = await client.send_message(message.chat.id, "`Searching For Mod App.....`")
     sgname = message.text
