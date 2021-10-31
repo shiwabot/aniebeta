@@ -30,6 +30,8 @@ ad = AlphabetDetector()
 LOCK_TYPES = {
     "audio":
         Filters.audio,
+    "Logo":
+        Filters.Logo.
     "voice":
         Filters.voice,
     "document":
@@ -521,6 +523,7 @@ def build_lock_message(chat_id):
         if locks:
             locklist.append("sticker = `{}`".format(locks.sticker))
             locklist.append("audio = `{}`".format(locks.audio))
+            locklist.append("Logo = `{}".format(locks.Logo))
             locklist.append("voice = `{}`".format(locks.voice))
             locklist.append("document = `{}`".format(locks.document))
             locklist.append("video = `{}`".format(locks.video))
