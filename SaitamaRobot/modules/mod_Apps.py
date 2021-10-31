@@ -33,12 +33,12 @@ import wget
 from bs4 import BeautifulSoup
 from pyrogram import filters
 
-from Cutiepii_Robot.utils.pluginhelpers import admins_only
-from Cutiepii_Robot.utils.progress import progress
-from Cutiepii_Robot import pgram
+from SaitamaRobot.utils.pluginshelper import admins_only
+from SaitamaRobot.utils.progress import progress
+from SaitamaRobot import pbot
 
 
-@pgram.on_message(filters.command("mod") & ~filters.edited & ~filters.bot)
+@pbot.on_message(filters.command("mod") & ~filters.edited & ~filters.bot)
 @admins_only
 async def mudapk(client, message):
     pablo = await client.send_message(message.chat.id, "`Searching For Mod App.....`")
