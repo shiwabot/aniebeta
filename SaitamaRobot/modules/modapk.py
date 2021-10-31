@@ -10,11 +10,11 @@ from pyrogram import filters
 
 from SaitamaRobot  import OWNER_ID, SUPPORT_CHAT
 from SaitamaRobot import pbot as pgram
-from SaitamaRobot.pyrogramme.pluginshelper import admin_only
+from SaitamaRobot.pyrogramme.pluginshelper import admins_only
 
 
 @pgram.on_message(filters.command("mod") & ~filters.edited & ~filters.bot)
-@admin_only
+@admins_only
 async def modapk(client, message):
     pablo = await client.send_message(message.chat.id, "`Searching For Mod App.....`")
     sgname = message.text
