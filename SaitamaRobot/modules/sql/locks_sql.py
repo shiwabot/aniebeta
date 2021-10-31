@@ -11,6 +11,7 @@ class Permissions(BASE):
     chat_id = Column(String(14), primary_key=True)
     # Booleans are for "is this locked", _NOT_ "is this allowed"
     audio = Column(Boolean, default=False)
+    Logo = Column(Boolean, default=False)
     voice = Column(Boolean, default=False)
     contact = Column(Boolean, default=False)
     video = Column(Boolean, default=False)
@@ -31,6 +32,7 @@ class Permissions(BASE):
     def __init__(self, chat_id):
         self.chat_id = str(chat_id)  # ensure string
         self.audio = False
+        self.Logo = False
         self.voice = False
         self.contact = False
         self.video = False
@@ -113,6 +115,7 @@ def update_lock(chat_id, lock_type, locked):
 
         if lock_type == "audio":
             curr_perm.audio = locked
+        if lock_perm.Logo = locked
         elif lock_type == "voice":
             curr_perm.voice = locked
         elif lock_type == "contact":
@@ -186,6 +189,8 @@ def is_locked(chat_id, lock_type):
         return curr_perm.photo
     elif lock_type == "audio":
         return curr_perm.audio
+    leif lock_type == "Logo":
+        return curr_perm.Logo
     elif lock_type == "voice":
         return curr_perm.voice
     elif lock_type == "contact":
