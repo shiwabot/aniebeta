@@ -33,7 +33,7 @@ import wget
 from bs4 import BeautifulSoup
 from pyrogram import filters
 
-from SaitamaRobot.utils.pluginshelper import admins_only
+from SaitamaRobot.utils.pluginhelp import admins_only
 from SaitamaRobot.utils.progress import progress
 from SaitamaRobot import pbot
 
