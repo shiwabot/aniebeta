@@ -2,6 +2,7 @@ future
 emoji
 lxml
 beautifulsoup4
+html5lib
 requests
 sqlalchemy==1.3.20
 python-telegram-bot==12.8
