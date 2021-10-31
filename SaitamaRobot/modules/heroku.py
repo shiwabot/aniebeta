@@ -30,8 +30,8 @@ import os
 import heroku3
 import requests
 
-from Cutiepii_Robot import telethn, HEROKU_APP_NAME, HEROKU_API_KEY, OWNER_ID
-from Cutiepii_Robot.events import register
+from SaitamaRobot import telethn, HEROKU_APP_NAME, HEROKU_API_KEY, OWNER_ID
+from SaitamaRobot.events import register
 
 heroku_api = "https://api.heroku.com"
 Heroku = heroku3.from_key(HEROKU_API_KEY)
