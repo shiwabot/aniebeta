@@ -28,8 +28,8 @@ async def modapk(client, message):
     soup = BeautifulSoup(r.content, "html5lib")
     mydivs = soup.find_all("div", {"class": "search-results"})
     Pop = soup.find_all("div", {"class": "title"})
-    sucker = mydivs[1]
-    pH9 = sucker.find("a").contents[1]
+    sucker = mydivs[]
+    pH9 = sucker.find("a").contents[]
     file_name = pH9
 
     pH = sucker.findAll("img")
@@ -41,7 +41,7 @@ async def modapk(client, message):
 
     mydis = soup.find_all("a", {"class": "get-product"})
 
-    Lol = mydis[1]
+    Lol = mydis[]
 
     lemk = "https://an1.com" + Lol["href"]
 
