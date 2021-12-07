@@ -6,15 +6,14 @@ from telegram.error import BadRequest
 from telegram.ext import Filters, CallbackContext
 from telegram.utils.helpers import mention_html
 
-from tg_bot import (
+from SaitamaRobot import (
     DEV_USERS,
     SUDO_USERS,
-    SARDEGNA_USERS,
     SUPPORT_USERS,
     OWNER_ID,
     WHITELIST_USERS,
 )
-from tg_bot.modules.helper_funcs.chat_status import (
+from SaitamaRobot.modules.helper_funcs.chat_status import (
     bot_admin,
     can_restrict,
     connection_status,
@@ -22,10 +21,10 @@ from tg_bot.modules.helper_funcs.chat_status import (
     is_user_ban_protected,
     is_user_in_chat,
 )
-from tg_bot.modules.helper_funcs.extraction import extract_user_and_text
-from tg_bot.modules.helper_funcs.string_handling import extract_time
-from tg_bot.modules.log_channel import loggable, gloggable
-from tg_bot.modules.helper_funcs.decorators import kigcmd
+from SaitamaRobot.modules.helper_funcs.extraction import extract_user_and_text
+from SaitamaRobot.modules.helper_funcs.string_handling import extract_time
+from SaitamaRobot.modules.log_channel import loggable, gloggable
+from SaitamaRobot.modules.helper_funcs.decorators import kigcmd
 
 from ..modules.helper_funcs.anonymous import user_admin, AdminPerms
 
