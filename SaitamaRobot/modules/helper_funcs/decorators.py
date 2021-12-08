@@ -1,7 +1,7 @@
-from tg_bot.modules.disable import DisableAbleCommandHandler, DisableAbleMessageHandler
+from SaitamaRobot.modules.disable import DisableAbleCommandHandler, DisableAbleMessageHandler
 from telegram.ext import CommandHandler, MessageHandler, CallbackQueryHandler, InlineQueryHandler
 from telegram.ext.filters import BaseFilter
-from tg_bot import dispatcher as d, log
+from SaitamaRobot import dispatcher as d, log
 from typing import Optional, Union, List
 
 
