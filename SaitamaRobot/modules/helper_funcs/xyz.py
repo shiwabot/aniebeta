@@ -54,7 +54,7 @@ class IgrisxHandler:
                         group,
                     )
                 LOGGER.debug(
-                    f"[IGRISXCMD] Loaded handler {command} for function {func.__name__} in group {group}"
+                    f"[KIGCMD] Loaded handler {command} for function {func.__name__} in group {group}"
                 )
             except TypeError:
                 if can_disable:
@@ -79,7 +79,7 @@ class IgrisxHandler:
                         )
                     )
                 LOGGER.debug(
-                    f"[IGRISXCMD] Loaded handler {command} for function {func.__name__}"
+                    f"[KIGCMD] Loaded handler {command} for function {func.__name__}"
                 )
 
             return func
@@ -169,7 +169,7 @@ class IgrisxHandler:
         return _inlinequery
 
 
-igrisxcmd = IgrisxHandler(d).command
+kigcmd = IgrisxHandler(d).command
 igrisxmsg = IgrisxHandler(d).message
 igrisxcallback = IgrisxHandler(d).callbackquery
 igrisxinline = IgrisxHandler(d).inlinequery
