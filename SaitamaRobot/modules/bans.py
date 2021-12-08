@@ -24,7 +24,7 @@ from SaitamaRobot.modules.helper_funcs.chat_status import (
 from SaitamaRobot.modules.helper_funcs.extraction import extract_user_and_text
 from SaitamaRobot.modules.helper_funcs.string_handling import extract_time
 from SaitamaRobot.modules.log_channel import loggable, gloggable
-from SaitamaRobot.modules.helper_funcs.decorators import kigcmd
+from SaitamaRobot.modules.helper_funcs.xyz import igrisxcmd
 
 from ..modules.helper_funcs.anonymous import user_admin, AdminPerms
 
