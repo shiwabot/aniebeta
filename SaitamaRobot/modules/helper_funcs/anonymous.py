@@ -7,7 +7,7 @@ from telegram.inline.inlinekeyboardbutton import InlineKeyboardButton
 from telegram.inline.inlinekeyboardmarkup import InlineKeyboardMarkup
 
 from SaitamaRobot import DEV_USERS, SUDO_USERS, dispatcher
-from .decorators import kigcallback
+from .xyz import kigcallback
 
 class AdminPerms(Enum):
     CAN_RESTRICT_MEMBERS = 'can_restrict_members'
