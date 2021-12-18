@@ -579,15 +579,15 @@ __help__ = """
 
 __mod_name__ = "Ban"
 
-BAN_HANDLER = CommandHandler(["ban", "sban"], ban, run_async)
-TEMPBAN_HANDLER = CommandHandler(["tban"], temp_ban, run_async)
-KICK_HANDLER = CommandHandler(["kick", "punch"], punch, run_async)
-UNBAN_HANDLER = CommandHandler("unban", unban, run_async)
-ROAR_HANDLER = CommandHandler("roar", selfunban, run_async=)
+BAN_HANDLER = CommandHandler(["ban", "sban"], ban)
+TEMPBAN_HANDLER = CommandHandler(["tban"], temp_ban)
+KICK_HANDLER = CommandHandler(["kick", "punch"], punch)
+UNBAN_HANDLER = CommandHandler("unban", unban)
+ROAR_HANDLER = CommandHandler("roar", selfunban)
 UNBAN_BUTTON_HANDLER = CallbackQueryHandler(unbanb_btn, pattern=r"unbanb_")
-KICKME_HANDLER = DisableAbleCommandHandler(["kickme", "punchme"], punchme, filters=Filters.chat_type.groups, run_async)
-SNIPE_HANDLER = CommandHandler("snipe", snipe, pass_args=True, filters=CustomFilters.sudo_filter, run_async)
-BANME_HANDLER = CommandHandler("banme", banme, run_async)
+KICKME_HANDLER = DisableAbleCommandHandler(["kickme", "punchme"], punchme, filters=Filters.chat_type.groups)
+SNIPE_HANDLER = CommandHandler("snipe", snipe, pass_args=True, filters=CustomFilters.sudo_filter)
+BANME_HANDLER = CommandHandler("banme", banme)
 
 dispatcher.add_handler(BAN_HANDLER)
 dispatcher.add_handler(TEMPBAN_HANDLER)
