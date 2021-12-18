@@ -14,20 +14,19 @@ from telegram.utils.helpers import mention_html
 from typing import Optional, List
 from telegram import TelegramError
 
-import Yuriko.modules.sql.users_sql as sql
-from Yuriko.modules.disable import DisableAbleCommandHandler
-from Yuriko.modules.helper_funcs.filters import CustomFilters
-from Yuriko import (
+import SaitamaRobot.modules.sql.users_sql as sql
+from SaitamaRobot.modules.disable import DisableAbleCommandHandler
+from SaitamaRobot.modules.helper_funcs.filters import CustomFilters
+from SaitamaRobot import (
     DEV_USERS,
     LOGGER,
     OWNER_ID,
-    DRAGONS,
-    DEMONS,
-    TIGERS,
-    WOLVES,
+    SUDO_USERS,
+    SUPPORT_USERS,
+    WHITELIST_USERS,
     dispatcher,
 )
-from Yuriko.modules.helper_funcs.chat_status import (
+from SaitamaRobot.modules.helper_funcs.chat_status import (
     user_admin_no_reply,
     bot_admin,
     can_restrict,
@@ -40,9 +39,9 @@ from Yuriko.modules.helper_funcs.chat_status import (
     can_delete,
     dev_plus,
 )
-from Yuriko.modules.helper_funcs.extraction import extract_user_and_text
-from Yuriko.modules.helper_funcs.string_handling import extract_time
-from Yuriko.modules.log_channel import gloggable, loggable
+from SaitamaRobot.modules.helper_funcs.extraction import extract_user_and_text
+from SaitamaRobot.modules.helper_funcs.string_handling import extract_time
+from SaitamaRobot.modules.log_channel import gloggable, loggable
 
 
 
@@ -574,11 +573,11 @@ __help__ = """
 
 ✗ /snipe - `Make me send a message to a specific chat.`
 
-*✗ Pᴏᴡᴇʀᴇᴅ 💕 Bʏ: Tᴇᴀᴍ DᴇCᴏᴅᴇ!*
+*✗ Pᴏᴡᴇʀᴇᴅ 💕 Bʏ: Tᴇᴀᴍ Anie!*
 """
 
 
-__mod_name__ = "Bᴀɴ/Mᴜᴛᴇ"
+__mod_name__ = "Ban"
 
 BAN_HANDLER = CommandHandler(["ban", "sban"], ban, run_async=True)
 TEMPBAN_HANDLER = CommandHandler(["tban"], temp_ban, run_async=True)
