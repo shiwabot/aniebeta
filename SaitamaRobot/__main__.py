@@ -11,7 +11,7 @@ from sys import argv
 from typing import Optional
 from telegram import __version__ as peler
 from platform import python_version as memek
-from Yuriko import (
+from SaitamaRobot import (
     ALLOW_EXCL,
     CERT_PATH,
     DONATION_LINK,
@@ -32,9 +32,9 @@ from Yuriko import (
 
 # needed to dynamically load modules
 # NOTE: Module order is not guaranteed, specify that in the config file!
-from Yuriko.modules import ALL_MODULES
-from Yuriko.modules.helper_funcs.chat_status import is_user_admin
-from Yuriko.modules.helper_funcs.misc import paginate_modules
+from SaitamaRobot.modules import ALL_MODULES
+from SaitamaRobot.modules.helper_funcs.chat_status import is_user_admin
+from SaitamaRobot.modules.helper_funcs.misc import paginate_modules
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Update
 from telegram.error import (
     BadRequest,
@@ -79,7 +79,7 @@ def get_readable_time(seconds: int) -> str:
 
     return ping_time
 
-yurikorobot_IMG = "https://telegra.ph/file/8b6f8f2bb4ff3912634c7.jpg"
+yurikorobot_IMG = "https://telegra.ph/file/ee560e47235b025dd22e8.jpg"
 
 PM_START_TEXT = """
 *👋 Hello {} !*
