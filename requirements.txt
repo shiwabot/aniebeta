@@ -66,3 +66,4 @@ Python_ARQ
 alphabet_detector
 pykeyboard
 apscheduler
+fuzzysearch
