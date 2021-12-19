@@ -14,11 +14,11 @@ _extra plugin:_
  ❍ /time <country code>*:* Gives information about a timezone.
  ❍ /weather <city>*:* Get weather info in a particular place.
  ❍ /wttr <city>*:* Advanced weather module, usage same as /weather
- ❍ /wttr moon*:* Get the current status of moon
+ ❍ /mmf <upper text ; lower text> *:* reply to sticker or image.
 
 *Converts*
  ❍ /encrypt*:* Encrypts The Given Text
  ❍ /decrypt*:* Decrypts Previously Ecrypted Text
- ❍ /zip*:* reply to a telegram file to compress it in .zip format
+ ❍ /couples - To Choose Couple Of The Day
  ❍ /sg <reply> - `To check history name
 """
