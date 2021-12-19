@@ -31,7 +31,7 @@ from SaitamaRobot import (
 from SaitamaRobot import pbot as app 
 from SaitamaRobot import arq
 from SaitamaRobot.services.keyboard import Ikb
-from Yuriko.utils.pluginhelper import convert_seconds_to_minutes as time_convert, fetch
+from SaitamaRobot.utils.pluginhelper import convert_seconds_to_minutes as time_convert, fetch
 from SaitamaRobot.services.tasks import _get_tasks_text, all_tasks, rm_task
 from SaitamaRobot.services.types import InlineQueryResultCachedDocument
 from SaitamaRobot.modules.info import get_chat_info, get_user_info
