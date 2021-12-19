@@ -76,6 +76,7 @@ if ENV:
             "Your tiger users list does not contain valid integers.")
 
     INFOPIC = bool(os.environ.get('INFOPIC', False))
+    BOT_USERNAME = os.environ.get('BOT_USERNAME', None)
     EVENT_LOGS = os.environ.get('EVENT_LOGS', None)
     GBAN_LOGS = os.environ.get('GBAN_LOGS', None)
     WEBHOOK = bool(os.environ.get('WEBHOOK', False))
@@ -171,6 +172,7 @@ else:
             "Your tiger users list does not contain valid integers.")
 
     EVENT_LOGS = Config.EVENT_LOGS
+    BOT_USERNAME = Config.BOT_USERNAME
     GBAN_LOGS = Config.GBAN_LOGS
     WEBHOOK = Config.WEBHOOK
     URL = Config.URL
