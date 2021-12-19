@@ -1,6 +1,6 @@
-from Yuriko import telethn as tbot
+from SaitamaRobot import telethn as tbot
 import os
-from Yuriko.events import register
+from SaitamaRobot.events import register
 import secureme
 
 
