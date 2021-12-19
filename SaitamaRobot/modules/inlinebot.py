@@ -1,8 +1,8 @@
 import traceback
 
-from Yuriko import pbot as app
-from Yuriko.utils.pluginhelper import fetch
-from Yuriko.utils.inlinefuncs import *
+from SaitamaRobot import pbot as app
+from SaitamaRobot.utils.pluginhelper import fetch
+from SaitamaRobot.utils.inlinefuncs import *
 
 __MODULE__ = "ɪɴʟɪɴᴇ"
 __HELP__ = """See inline for help related to inline"""
