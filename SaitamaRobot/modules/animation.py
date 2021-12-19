@@ -4,9 +4,9 @@ from typing import List
 from telegram import Update
 from telegram.ext import run_async, CallbackContext
 
-from Yuriko import dispatcher
-from Yuriko.modules.disable import DisableAbleCommandHandler
-from Yuriko.modules.helper_funcs.chat_status import user_admin
+from SaitamaRobot import dispatcher
+from SaitamaRobot.modules.disable import DisableAbleCommandHandler
+from SaitamaRobot.modules.helper_funcs.chat_status import user_admin
 
 # sleep how many times after each edit in 'love'
 EDIT_SLEEP = 1
