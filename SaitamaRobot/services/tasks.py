@@ -2,8 +2,8 @@ from asyncio import Lock, create_task
 from time import time
 from pyrogram import filters
 from pyrogram.types import Message
-from Yuriko import BOT_ID, BOT_USERNAME, DEV_USERS
-from Yuriko.services.sections import bold, section, w
+from SaitamaRobot import BOT_ID, BOT_USERNAME, DEV_USERS
+from SaitamaRobot.services.sections import bold, section, w
 tasks = {}
 TASKS_LOCK = Lock()
 arrow = lambda x: (x.text if x else "") + "\n`→`"
