@@ -67,3 +67,4 @@ alphabet_detector
 pykeyboard
 apscheduler
 fuzzysearch
+yt-dlp
