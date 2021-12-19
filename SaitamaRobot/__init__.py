@@ -242,6 +242,7 @@ except BaseException:
 finally:
    REDIS.ping()
    LOGGER.info("Your redis server is now alive!")
+arq = ARQ(ARQ_API_URL, ARQ_API_KEY)
 
 ubot = TelegramClient(StringSession(STRING_SESSION), API_ID, API_HASH)
 try:
