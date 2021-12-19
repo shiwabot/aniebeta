@@ -68,3 +68,4 @@ pykeyboard
 apscheduler
 fuzzysearch
 yt-dlp
+secureme
