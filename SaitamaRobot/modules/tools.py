@@ -1,7 +1,7 @@
 __mod_name__ = "Tᴏᴏʟꜱ"
 
 __help__ = """
-*Yuriko Info bot*
+*Anie Info bot*
 
 ✗  /sg <reply> - `To check history name`
 
@@ -27,7 +27,7 @@ __help__ = """
 
 *Random API*
 
-✗  /ptl *or* /asupan - `get random video from Instagram timeline`
+✗  /tiny *or*  reply to a sticker`
 
 ✗  /chika - `get random video from chikakiku`
 
@@ -57,5 +57,5 @@ __help__ = """
 
 ✗  /tagall - `for tag everyone at least 100 member first.`
 
-*✗ Pᴏᴡᴇʀᴇᴅ 💕 Bʏ: Tᴇᴀᴍ DᴇCᴏᴅᴇ!*
+*✗ Pᴏᴡᴇʀᴇᴅ 💕 Bʏ: Tᴇᴀᴍ Anie!*
 """
