@@ -673,10 +673,10 @@ def send_settings(chat_id, user_id, user=False):
             dispatcher.bot.send_message(
                 user_id,
                 text="Which module would you like to check {}'s settings for?".format(
-                    chat_name
+                    chat_name,
                 ),
                 reply_markup=InlineKeyboardMarkup(
-                    paginate_modules(0, CHAT_SETTINGS, "stngs", chat=chat_id)
+                    paginate_modules(0, CHAT_SETTINGS, "stngs", chat=chat_id),
                 ),
             )
         else:
@@ -686,7 +686,6 @@ def send_settings(chat_id, user_id, user=False):
                 "in a group chat you're admin in to find its current settings!",
                 parse_mode=ParseMode.MARKDOWN,
             )
-
 
 
 def settings_button(update: Update, context: CallbackContext):
@@ -790,11 +789,11 @@ def get_settings(update: Update, context: CallbackContext):
                             InlineKeyboardButton(
                                 text="Settings",
                                 url="t.me/{}?start=stngs_{}".format(
-                                    context.bot.username, chat.id
+                                    context.bot.username, chat.id,
                                 ),
-                            )
-                        ]
-                    ]
+                            ),
+                        ],
+                    ],
                 ),
             )
         else:
@@ -802,7 +801,6 @@ def get_settings(update: Update, context: CallbackContext):
 
     else:
         send_settings(chat.id, user.id, True)
-
 
 
 def donate(update: Update, context: CallbackContext):
