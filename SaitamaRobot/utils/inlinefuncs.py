@@ -22,22 +22,22 @@ from pyrogram.types import (CallbackQuery,
                             InputTextMessageContent)
 from search_engine_parser import GoogleSearch
 
-from Yuriko import (
+from SaitamaRobot import (
     DEV_USERS,
     EVENT_LOGS, 
     BOT_USERNAME,
-    ubot2,
+    ubot,
 )
-from Yuriko import pbot as app 
-from Yuriko import arq
-from Yuriko.services.keyboard import Ikb
+from SaitamaRobot import pbot as app 
+from SaitamaRobot import arq
+from SaitamaRobot.services.keyboard import Ikb
 from Yuriko.utils.pluginhelper import convert_seconds_to_minutes as time_convert, fetch
-from Yuriko.services.tasks import _get_tasks_text, all_tasks, rm_task
-from Yuriko.services.types import InlineQueryResultCachedDocument
-from Yuriko.modules.info import get_chat_info, get_user_info
-from Yuriko.modules.music import download_youtube_audio
-from Yuriko.utils.functions import test_speedtest
-from Yuriko.utils.pastebin import paste
+from SaitamaRobot.services.tasks import _get_tasks_text, all_tasks, rm_task
+from SaitamaRobot.services.types import InlineQueryResultCachedDocument
+from SaitamaRobot.modules.info import get_chat_info, get_user_info
+from SaitamaRobot.modules.music import download_youtube_audio
+from SaitamaRobot.utils.functions import test_speedtest
+from SaitamaRobot.utils.pastebin import paste
 
 MESSAGE_DUMP_CHAT = EVENT_LOGS
 
@@ -102,7 +102,7 @@ async def inline_help_func(__HELP__):
             input_message_content=InputTextMessageContent(
                 "**__Click A Button To Get Started.__**"
             ),
-            thumb_url="https://telegra.ph/file/dad7863c0db4ac921982d.jpg",
+            thumb_url="https://telegra.ph/file/7944090b9aca51ef8f562.jpg",
             reply_markup=buttons,
         ),
     ]
@@ -115,27 +115,27 @@ async def alive_function(answers):
     bot_state = "Dead" if not await app.get_me() else "Alive"
     ubot_state = "Dead" if not await ubot2.get_me() else "Alive"
     buttons.add(
-        InlineKeyboardButton("Main bot", url="https://t.me/YurikoRobot"),
+        InlineKeyboardButton("Main bot", url="https://t.me/Anierobot_bot"),
         InlineKeyboardButton(
             "Go Inline!", switch_inline_query_current_chat=""
         ),
     )
 
     msg = f"""
-**[Yuriko Robot ❤️](https://t.me/decodesupport):**
+**[Anie Robot ❤️](https://t.me/Aniebots):**
 **MainBot:** `{bot_state}`
 **UserBot:** `{ubot_state}`
 **Python:** `{pyver.split()[0]}`
 **Pyrogram:** `{pyrover}`
 **MongoDB:** `{mongover}`
 **Platform:** `{sys.platform}`
-**Profiles:** [BOT](t.me/{BOT_USERNAME}) | [UBOT](t.me/TeamDeeCode)
+**Profiles:** [BOT](t.me/{BOT_USERNAME}) | [UBOT](t.me/Aniebots)
 """
     answers.append(
         InlineQueryResultArticle(
             title="Alive",
             description="Check Bot's Stats",
-            thumb_url="https://telegra.ph/file/dad7863c0db4ac921982d.jpg",
+            thumb_url="https://telegra.ph/file/7944090b9aca51ef8f562.jpg",
             input_message_content=InputTextMessageContent(
                 msg, disable_web_page_preview=True
             ),
@@ -395,7 +395,7 @@ async def tg_search_func(answers, text, user_id):
 
         return answers
     text = text[0:-1]
-    async for message in ubot2.search_global(text, limit=49):
+    async for message in ubot.search_global(text, limit=49):
         buttons = InlineKeyboard(row_width=2)
         buttons.add(
             InlineKeyboardButton(
@@ -433,8 +433,8 @@ async def tg_search_func(answers, text, user_id):
 
 
 async def music_inline_func(answers, query):
-    chat_id = -1001445180719
-    group_invite = "https://t.me/joinchat/vSDE2DuGK4Y4Nzll"
+    chat_id = -1001256918622
+    group_invite = "t.me/Aniebotsupports"
     try:
         messages = [
             m
