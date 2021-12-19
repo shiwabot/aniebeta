@@ -33,7 +33,7 @@ from PIL import Image, ImageDraw, ImageFilter, ImageFont
 from pyrogram.types import Message
 
 from SaitamaRobot import aiohttpsession as aiosession
-from SaitamaRobot.utils.dbfunctions import start_restart_stage
+from SaitamaRobot.utils.dbfunction import start_restart_stage
 from SaitamaRobot.utils.http import get, post
 
 
