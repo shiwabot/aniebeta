@@ -49,10 +49,10 @@ SpamChecker = AntiSpam()
 MessageHandlerChecker = AntiSpam()
 
 class CustomCommandHandler(CommandHandler):
-    def __init__(self, command, callback, run_async=True, **kwargs):
+    def __init__(self, command, callback, **kwargs):
         if "admin_ok" in kwargs:
             del kwargs["admin_ok"]
-        super().__init__(command, callback, run_async=run_async, **kwargs)
+        super().__init__(command, callback, **kwargs)
 
     def check_update(self, update):
         if not isinstance(update, Update) or not update.effective_message:
