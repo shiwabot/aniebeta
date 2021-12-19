@@ -48,7 +48,7 @@ class AntiSpam:
 SpamChecker = AntiSpam()
 MessageHandlerChecker = AntiSpam()
 
-class CustomCommandHandler(tg.CommandHandler):
+class CustomCommandHandler(CommandHandler):
     def __init__(self, command, callback, run_async=True, **kwargs):
         if "admin_ok" in kwargs:
             del kwargs["admin_ok"]
