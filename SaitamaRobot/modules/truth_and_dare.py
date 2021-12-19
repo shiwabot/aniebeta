@@ -1,9 +1,9 @@
 import html
 import random
-import Yuriko.modules.truth_and_dare_string as truth_and_dare_string
-from Yuriko import dispatcher
+import SaitamaRobot.modules.truth_and_dare_string as truth_and_dare_string
+from SaitamaRobot import dispatcher
 from telegram import ParseMode, Update, Bot
-from Yuriko.modules.disable import DisableAbleCommandHandler
+from SaitamaRobot.modules.disable import DisableAbleCommandHandler
 from telegram.ext import CallbackContext, run_async
 
 
@@ -17,8 +17,8 @@ def dare(update: Update, context: CallbackContext):
     update.effective_message.reply_text(random.choice(truth_and_dare_string.DARE))
 
 
-TRUTH_HANDLER = DisableAbleCommandHandler("truth", truth, run_async=True)
-DARE_HANDLER = DisableAbleCommandHandler("dare", dare, run_async=True)
+TRUTH_HANDLER = DisableAbleCommandHandler("truth", truth)
+DARE_HANDLER = DisableAbleCommandHandler("dare", dare)
 
 dispatcher.add_handler(TRUTH_HANDLER)
 dispatcher.add_handler(DARE_HANDLER)
