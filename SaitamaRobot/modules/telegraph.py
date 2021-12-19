@@ -1,8 +1,8 @@
 # This file is part of YuiGBot (Telegram Bot)
 # I give credit for this module to YuiGBot.
 
-from Yuriko.events import register
-from Yuriko import telethn
+from SaitamaRobot.events import register
+from SaitamaRobot import telethn
 
 TMP_DOWNLOAD_DIRECTORY = "./"
 from telethon import events
@@ -11,7 +11,7 @@ from PIL import Image
 from datetime import datetime
 from telegraph import Telegraph, upload_file, exceptions
 
-wibu = "Yuriko"
+wibu = "Anie"
 telegraph = Telegraph()
 r = telegraph.create_account(short_name=wibu)
 auth_url = r["auth_url"]
