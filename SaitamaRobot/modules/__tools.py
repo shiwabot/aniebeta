@@ -2,13 +2,13 @@ __mod_name__ = "◎Tools"
 
 __help__ = """
 *Telegraph*
- ❍ /txm :Get Telegraph Link Of Replied Media
- ❍ /txt :Get Telegraph Link of Replied Text
+ ❍ /tgm :Get Telegraph Link Of Replied Media
+ ❍ /tgt :Get Telegraph Link of Replied Text
 
-*Chatbot* 
-_Admins only:_
- ❍ /addchat*:* Enables Chatbot mode in the chat.
- ❍ /rmchat*:* Disables Chatbot mode in the chat.
+*extra* 
+_extra plugin:_
+ ❍ /repo*:* check Anieteam source.
+ ❍ /tiny*:* Please reply to a sticker.
 
 *Date-time-Weather*
  ❍ /time <country code>*:* Gives information about a timezone.
