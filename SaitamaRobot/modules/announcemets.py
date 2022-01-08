@@ -5,7 +5,7 @@ from telegram import Update, ParseMode
 from telegram.ext import CallbackContext
 from telegram.chatmemberupdated import ChatMemberUpdated
 from telegram.ext.chatmemberhandler import ChatMemberHandler
-import tg_bot.modules.sql.log_channel_sql as logsql
+import SaitamaRobot.modules.sql.log_channel_sql as logsql
 from SaitamaRobot import dispatcher
 from SaitamaRobot.modules.log_channel import loggable
 
