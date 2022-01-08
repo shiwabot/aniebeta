@@ -6,10 +6,10 @@ from telegram.ext import CallbackContext
 from telegram.chatmemberupdated import ChatMemberUpdated
 from telegram.ext.chatmemberhandler import ChatMemberHandler
 import tg_bot.modules.sql.log_channel_sql as logsql
-from tg_bot import dispatcher
-from tg_bot.modules.log_channel import loggable
+from SaitamaRobot import dispatcher
+from SaitamaRobot.modules.log_channel import loggable
 
-import tg_bot.modules.sql.logger_sql as sql
+import SaitamaRobot.modules.sql.logger_sql as sql
 
 
 # Module to extract and log (optional: send to chat) status changes in chat members using ChatMemberUpdated
