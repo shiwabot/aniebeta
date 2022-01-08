@@ -4,10 +4,10 @@ from telegram import Update
 from telegram.ext import CallbackContext
 from telegram.utils.helpers import mention_html
 
-from tg_bot.modules.log_channel import loggable
-from tg_bot.modules.helper_funcs.decorators import kigcmd
+from SaitamaRobot.modules.log_channel import loggable
+from SaitamaRobot.modules.helper_funcs.decorators import kigcmd
 
-import tg_bot.modules.sql.logger_sql as sql
+import SaitamaRobot.modules.sql.logger_sql as sql
 from ..modules.helper_funcs.anonymous import user_admin as u_admin, AdminPerms
 
 
